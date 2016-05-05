@@ -20,26 +20,20 @@ import javax.swing.JOptionPane;
 public class SQLMethods {
 
   public boolean validarIngreso(String user, String pass) {
-
     boolean success = false;
-    
-    
     try {
       PreparedStatement ps;
-    ResultSet rs;
+      ResultSet rs;
 
       Connection con = Conexion.getConnection();
       String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
-      
       System.out.println(selectSQL);
-      
+
       ps = con.prepareStatement(selectSQL);
       ps.setString(1, user);
       rs = ps.executeQuery();
 
       if (rs.next()) {
-        System.out.println("aquiiiii");
-        
         pass = parsePass(pass);
         String password = rs.getString("PASSWORD");
         if (password.equals(pass)) {

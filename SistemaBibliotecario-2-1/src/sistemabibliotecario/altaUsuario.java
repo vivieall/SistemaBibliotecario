@@ -49,14 +49,15 @@ public class altaUsuario extends javax.swing.JPanel {
     txtSearchbar1 = new javax.swing.JTextField();
     jButton2 = new javax.swing.JButton();
     jLabel12 = new javax.swing.JLabel();
-    jSeparator4 = new javax.swing.JSeparator();
-    txtSearchbar2 = new javax.swing.JTextField();
-    jButton3 = new javax.swing.JButton();
     jSeparator5 = new javax.swing.JSeparator();
-    gestionUsuario2 = new javax.swing.JButton();
+    txtSearchbar2 = new javax.swing.JTextField();
+    jButton6 = new javax.swing.JButton();
     gestionUsuario1 = new javax.swing.JButton();
+    jLabel29 = new javax.swing.JLabel();
+    jSeparator6 = new javax.swing.JSeparator();
+    gestionUsuario2 = new javax.swing.JButton();
     gestionUsuario3 = new javax.swing.JButton();
-    jLabel20 = new javax.swing.JLabel();
+    jLabel16 = new javax.swing.JLabel();
 
     jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
@@ -79,7 +80,7 @@ public class altaUsuario extends javax.swing.JPanel {
     jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/b1.png"))); // NOI18N
-    jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+    jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
     jLabel2.setText("Facultad de Estadística e Informática, Universidad Veracruzana");
     jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
@@ -90,49 +91,49 @@ public class altaUsuario extends javax.swing.JPanel {
     jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 58));
 
     jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/uv1.png"))); // NOI18N
-    jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 102, -1));
+    jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
 
     jLabel6.setBackground(new java.awt.Color(204, 204, 204));
     jLabel6.setText("Nombre: Jonh Nieve Blanco");
     jLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 450, 22));
+    jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 450, 22));
 
     jLabel8.setBackground(new java.awt.Color(204, 204, 204));
-    jLabel8.setText("Teléfono: 2212222245");
+    jLabel8.setText("Teléfono: 22-10-21-45-94");
     jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 209, 22));
+    jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 209, 22));
 
     jLabel10.setBackground(new java.awt.Color(204, 204, 204));
     jLabel10.setText("CP: 910000");
     jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 220, 22));
+    jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 220, 22));
 
     jLabel11.setBackground(new java.awt.Color(204, 204, 204));
     jLabel11.setText("Dirección: José Azueta #124");
     jLabel11.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 209, 22));
+    jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 209, 22));
 
     jLabel13.setBackground(new java.awt.Color(204, 204, 204));
     jLabel13.setText("Carrera: Ingeniería de Software");
     jLabel13.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 220, 22));
+    jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 220, 22));
 
     jLabel14.setBackground(new java.awt.Color(204, 204, 204));
     jLabel14.setText("Facultad: Estadística e Informática");
     jLabel14.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 220, 22));
+    jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 220, 22));
 
     jLabel15.setBackground(new java.awt.Color(204, 204, 204));
     jLabel15.setText("Telefono (opcional):");
     jLabel15.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 150, 22));
+    jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 150, 22));
 
     jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/2-user_-_single_add-128.png"))); // NOI18N
-    jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+    jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
     jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     jLabel17.setText("ID: zS1401643 ");
-    jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+    jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
     txtSearchbar1.setText("22-33-44-55-33");
     txtSearchbar1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +141,7 @@ public class altaUsuario extends javax.swing.JPanel {
         txtSearchbar1ActionPerformed(evt);
       }
     });
-    jPanel1.add(txtSearchbar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 189, -1));
+    jPanel1.add(txtSearchbar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 189, -1));
 
     jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     jButton2.setText("Aceptar");
@@ -154,11 +155,11 @@ public class altaUsuario extends javax.swing.JPanel {
     jLabel12.setBackground(new java.awt.Color(204, 204, 204));
     jLabel12.setText("Correo: nievejohn@aol.com");
     jLabel12.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 209, 22));
+    jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 209, 22));
 
-    jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
-    jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 766, -1));
+    jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+    jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
+    jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 104, 750, 10));
 
     txtSearchbar2.setText("Búsqueda...");
     txtSearchbar2.addActionListener(new java.awt.event.ActionListener() {
@@ -166,23 +167,10 @@ public class altaUsuario extends javax.swing.JPanel {
         txtSearchbar2ActionPerformed(evt);
       }
     });
-    jPanel1.add(txtSearchbar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 200, -1));
+    jPanel1.add(txtSearchbar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 189, -1));
 
-    jButton3.setText("Ir");
-    jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 53, -1));
-
-    jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
-    jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 766, -1));
-
-    gestionUsuario2.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario2.setText("Gestionar préstamo");
-    gestionUsuario2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario2ActionPerformed(evt);
-      }
-    });
-    jPanel1.add(gestionUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, 26));
+    jButton6.setText("Ir");
+    jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 53, -1));
 
     gestionUsuario1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     gestionUsuario1.setText("Gestionar usuario");
@@ -191,7 +179,23 @@ public class altaUsuario extends javax.swing.JPanel {
         gestionUsuario1ActionPerformed(evt);
       }
     });
-    jPanel1.add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, 26));
+    jPanel1.add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
+
+    jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/toolbar_home.png"))); // NOI18N
+    jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
+
+    jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+    jSeparator6.setForeground(new java.awt.Color(51, 51, 51));
+    jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 150, 750, 11));
+
+    gestionUsuario2.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    gestionUsuario2.setText("Gestionar préstamo");
+    gestionUsuario2.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        gestionUsuario2ActionPerformed(evt);
+      }
+    });
+    jPanel1.add(gestionUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, 26));
 
     gestionUsuario3.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     gestionUsuario3.setText("Verificar adeudo");
@@ -200,20 +204,25 @@ public class altaUsuario extends javax.swing.JPanel {
         gestionUsuario3ActionPerformed(evt);
       }
     });
-    jPanel1.add(gestionUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, 26));
+    jPanel1.add(gestionUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, 26));
 
-    jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/toolbar_home.png"))); // NOI18N
-    jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 120, -1, 26));
+    jLabel16.setBackground(new java.awt.Color(204, 204, 204));
+    jLabel16.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+    jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jLabel16.setText("Registrar Alta");
+    jLabel16.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jLabel16.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+    jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, 22));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
     );
   }// </editor-fold>//GEN-END:initComponents
 
@@ -233,13 +242,13 @@ public class altaUsuario extends javax.swing.JPanel {
     // TODO add your handling code here:
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
-  private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario2ActionPerformed
-
   private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario1ActionPerformed
+
+  private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_gestionUsuario2ActionPerformed
 
   private void gestionUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario3ActionPerformed
     // TODO add your handling code here:
@@ -252,7 +261,7 @@ public class altaUsuario extends javax.swing.JPanel {
   private javax.swing.JButton gestionUsuario3;
   private javax.swing.JButton jButton1;
   private javax.swing.JButton jButton2;
-  private javax.swing.JButton jButton3;
+  private javax.swing.JButton jButton6;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel11;
@@ -260,10 +269,11 @@ public class altaUsuario extends javax.swing.JPanel {
   private javax.swing.JLabel jLabel13;
   private javax.swing.JLabel jLabel14;
   private javax.swing.JLabel jLabel15;
+  private javax.swing.JLabel jLabel16;
   private javax.swing.JLabel jLabel17;
   private javax.swing.JLabel jLabel19;
   private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel20;
+  private javax.swing.JLabel jLabel29;
   private javax.swing.JLabel jLabel5;
   private javax.swing.JLabel jLabel6;
   private javax.swing.JLabel jLabel7;
@@ -271,8 +281,8 @@ public class altaUsuario extends javax.swing.JPanel {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JSeparator jSeparator2;
   private javax.swing.JSeparator jSeparator3;
-  private javax.swing.JSeparator jSeparator4;
   private javax.swing.JSeparator jSeparator5;
+  private javax.swing.JSeparator jSeparator6;
   private javax.swing.JLabel lblTitle;
   private javax.swing.JTextField txtSearchbar;
   private javax.swing.JTextField txtSearchbar1;
