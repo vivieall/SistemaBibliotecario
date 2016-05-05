@@ -5,17 +5,9 @@
  */
 package sistemabibliotecario;
 
-import conection.Conexion;
 import javax.swing.JOptionPane;
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import conection.SQLMethods;
+import javax.swing.JFrame;
 
 /**
  *
@@ -128,7 +120,7 @@ public class menuLogin extends javax.swing.JFrame {
     jLabel5.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     jLabel5.setForeground(new java.awt.Color(51, 0, 102));
     jLabel5.setText("*Si desea recuperar su cuenta, preséntese en la biblioteca.");
-    jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
+    jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, -1, -1));
 
     jLabel6.setText("jLabel6");
     jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 586, -1, 0));
@@ -170,7 +162,7 @@ public class menuLogin extends javax.swing.JFrame {
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, Short.MAX_VALUE)
     );
 
     pack();
@@ -190,8 +182,10 @@ public class menuLogin extends javax.swing.JFrame {
     String password = new String(pass);
     SQLMethods sql = new SQLMethods();
     if (sql.validarIngreso(txtUsuario.getText(), password) == true) {
-      this.dispose();
-      //this.setVisible(false);
+      menuCirculacion mc = new menuCirculacion();
+      this.setContentPane(mc);
+      this.invalidate();
+      this.validate();
       JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
               "Biblioteca BUAEEI ", JOptionPane.INFORMATION_MESSAGE);
     } else {

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package sistemabibliotecario;
+import conection.SQLMethods;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -184,6 +187,11 @@ public class menuCirculacion extends javax.swing.JPanel {
 
   private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
     // TODO add your handling code here:
+    SQLMethods sql = new SQLMethods();
+    menuUsuario mu = new menuUsuario();
+     this.setContentPane(mu);
+     this.invalidate();
+     this.validate();
   }//GEN-LAST:event_gestionUsuario1ActionPerformed
 
   private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
