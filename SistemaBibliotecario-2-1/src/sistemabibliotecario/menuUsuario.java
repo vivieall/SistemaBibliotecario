@@ -7,7 +7,7 @@ package sistemabibliotecario;
 
 /**
  *
- * @author ruben
+ * @author Vivie
  */
 public class menuUsuario extends javax.swing.JPanel {
 
@@ -35,15 +35,15 @@ public class menuUsuario extends javax.swing.JPanel {
     lblTitle1 = new javax.swing.JLabel();
     jButton6 = new javax.swing.JButton();
     jLabel16 = new javax.swing.JLabel();
-    gestionUsuario1 = new javax.swing.JButton();
+    btnGestionarUsuario = new javax.swing.JButton();
     jLabel19 = new javax.swing.JLabel();
     txtSearchbar6 = new javax.swing.JTextField();
     jSeparator6 = new javax.swing.JSeparator();
     gestionUsuario2 = new javax.swing.JButton();
     gestionUsuario3 = new javax.swing.JButton();
     jLabel1 = new javax.swing.JLabel();
-    jButton9 = new javax.swing.JButton();
-    jButton10 = new javax.swing.JButton();
+    btnDarAlta = new javax.swing.JButton();
+    btnModificarUsuario = new javax.swing.JButton();
     jButton11 = new javax.swing.JButton();
 
     jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -78,14 +78,14 @@ public class menuUsuario extends javax.swing.JPanel {
     jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/uv1.png"))); // NOI18N
     jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
 
-    gestionUsuario1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario1.setText("Gestionar usuario");
-    gestionUsuario1.addActionListener(new java.awt.event.ActionListener() {
+    btnGestionarUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarUsuario.setText("Gestionar usuario");
+    btnGestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario1ActionPerformed(evt);
+        btnGestionarUsuarioActionPerformed(evt);
       }
     });
-    jPanel4.add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
+    jPanel4.add(btnGestionarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
 
     jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/toolbar_home.png"))); // NOI18N
     jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
@@ -124,21 +124,21 @@ public class menuUsuario extends javax.swing.JPanel {
     jLabel1.setText("Ingresar ID");
     jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
 
-    jButton9.setText("Dar de alta");
-    jButton9.addActionListener(new java.awt.event.ActionListener() {
+    btnDarAlta.setText("Dar de alta");
+    btnDarAlta.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton9ActionPerformed(evt);
+        btnDarAltaActionPerformed(evt);
       }
     });
-    jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, -1, 30));
+    jPanel4.add(btnDarAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, -1, 30));
 
-    jButton10.setText("Modificar usuario");
-    jButton10.addActionListener(new java.awt.event.ActionListener() {
+    btnModificarUsuario.setText("Modificar usuario");
+    btnModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton10ActionPerformed(evt);
+        btnModificarUsuarioActionPerformed(evt);
       }
     });
-    jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, 30));
+    jPanel4.add(btnModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, 30));
 
     jButton11.setText("Ver historial");
     jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -164,9 +164,11 @@ public class menuUsuario extends javax.swing.JPanel {
     // TODO add your handling code here:
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
-  private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
+  private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario1ActionPerformed
+      menuUsuario mu = new menuUsuario();
+      mu.setVisible(true);
+  }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void txtSearchbar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbar6ActionPerformed
     // TODO add your handling code here:
@@ -180,13 +182,13 @@ public class menuUsuario extends javax.swing.JPanel {
     // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario3ActionPerformed
 
-  private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+  private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_jButton9ActionPerformed
+  }//GEN-LAST:event_btnDarAltaActionPerformed
 
-  private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+  private void btnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarUsuarioActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_jButton10ActionPerformed
+  }//GEN-LAST:event_btnModificarUsuarioActionPerformed
 
   private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
     // TODO add your handling code here:
@@ -194,13 +196,13 @@ public class menuUsuario extends javax.swing.JPanel {
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton gestionUsuario1;
+  private javax.swing.JButton btnDarAlta;
+  private javax.swing.JButton btnGestionarUsuario;
+  private javax.swing.JButton btnModificarUsuario;
   private javax.swing.JButton gestionUsuario2;
   private javax.swing.JButton gestionUsuario3;
-  private javax.swing.JButton jButton10;
   private javax.swing.JButton jButton11;
   private javax.swing.JButton jButton6;
-  private javax.swing.JButton jButton9;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel12;
   private javax.swing.JLabel jLabel16;

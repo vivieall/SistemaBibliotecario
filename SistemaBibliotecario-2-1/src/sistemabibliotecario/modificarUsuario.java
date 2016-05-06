@@ -70,7 +70,7 @@ public class modificarUsuario extends javax.swing.JPanel {
     lblTitle2 = new javax.swing.JLabel();
     jButton6 = new javax.swing.JButton();
     jLabel25 = new javax.swing.JLabel();
-    gestionUsuario1 = new javax.swing.JButton();
+    btnGestionarUsuario = new javax.swing.JButton();
     jLabel29 = new javax.swing.JLabel();
     jSeparator6 = new javax.swing.JSeparator();
     gestionUsuario2 = new javax.swing.JButton();
@@ -439,14 +439,14 @@ public class modificarUsuario extends javax.swing.JPanel {
     jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/uv1.png"))); // NOI18N
     jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
 
-    gestionUsuario1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario1.setText("Gestionar usuario");
-    gestionUsuario1.addActionListener(new java.awt.event.ActionListener() {
+    btnGestionarUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarUsuario.setText("Gestionar usuario");
+    btnGestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario1ActionPerformed(evt);
+        btnGestionarUsuarioActionPerformed(evt);
       }
     });
-    jPanel5.add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
+    jPanel5.add(btnGestionarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
 
     jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/toolbar_home.png"))); // NOI18N
     jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
@@ -626,9 +626,11 @@ public class modificarUsuario extends javax.swing.JPanel {
     // TODO add your handling code here:
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
-  private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
+  private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario1ActionPerformed
+      menuUsuario mu = new menuUsuario();
+      mu.setVisible(true);
+  }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
     // TODO add your handling code here:
@@ -640,8 +642,8 @@ public class modificarUsuario extends javax.swing.JPanel {
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton gestionUsuario;
-  private javax.swing.JButton gestionUsuario1;
   private javax.swing.JButton gestionUsuario2;
   private javax.swing.JButton gestionUsuario3;
   private javax.swing.JButton getionPrestamo;

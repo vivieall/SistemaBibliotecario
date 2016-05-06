@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package sistemabibliotecario;
+
 import conection.SQLMethods;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -49,11 +50,12 @@ public class menuCirculacion extends javax.swing.JPanel {
     jSeparator5 = new javax.swing.JSeparator();
     txtSearchbar2 = new javax.swing.JTextField();
     jButton6 = new javax.swing.JButton();
-    gestionUsuario1 = new javax.swing.JButton();
+    btnGestionarUsuario = new javax.swing.JButton();
     jLabel29 = new javax.swing.JLabel();
     jSeparator6 = new javax.swing.JSeparator();
-    gestionUsuario2 = new javax.swing.JButton();
-    gestionUsuario3 = new javax.swing.JButton();
+    btnGestionarPrestamo = new javax.swing.JButton();
+    btnVerificarAdeudo = new javax.swing.JButton();
+    jPanel1 = new javax.swing.JPanel();
 
     jLabel12.setBackground(new java.awt.Color(204, 204, 204));
     jLabel12.setText("Jonh Snow");
@@ -146,14 +148,19 @@ public class menuCirculacion extends javax.swing.JPanel {
     jButton6.setText("Ir");
     add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 53, -1));
 
-    gestionUsuario1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario1.setText("Gestionar usuario");
-    gestionUsuario1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario1ActionPerformed(evt);
+    btnGestionarUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarUsuario.setText("Gestionar usuario");
+    btnGestionarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnGestionarUsuarioMouseClicked(evt);
       }
     });
-    add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
+    btnGestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGestionarUsuarioActionPerformed(evt);
+      }
+    });
+    add(btnGestionarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
 
     jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/toolbar_home.png"))); // NOI18N
     add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
@@ -162,51 +169,89 @@ public class menuCirculacion extends javax.swing.JPanel {
     jSeparator6.setForeground(new java.awt.Color(51, 51, 51));
     add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 150, 750, 11));
 
-    gestionUsuario2.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario2.setText("Gestionar préstamo");
-    gestionUsuario2.addActionListener(new java.awt.event.ActionListener() {
+    btnGestionarPrestamo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarPrestamo.setText("Gestionar préstamo");
+    btnGestionarPrestamo.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario2ActionPerformed(evt);
+        btnGestionarPrestamoActionPerformed(evt);
       }
     });
-    add(gestionUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, 26));
+    add(btnGestionarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, 26));
 
-    gestionUsuario3.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario3.setText("Verificar adeudo");
-    gestionUsuario3.addActionListener(new java.awt.event.ActionListener() {
+    btnVerificarAdeudo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnVerificarAdeudo.setText("Verificar adeudo");
+    btnVerificarAdeudo.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario3ActionPerformed(evt);
+        btnVerificarAdeudoActionPerformed(evt);
       }
     });
-    add(gestionUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, 26));
+    add(btnVerificarAdeudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, 26));
+
+    jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel1.setLayout(null);
+    add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 550));
   }// </editor-fold>//GEN-END:initComponents
 
   private void txtSearchbar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbar2ActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
-  private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
+  private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-    SQLMethods sql = new SQLMethods();
-    menuUsuario mu = new menuUsuario();
-     this.setContentPane(mu);
-     this.invalidate();
-     this.validate();
-  }//GEN-LAST:event_gestionUsuario1ActionPerformed
+      menuUsuario mu = new menuUsuario();
+      mu.setVisible(true);
+      //this.setContentPane(mu);
+      //this.invalidate();
+      //this.validate();
+  }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
-  private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
+  private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario2ActionPerformed
+  }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
-  private void gestionUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario3ActionPerformed
+  private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
     // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario3ActionPerformed
+  }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
+  private void btnGestionarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioMouseClicked
+
+  }//GEN-LAST:event_btnGestionarUsuarioMouseClicked
+
+    public static void main(String args[]) {
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+     */
+    try {
+      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+          javax.swing.UIManager.setLookAndFeel(info.getClassName());
+          break;
+        }
+      }
+    } catch (ClassNotFoundException ex) {
+      java.util.logging.Logger.getLogger(menuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+      java.util.logging.Logger.getLogger(menuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+      java.util.logging.Logger.getLogger(menuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(menuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(() -> {
+      new menuCirculacion().setVisible(true);
+    });
+  }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton gestionUsuario1;
-  private javax.swing.JButton gestionUsuario2;
-  private javax.swing.JButton gestionUsuario3;
+  private javax.swing.JButton btnGestionarPrestamo;
+  public javax.swing.JButton btnGestionarUsuario;
+  private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JButton jButton6;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel10;
@@ -224,9 +269,13 @@ public class menuCirculacion extends javax.swing.JPanel {
   private javax.swing.JLabel jLabel7;
   private javax.swing.JLabel jLabel8;
   private javax.swing.JLabel jLabel9;
+  public static javax.swing.JPanel jPanel1;
   private javax.swing.JSeparator jSeparator5;
   private javax.swing.JSeparator jSeparator6;
   private javax.swing.JLabel lblTitle;
   private javax.swing.JTextField txtSearchbar2;
   // End of variables declaration//GEN-END:variables
+
+  
+  
 }

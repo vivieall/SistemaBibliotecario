@@ -89,8 +89,7 @@ public class SQLMethods {
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("INSERT INTO USUARIO (ID, Nombre, "
-              + "Telefono, Direccion, Correo, Tipo, Password) "
-              + "VALUES (?,?,?,?,?,?,?)");
+              + "Telefono, Direccion, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
       ps.setString(1, id);
       ps.setString(2, nombre);
       ps.setString(3, tel);
@@ -167,18 +166,19 @@ public class SQLMethods {
   }
 
   public ArrayList registrarPrestamo(String numFolio) {
+    //POR IMPLEMENTAR.
     Connection connection;
     PreparedStatement ps;
     ResultSet rs;
-    ArrayList<String> user = new ArrayList();
+    //ArrayList<String> user = new ArrayList();
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("SELECT * FROM MATERIAL WHERE numFolio=?");
       ps.setString(1, numFolio);
       rs = ps.executeQuery();
       if (rs.next()) {
-        user.set(0, rs.getString("ID"));
-        return user;
+        //user.set(0, rs.getString("ID"));
+        //return user;
       } else {
         JOptionPane.showMessageDialog(null,
                 "No existe el Usuario " + numFolio + ".");
