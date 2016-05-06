@@ -136,35 +136,33 @@ public class SQLMethods {
     }
   }
 
-  public void modificarUsuario(String id, String nombre, String tel, String dir,
-          String email, int type, String pass) {
+  public boolean modificarUsuario(Usuario user) {
     Connection connection;
     PreparedStatement ps;
     ResultSet rs;
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("UPDATE USUARIO "
-              + "SET ID=?, Nombre=?, Telefono=?, Direccion=?, Correo=?, "
-              + "Tipo=?, Password=? WHERE id=?");
-      ps.setString(1, id);
-      ps.setString(2, nombre);
-      ps.setString(3, tel);
-      ps.setString(4, dir);
-      ps.setString(5, email);
-      ps.setInt(6, type);
-      ps.setString(7, parsePass(pass));
-      ps.setString(8, id);
+              + "SET Nombre=?, Telefono=?, Dirección=?, Correo=? "
+              + "WHERE ID = ?");
+      ps.setString(1, user.getName());
+      ps.setString(2, user.getTel());
+      ps.setString(3, user.getDirec());
+      ps.setString(4, user.getCorreo());
+      ps.setString(5, user.getId());
       int res = ps.executeUpdate();
       if (res > 0) {
         JOptionPane.showMessageDialog(null, "Usuario Modificado");
+        connection.close();
+        return true;
       } else {
         JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
       }
       connection.close();
-    } catch (SQLException | NoSuchAlgorithmException |
-            UnsupportedEncodingException | HeadlessException ex) {
+    } catch (SQLException | HeadlessException ex) {
       System.out.println(ex);
     }
+    return false;
   }
   
   public Usuario consultarUsuario(String ID){
