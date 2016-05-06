@@ -6,18 +6,32 @@
 package sistemabibliotecario;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author Vivie
  */
-public class MenuUsuario1 extends javax.swing.JPanel {
+public class MenuUsuario extends javax.swing.JPanel {
+  Usuario usuario;
+
+  public Usuario getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
+  }
 
   /**
    * Creates new form Modificar1
    */
-  public MenuUsuario1() {
+  public MenuUsuario() {
+    initComponents();
+  }
+  public MenuUsuario(Usuario usuario) {
+    this.usuario = usuario;
     initComponents();
   }
     public static void main(String args[]) {
@@ -34,20 +48,20 @@ public class MenuUsuario1 extends javax.swing.JPanel {
         }
       }
     } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
     //</editor-fold>
 
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(() -> {
-      new MenuUsuario1().setVisible(true);
+      new MenuUsuario().setVisible(true);
     });
   }
   /**
@@ -105,6 +119,11 @@ public class MenuUsuario1 extends javax.swing.JPanel {
     jPanel4.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 58));
 
     btnSearch.setText("Ir");
+    btnSearch.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearchActionPerformed(evt);
+      }
+    });
     jPanel4.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 53, -1));
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
@@ -202,7 +221,7 @@ public class MenuUsuario1 extends javax.swing.JPanel {
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-      MenuUsuario1 mu = new MenuUsuario1();
+      MenuUsuario mu = new MenuUsuario();
       mu.setVisible(true);
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
@@ -211,11 +230,15 @@ public class MenuUsuario1 extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchIDActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
-    // TODO add your handling code here:
+    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
+    PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
   private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
@@ -231,9 +254,16 @@ public class MenuUsuario1 extends javax.swing.JPanel {
   }//GEN-LAST:event_btnVerHistorialActionPerformed
 
   private void btnHomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseReleased
-    MenuCirculacion1 mc = new MenuCirculacion1();
+    MenuCirculacion mc = new MenuCirculacion(usuario);
     PaneB.callNxtPane( (JFrame)SwingUtilities.getWindowAncestor(this), mc);
   }//GEN-LAST:event_btnHomeMouseReleased
+
+  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+  }//GEN-LAST:event_btnSearchActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

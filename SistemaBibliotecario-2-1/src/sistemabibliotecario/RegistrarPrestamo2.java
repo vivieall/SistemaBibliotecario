@@ -9,12 +9,12 @@ package sistemabibliotecario;
  *
  * @author Vivie
  */
-public class RegistrarPrestamo21 extends javax.swing.JPanel {
+public class RegistrarPrestamo2 extends javax.swing.JPanel {
 
   /**
    * Creates new form registrarPrestamo2
    */
-  public RegistrarPrestamo21() {
+  public RegistrarPrestamo2() {
     initComponents();
   }
 
@@ -378,7 +378,7 @@ public class RegistrarPrestamo21 extends javax.swing.JPanel {
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
-      MenuUsuario1 mu = new MenuUsuario1();
+      MenuUsuario mu = new MenuUsuario();
       mu.setVisible(true);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 

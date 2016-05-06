@@ -15,12 +15,12 @@ import javax.swing.JPanel;
  *
  * @author Vivie
  */
-public class MenuLogin1 extends javax.swing.JFrame {
+public class MenuLogin extends javax.swing.JFrame {
 
   /**
    * Creates new form Login
    */
-  public MenuLogin1() {
+  public MenuLogin() {
     initComponents();
   }
 
@@ -67,6 +67,11 @@ public class MenuLogin1 extends javax.swing.JFrame {
     jPanel1.add(txtSearchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 313, -1));
 
     btnSearch.setText("Ir");
+    btnSearch.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearchActionPerformed(evt);
+      }
+    });
     jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 53, -1));
 
     txtUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +160,11 @@ public class MenuLogin1 extends javax.swing.JFrame {
     String password = new String(pass);
     SQLMethods sql = new SQLMethods();
     if (sql.validarIngreso(txtUsuario.getText(), password) == true) {
-      MenuCirculacion1 mc = new MenuCirculacion1();
+      
+      MenuCirculacion mc = new MenuCirculacion(sql
+          .consultarUsuario(txtUsuario.getText()));
+      
+      System.out.println(mc.getUsuario().getId());
       PaneB.callNxtPane(this, mc);
       //JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
       //        "Biblioteca BUAEEI ", JOptionPane.INFORMATION_MESSAGE);
@@ -167,6 +176,13 @@ public class MenuLogin1 extends javax.swing.JFrame {
       lblError.setVisible(true);
     }
   }//GEN-LAST:event_btnIngresarActionPerformed
+
+  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);
+  }//GEN-LAST:event_btnSearchActionPerformed
 
   /**
    * @param args the command line arguments
@@ -185,26 +201,18 @@ public class MenuLogin1 extends javax.swing.JFrame {
         }
       }
     } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(() -> {
-      new MenuLogin1().setVisible(true);
+      new MenuLogin().setVisible(true);
     });
   }
 

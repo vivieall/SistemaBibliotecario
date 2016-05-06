@@ -5,7 +5,10 @@
  */
 package sistemabibliotecario;
 
+import conection.SQLMethods;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 
@@ -13,11 +16,25 @@ import javax.swing.SwingUtilities;
  *
  * @author ruben
  */
-public class MenuCirculacion1 extends javax.swing.JPanel {
+public class MenuCirculacion extends javax.swing.JPanel {
+  private Usuario usuario;
+
+  public Usuario getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(Usuario us) {
+    this.usuario = us;
+  }
+
   /**
    * Creates new form menu_actor
    */
-  public MenuCirculacion1() {
+  public MenuCirculacion(Usuario user) {
+    this.usuario = user;
+    initComponents();
+  }
+  public MenuCirculacion(){
     initComponents();
   }
 
@@ -42,10 +59,10 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
     txtName = new javax.swing.JLabel();
     txtMail = new javax.swing.JLabel();
     txtAddress = new javax.swing.JLabel();
-    jLabel15 = new javax.swing.JLabel();
-    jLabel16 = new javax.swing.JLabel();
-    jLabel5 = new javax.swing.JLabel();
-    jLabel17 = new javax.swing.JLabel();
+    txtTel = new javax.swing.JLabel();
+    txtSubTitle = new javax.swing.JLabel();
+    icnUser = new javax.swing.JLabel();
+    lblID = new javax.swing.JLabel();
     jSeparator5 = new javax.swing.JSeparator();
     txtSearchbar2 = new javax.swing.JTextField();
     jButton6 = new javax.swing.JButton();
@@ -54,6 +71,7 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
     jSeparator6 = new javax.swing.JSeparator();
     btnGestionarPrestamo = new javax.swing.JButton();
     btnVerificarAdeudo = new javax.swing.JButton();
+    btnCerrarSesion = new javax.swing.JButton();
 
     jLabel12.setBackground(new java.awt.Color(204, 204, 204));
     jLabel12.setText("Jonh Snow");
@@ -98,38 +116,42 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
 
     txtName.setBackground(new java.awt.Color(204, 204, 204));
     txtName.setText("Maria Rosa Lopez");
+    txtName.setText(usuario.getName());
     txtName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 160, 22));
 
     txtMail.setBackground(new java.awt.Color(204, 204, 204));
     txtMail.setText("lopezmr@gmail.com");
+    txtMail.setText(usuario.getCorreo());
     txtMail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 160, 22));
 
     txtAddress.setBackground(new java.awt.Color(204, 204, 204));
     txtAddress.setText("Av. Jose Azueta #123");
+    txtAddress.setText(usuario.getDirec());
     txtAddress.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 160, 22));
 
-    jLabel15.setBackground(new java.awt.Color(204, 204, 204));
-    jLabel15.setText("22-88-54-45-34");
-    jLabel15.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 160, 22));
+    txtTel.setBackground(new java.awt.Color(204, 204, 204));
+    txtTel.setText("22-88-54-45-34");
+    txtTel.setText(usuario.getTel());
+    txtTel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 160, 22));
 
-    jLabel16.setBackground(new java.awt.Color(204, 204, 204));
-    jLabel16.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-    jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    jLabel16.setText("Bibliotecario de circulación");
-    jLabel16.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jLabel16.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-    add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, 22));
+    txtSubTitle.setBackground(new java.awt.Color(204, 204, 204));
+    txtSubTitle.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+    txtSubTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    txtSubTitle.setText("Bibliotecario de circulación");
+    txtSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    txtSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+    add(txtSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, 22));
 
-    jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/14-128.png"))); // NOI18N
-    add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 120, 130));
+    icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/14-128.png"))); // NOI18N
+    add(icnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 120, 130));
 
-    jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-    jLabel17.setText("ID: zS1401643 ");
-    add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
+    lblID.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+    lblID.setText("ID: " + usuario.getId());
+    add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
 
     jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
@@ -161,11 +183,11 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
     add(btnGestionarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
 
     jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
-    add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
+    add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 120, -1, 26));
 
     jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator6.setForeground(new java.awt.Color(51, 51, 51));
-    add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 150, 750, 11));
+    add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 151, 750, 10));
 
     btnGestionarPrestamo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnGestionarPrestamo.setText("Gestionar préstamo");
@@ -184,6 +206,15 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
       }
     });
     add(btnVerificarAdeudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, 26));
+
+    btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnCerrarSesion.setText("Cerrar Sesión");
+    btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCerrarSesionActionPerformed(evt);
+      }
+    });
+    add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 120, 30));
   }// </editor-fold>//GEN-END:initComponents
 
   private void txtSearchbar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbar2ActionPerformed
@@ -192,21 +223,34 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-    MenuUsuario1 mu = new MenuUsuario1();
+    MenuUsuario mu = new MenuUsuario(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
-    // TODO add your handling code here:
+    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
+    PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
   private void btnGestionarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioMouseClicked
 
   }//GEN-LAST:event_btnGestionarUsuarioMouseClicked
+
+  private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+ 
+    java.awt.EventQueue.invokeLater(() -> {
+      new MenuLogin().setVisible(true);
+    });
+    SwingUtilities.getWindowAncestor(this).dispose();
+    
+  }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     public static void main(String args[]) {
     /* Set the Nimbus look and feel */
@@ -222,40 +266,38 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
         }
       }
     } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
     //</editor-fold>
-
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(() -> {
-      new MenuCirculacion1().setVisible(true);
+      new MenuCirculacion().setVisible(true);
     });
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btnCerrarSesion;
   private javax.swing.JButton btnGestionarPrestamo;
   public javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
+  private javax.swing.JLabel icnUser;
   private javax.swing.JButton jButton6;
   private javax.swing.JLabel jLabel12;
-  private javax.swing.JLabel jLabel15;
-  private javax.swing.JLabel jLabel16;
-  private javax.swing.JLabel jLabel17;
   private javax.swing.JLabel jLabel29;
-  private javax.swing.JLabel jLabel5;
   private javax.swing.JSeparator jSeparator5;
   private javax.swing.JSeparator jSeparator6;
   private javax.swing.JLabel lblAddress;
   private javax.swing.JLabel lblFEI;
+  private javax.swing.JLabel lblID;
   private javax.swing.JLabel lblMail;
   private javax.swing.JLabel lblNombre;
   private javax.swing.JLabel lblTel;
@@ -264,6 +306,8 @@ public class MenuCirculacion1 extends javax.swing.JPanel {
   private javax.swing.JLabel txtMail;
   private javax.swing.JLabel txtName;
   private javax.swing.JTextField txtSearchbar2;
+  private javax.swing.JLabel txtSubTitle;
+  private javax.swing.JLabel txtTel;
   // End of variables declaration//GEN-END:variables
 
   

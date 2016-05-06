@@ -9,12 +9,12 @@ package sistemabibliotecario;
  *
  * @author Vivie
  */
-public class RegistrarRenovacion21 extends javax.swing.JPanel {
+public class RegistrarRenovacion2 extends javax.swing.JPanel {
 
   /**
    * Creates new form registrarRenovacion2
    */
-  public RegistrarRenovacion21() {
+  public RegistrarRenovacion2() {
     initComponents();
   }
 

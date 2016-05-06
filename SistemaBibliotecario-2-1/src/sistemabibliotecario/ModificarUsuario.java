@@ -5,16 +5,18 @@
  */
 package sistemabibliotecario;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruben
  */
-public class ModificarUsuario1 extends javax.swing.JPanel {
+public class ModificarUsuario extends javax.swing.JPanel {
 
   /**
    * Creates new form Modificar2
    */
-  public ModificarUsuario1() {
+  public ModificarUsuario() {
     initComponents();
   }
 
@@ -628,7 +630,7 @@ public class ModificarUsuario1 extends javax.swing.JPanel {
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-      MenuUsuario1 mu = new MenuUsuario1();
+      MenuUsuario mu = new MenuUsuario();
       mu.setVisible(true);
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
@@ -637,7 +639,10 @@ public class ModificarUsuario1 extends javax.swing.JPanel {
   }//GEN-LAST:event_gestionUsuario2ActionPerformed
 
   private void gestionUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario3ActionPerformed
-    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario3ActionPerformed
 
 

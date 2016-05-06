@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import sistemabibliotecario.Usuario;
 
 public class SQLMethods {
 
@@ -163,6 +164,33 @@ public class SQLMethods {
       System.out.println(ex);
     }
   }
+  
+  public Usuario consultarUsuario(String ID){
+    Usuario us = new Usuario();
+    Connection connection;
+    PreparedStatement ps;
+    ResultSet rs;
+    try {
+      connection = Conexion.getConnection();
+      ps = connection.prepareStatement("SELECT * from USUARIO WHERE ID = ?");
+      ps.setString(1, ID);
+      rs = ps.executeQuery();
+      if (rs.next()){
+        us.setId(rs.getString(1));
+        us.setName(rs.getString("nombre"));
+        us.setTel(rs.getString("telefono"));
+        us.setDirec(rs.getString("dirección"));
+        us.setCorreo(rs.getString("correo"));
+      }
+      
+      connection.close();
+    } catch(Exception e){
+    
+    }
+    return us;
+  }
+  
+
 
   public ArrayList registrarPrestamo(String numFolio) {
     //POR IMPLEMENTAR.

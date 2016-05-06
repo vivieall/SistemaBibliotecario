@@ -5,16 +5,25 @@
  */
 package sistemabibliotecario;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author Vivie
  */
-public class RegistrarPrestamo1 extends javax.swing.JPanel {
-
+public class RegistrarPrestamo extends javax.swing.JPanel {
+  private Usuario usuario;
   /**
    * Creates new form registrarPrestamo
    */
-  public RegistrarPrestamo1() {
+  public RegistrarPrestamo() {
+    initComponents();
+  }
+  
+  public RegistrarPrestamo(Usuario user){
+    usuario = user;
     initComponents();
   }
 
@@ -29,12 +38,12 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
 
     jPanel4 = new javax.swing.JPanel();
     jSeparator5 = new javax.swing.JSeparator();
-    jLabel9 = new javax.swing.JLabel();
-    jLabel12 = new javax.swing.JLabel();
+    icnBooks = new javax.swing.JLabel();
+    lblFEI = new javax.swing.JLabel();
     txtSearchbar2 = new javax.swing.JTextField();
     lblTitle1 = new javax.swing.JLabel();
-    jButton6 = new javax.swing.JButton();
-    jLabel16 = new javax.swing.JLabel();
+    btnSearch = new javax.swing.JButton();
+    icnUVLogo = new javax.swing.JLabel();
     btnGestionUsuario = new javax.swing.JButton();
     jLabel19 = new javax.swing.JLabel();
     txtSearchbar6 = new javax.swing.JTextField();
@@ -59,13 +68,13 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
     jPanel4.add(jSeparator5);
     jSeparator5.setBounds(6, 103, 811, 11);
 
-    jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b1.png"))); // NOI18N
-    jPanel4.add(jLabel9);
-    jLabel9.setBounds(60, 10, 85, 85);
+    icnBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b1.png"))); // NOI18N
+    jPanel4.add(icnBooks);
+    icnBooks.setBounds(60, 10, 85, 85);
 
-    jLabel12.setText("Facultad de Estadística e Informática, Universidad Veracruzana");
-    jPanel4.add(jLabel12);
-    jLabel12.setBounds(200, 70, 303, 14);
+    lblFEI.setText("Facultad de Estadística e Informática, Universidad Veracruzana");
+    jPanel4.add(lblFEI);
+    lblFEI.setBounds(200, 70, 303, 14);
 
     txtSearchbar2.setText("Búsqueda...");
     txtSearchbar2.addActionListener(new java.awt.event.ActionListener() {
@@ -82,13 +91,18 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
     jPanel4.add(lblTitle1);
     lblTitle1.setBounds(150, 10, 474, 58);
 
-    jButton6.setText("Ir");
-    jPanel4.add(jButton6);
-    jButton6.setBounds(207, 117, 53, 23);
+    btnSearch.setText("Ir");
+    btnSearch.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearchActionPerformed(evt);
+      }
+    });
+    jPanel4.add(btnSearch);
+    btnSearch.setBounds(207, 117, 53, 23);
 
-    jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
-    jPanel4.add(jLabel16);
-    jLabel16.setBounds(610, 10, 102, 85);
+    icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
+    jPanel4.add(icnUVLogo);
+    icnUVLogo.setBounds(610, 10, 102, 85);
 
     btnGestionUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnGestionUsuario.setText("Gestionar usuario");
@@ -100,9 +114,14 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
     jPanel4.add(btnGestionUsuario);
     btnGestionUsuario.setBounds(270, 120, 133, 26);
 
-    jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemabibliotecario/toolbar_home.png"))); // NOI18N
+    jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
+    jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseReleased(java.awt.event.MouseEvent evt) {
+        jLabel19MouseReleased(evt);
+      }
+    });
     jPanel4.add(jLabel19);
-    jLabel19.setBounds(773, 122, 0, 26);
+    jLabel19.setBounds(710, 120, 30, 26);
 
     txtSearchbar6.setText("zS14011643");
     txtSearchbar6.addActionListener(new java.awt.event.ActionListener() {
@@ -213,9 +232,8 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
   private void btnGestionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionUsuarioActionPerformed
-    // TODO add your handling code here:
-      MenuUsuario1 mu = new MenuUsuario1();
-      mu.setVisible(true);
+    MenuUsuario mu = new MenuUsuario(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
   }//GEN-LAST:event_btnGestionUsuarioActionPerformed
 
   private void txtSearchbar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbar6ActionPerformed
@@ -227,7 +245,10 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
   private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -250,25 +271,37 @@ public class RegistrarPrestamo1 extends javax.swing.JPanel {
     // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario5ActionPerformed
 
+  private void jLabel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseReleased
+    MenuCirculacion mc = new MenuCirculacion(usuario);
+    PaneB.callNxtPane( (JFrame)SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
+  }//GEN-LAST:event_jLabel19MouseReleased
+
+  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    JOptionPane.showMessageDialog(null,
+              "Por Implementar",
+              "Por Implementar",
+              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+  }//GEN-LAST:event_btnSearchActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnAceptar;
   private javax.swing.JButton btnGestionUsuario;
   private javax.swing.JButton btnGestionarPrestamo;
+  private javax.swing.JButton btnSearch;
   private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JButton gestionUsuario5;
   private javax.swing.JButton gestionUsuario8;
   private javax.swing.JButton gestionUsuario9;
-  private javax.swing.JButton jButton6;
+  private javax.swing.JLabel icnBooks;
+  private javax.swing.JLabel icnUVLogo;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel12;
-  private javax.swing.JLabel jLabel16;
   private javax.swing.JLabel jLabel19;
   private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel9;
   private javax.swing.JPanel jPanel4;
   private javax.swing.JSeparator jSeparator5;
   private javax.swing.JSeparator jSeparator6;
+  private javax.swing.JLabel lblFEI;
   private javax.swing.JLabel lblTitle1;
   private javax.swing.JTextField txtSearchbar2;
   private javax.swing.JTextField txtSearchbar6;
