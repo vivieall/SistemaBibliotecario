@@ -5,6 +5,7 @@
  */
 package sistemabibliotecario;
 
+import conection.SQLMethods;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -14,6 +15,7 @@ import javax.swing.SwingUtilities;
  * @author Vivie
  */
 public class MenuUsuario extends javax.swing.JPanel {
+
   Usuario usuario;
 
   public Usuario getUsuario() {
@@ -30,11 +32,13 @@ public class MenuUsuario extends javax.swing.JPanel {
   public MenuUsuario() {
     initComponents();
   }
+
   public MenuUsuario(Usuario usuario) {
     this.usuario = usuario;
     initComponents();
   }
-    public static void main(String args[]) {
+
+  public static void main(String args[]) {
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -64,6 +68,7 @@ public class MenuUsuario extends javax.swing.JPanel {
       new MenuUsuario().setVisible(true);
     });
   }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,6 +96,7 @@ public class MenuUsuario extends javax.swing.JPanel {
     btnDarAlta = new javax.swing.JButton();
     btnModificarUsuario = new javax.swing.JButton();
     btnVerHistorial = new javax.swing.JButton();
+    btnScan = new javax.swing.JButton();
 
     jPanel4.setBackground(new java.awt.Color(255, 255, 255));
     jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -203,6 +209,14 @@ public class MenuUsuario extends javax.swing.JPanel {
     });
     jPanel4.add(btnVerHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, -1, 30));
 
+    btnScan.setText("Scan");
+    btnScan.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnScanActionPerformed(evt);
+      }
+    });
+    jPanel4.add(btnScan, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 90, 40));
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
@@ -221,8 +235,8 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     // TODO add your handling code here:
-      MenuUsuario mu = new MenuUsuario();
-      mu.setVisible(true);
+    MenuUsuario mu = new MenuUsuario();
+    mu.setVisible(true);
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void txtSearchIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchIDActionPerformed
@@ -231,39 +245,79 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
     RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
     JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
   private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
-    // TODO add your handling code here:
+    SQLMethods sql = new SQLMethods();
+    Usuario user = sql.consultarUsuario(txtSearchID.getText());
+    if ((!txtSearchID.getText().equals("")) && (user.getId() == null)) {
+      AltaUsuario au = new AltaUsuario(usuario, txtSearchID.getText());
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), au);
+    } else if (!txtSearchID.getText().equals("")) {
+      JOptionPane.showMessageDialog(null,
+          "El usuario ya existe",
+          "Error",
+          JOptionPane.ERROR_MESSAGE);
+    } else {
+      JOptionPane.showMessageDialog(null,
+          "El campo ID está vacío",
+          "Error",
+          JOptionPane.ERROR_MESSAGE);
+    }
   }//GEN-LAST:event_btnDarAltaActionPerformed
 
   private void btnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarUsuarioActionPerformed
-    // TODO add your handling code here:
+    SQLMethods sql = new SQLMethods();
+    Usuario user = sql.consultarUsuario(txtSearchID.getText());
+    if ((!txtSearchID.getText().equals("")) && (user.getId() != null)) {
+      ModificarUsuario mu = new ModificarUsuario(usuario, user);
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+    } else if(!txtSearchID.getText().equals("")) {
+      JOptionPane.showMessageDialog(null,
+          "El usuario no existe",
+          "Error",
+          JOptionPane.ERROR_MESSAGE);
+    } else {
+      JOptionPane.showMessageDialog(null,
+          "El campo ID está vacío",
+          "Error",
+          JOptionPane.ERROR_MESSAGE);
+    }
   }//GEN-LAST:event_btnModificarUsuarioActionPerformed
 
   private void btnVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistorialActionPerformed
-    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE); // TODO add your handling code here:
   }//GEN-LAST:event_btnVerHistorialActionPerformed
 
   private void btnHomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseReleased
     MenuCirculacion mc = new MenuCirculacion(usuario);
-    PaneB.callNxtPane( (JFrame)SwingUtilities.getWindowAncestor(this), mc);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);
   }//GEN-LAST:event_btnHomeMouseReleased
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+    JOptionPane.showMessageDialog(null,
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnSearchActionPerformed
+
+  private void btnScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScanActionPerformed
+    JOptionPane.showMessageDialog(null,
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);
+   }//GEN-LAST:event_btnScanActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,6 +326,7 @@ public class MenuUsuario extends javax.swing.JPanel {
   private javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JLabel btnHome;
   private javax.swing.JButton btnModificarUsuario;
+  private javax.swing.JButton btnScan;
   private javax.swing.JButton btnSearch;
   private javax.swing.JButton btnVerHistorial;
   private javax.swing.JButton btnVerificarAdeudo;

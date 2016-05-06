@@ -12,11 +12,18 @@ import javax.swing.JOptionPane;
  * @author ruben
  */
 public class ModificarUsuario extends javax.swing.JPanel {
+  private Usuario usuario, cambio;
 
   /**
    * Creates new form Modificar2
    */
   public ModificarUsuario() {
+    initComponents();
+  }
+  
+  public ModificarUsuario(Usuario usuario, Usuario cambio){
+    this.usuario = usuario;
+    this.cambio = cambio;
     initComponents();
   }
 

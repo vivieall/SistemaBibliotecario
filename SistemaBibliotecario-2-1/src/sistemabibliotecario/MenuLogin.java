@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import conection.SQLMethods;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -22,6 +23,8 @@ public class MenuLogin extends javax.swing.JFrame {
    */
   public MenuLogin() {
     initComponents();
+    SwingUtilities.getRootPane(this).setDefaultButton(btnIngresar);
+    txtUsuario.requestFocus();
   }
 
   /**
@@ -94,6 +97,11 @@ public class MenuLogin extends javax.swing.JFrame {
     btnIngresar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnIngresarActionPerformed(evt);
+      }
+    });
+    btnIngresar.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyReleased(java.awt.event.KeyEvent evt) {
+        btnIngresarKeyReleased(evt);
       }
     });
     jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
@@ -184,6 +192,10 @@ public class MenuLogin extends javax.swing.JFrame {
               JOptionPane.ERROR_MESSAGE);
   }//GEN-LAST:event_btnSearchActionPerformed
 
+  private void btnIngresarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyReleased
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnIngresarKeyReleased
+
   /**
    * @param args the command line arguments
    */
@@ -214,6 +226,7 @@ public class MenuLogin extends javax.swing.JFrame {
     java.awt.EventQueue.invokeLater(() -> {
       new MenuLogin().setVisible(true);
     });
+    
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

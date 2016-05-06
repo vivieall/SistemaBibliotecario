@@ -222,7 +222,6 @@ public class MenuCirculacion extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
-    // TODO add your handling code here:
     MenuUsuario mu = new MenuUsuario(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed

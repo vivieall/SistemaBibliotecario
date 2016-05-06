@@ -5,8 +5,12 @@
  */
 package sistemabibliotecario;
 
+import conection.SQLMethods;
+import java.util.Arrays;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -14,11 +18,56 @@ import javax.swing.JOptionPane;
  */
 public class AltaUsuario extends javax.swing.JPanel {
 
+  private Usuario usuario;
+  String alta;
+
   /**
    * Creates new form altaUsuario
    */
   public AltaUsuario() {
     initComponents();
+  }
+
+  public AltaUsuario(Usuario usuario, String alta) {
+    this.usuario = usuario;
+    this.alta = alta;
+    initComponents();
+  }
+
+  private boolean isValidText(JTextField field) {
+    return !field.getText().equals("") && !field.getText().trim().isEmpty();
+  }
+
+  private boolean validateTexts() {
+    boolean flag = isValidText(txtName);
+    if (flag) {
+      flag = isValidText(txtTel);
+      if (flag) {
+        isValidText(txtAddress);
+        if (flag) {
+          isValidText(txtMail);
+        }
+      }
+    }
+    flag = validatePass();
+    return flag;
+  }
+
+  private boolean validatePass() {
+    char pass[] = txtPass.getPassword();
+    char pass2[] = txtPass2.getPassword();
+    String s1 = new String(pass);
+    String s2 = new String(pass2);
+    if (s1.equals(s2)) {
+      return true;
+    } else {
+      JOptionPane.showMessageDialog(null,
+          "Las contraseñas no coinciden",
+          "Error",
+          JOptionPane.ERROR_MESSAGE);
+      return false;
+    }
+
   }
 
   /**
@@ -35,18 +84,13 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblFEI = new javax.swing.JLabel();
     lblTitle = new javax.swing.JLabel();
     icnUVLogo = new javax.swing.JLabel();
-    txtNombre = new javax.swing.JLabel();
-    txtTel = new javax.swing.JLabel();
-    txtCP = new javax.swing.JLabel();
-    txtDireccion = new javax.swing.JLabel();
-    txtCarrera = new javax.swing.JLabel();
-    txtFacultad = new javax.swing.JLabel();
-    lblTel2 = new javax.swing.JLabel();
+    lblNombre = new javax.swing.JLabel();
+    lblTel = new javax.swing.JLabel();
+    lblDireccion = new javax.swing.JLabel();
     icnUser = new javax.swing.JLabel();
     lblID = new javax.swing.JLabel();
-    txtTel2 = new javax.swing.JTextField();
     btnAccept = new javax.swing.JButton();
-    txtMail = new javax.swing.JLabel();
+    lblMail = new javax.swing.JLabel();
     jSeparator5 = new javax.swing.JSeparator();
     txtSearchbar2 = new javax.swing.JTextField();
     btnSearch = new javax.swing.JButton();
@@ -56,6 +100,15 @@ public class AltaUsuario extends javax.swing.JPanel {
     gestionUsuario2 = new javax.swing.JButton();
     gestionUsuario3 = new javax.swing.JButton();
     lblSubTitle = new javax.swing.JLabel();
+    txtMail = new javax.swing.JTextField();
+    txtAddress = new javax.swing.JTextField();
+    txtName = new javax.swing.JTextField();
+    txtTel = new javax.swing.JTextField();
+    lblPass = new javax.swing.JLabel();
+    lblPass2 = new javax.swing.JLabel();
+    txtPass2 = new javax.swing.JPasswordField();
+    txtPass = new javax.swing.JPasswordField();
+    btnCancel = new javax.swing.JButton();
 
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
     jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,55 +127,28 @@ public class AltaUsuario extends javax.swing.JPanel {
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
     jPanel1.add(icnUVLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
 
-    txtNombre.setBackground(new java.awt.Color(204, 204, 204));
-    txtNombre.setText("Nombre: Jonh Nieve Blanco");
-    txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 450, 22));
+    lblNombre.setBackground(new java.awt.Color(255, 255, 255));
+    lblNombre.setText("Nombre: ");
+    lblNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 130, 22));
 
-    txtTel.setBackground(new java.awt.Color(204, 204, 204));
-    txtTel.setText("Teléfono: 22-10-21-45-94");
-    txtTel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 209, 22));
+    lblTel.setBackground(new java.awt.Color(204, 204, 204));
+    lblTel.setText("Teléfono:");
+    lblTel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jPanel1.add(lblTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 130, 22));
 
-    txtCP.setBackground(new java.awt.Color(204, 204, 204));
-    txtCP.setText("CP: 910000");
-    txtCP.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 220, 22));
-
-    txtDireccion.setBackground(new java.awt.Color(204, 204, 204));
-    txtDireccion.setText("Dirección: José Azueta #124");
-    txtDireccion.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 209, 22));
-
-    txtCarrera.setBackground(new java.awt.Color(204, 204, 204));
-    txtCarrera.setText("Carrera: Ingeniería de Software");
-    txtCarrera.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 220, 22));
-
-    txtFacultad.setBackground(new java.awt.Color(204, 204, 204));
-    txtFacultad.setText("Facultad: Estadística e Informática");
-    txtFacultad.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 220, 22));
-
-    lblTel2.setBackground(new java.awt.Color(204, 204, 204));
-    lblTel2.setText("Telefono (opcional):");
-    lblTel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblTel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 150, 22));
+    lblDireccion.setBackground(new java.awt.Color(204, 204, 204));
+    lblDireccion.setText("Dirección:");
+    lblDireccion.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jPanel1.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 130, 22));
 
     icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2-user_-_single_add-128.png"))); // NOI18N
     jPanel1.add(icnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
     lblID.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     lblID.setText("ID: zS1401643 ");
-    jPanel1.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
-
-    txtTel2.setText("22-33-44-55-33");
-    txtTel2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtTel2ActionPerformed(evt);
-      }
-    });
-    jPanel1.add(txtTel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 189, -1));
+    lblID.setText("ID: " + alta);
+    jPanel1.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, 20));
 
     btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     btnAccept.setText("Aceptar");
@@ -131,12 +157,12 @@ public class AltaUsuario extends javax.swing.JPanel {
         btnAcceptActionPerformed(evt);
       }
     });
-    jPanel1.add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, -1, -1));
+    jPanel1.add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, -1, -1));
 
-    txtMail.setBackground(new java.awt.Color(204, 204, 204));
-    txtMail.setText("Correo: nievejohn@aol.com");
-    txtMail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 209, 22));
+    lblMail.setBackground(new java.awt.Color(204, 204, 204));
+    lblMail.setText("Correo:");
+    lblMail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jPanel1.add(lblMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 130, 22));
 
     jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
@@ -168,6 +194,11 @@ public class AltaUsuario extends javax.swing.JPanel {
     jPanel1.add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
 
     jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
+    jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseReleased(java.awt.event.MouseEvent evt) {
+        jLabel29MouseReleased(evt);
+      }
+    });
     jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
 
     jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
@@ -199,6 +230,43 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     lblSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
     jPanel1.add(lblSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, 22));
+    jPanel1.add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 300, -1));
+    jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 300, -1));
+
+    txtName.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNameActionPerformed(evt);
+      }
+    });
+    jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 300, -1));
+    jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 300, -1));
+
+    lblPass.setBackground(new java.awt.Color(204, 204, 204));
+    lblPass.setText("Contraseña:");
+    lblPass.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jPanel1.add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 130, 22));
+
+    lblPass2.setBackground(new java.awt.Color(204, 204, 204));
+    lblPass2.setText("Confirmar Contraseña:");
+    lblPass2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    jPanel1.add(lblPass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 130, 22));
+    jPanel1.add(txtPass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 300, -1));
+
+    txtPass.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtPassActionPerformed(evt);
+      }
+    });
+    jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 300, -1));
+
+    btnCancel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+    btnCancel.setText("Cancelar");
+    btnCancel.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCancelActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, -1, -1));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
@@ -212,11 +280,21 @@ public class AltaUsuario extends javax.swing.JPanel {
     );
   }// </editor-fold>//GEN-END:initComponents
 
-  private void txtTel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTel2ActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtTel2ActionPerformed
-
   private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+    if (validateTexts()) {
+      Usuario us = new Usuario();
+      us.setId(alta);
+      us.setName(txtName.getText());
+      us.setTel(txtTel.getText());
+      us.setDirec(txtAddress.getText());
+      us.setCorreo(txtMail.getText());
+      String pass = new String(txtPass.getPassword());
+      SQLMethods sql = new SQLMethods();
+      if (sql.agregarUsuario(us, pass)) {
+        MenuUsuario mu = new MenuUsuario(usuario);
+        PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+      }
+    }
     // TODO add your handling code here:
   }//GEN-LAST:event_btnAcceptActionPerformed
 
@@ -225,30 +303,51 @@ public class AltaUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbar2ActionPerformed
 
   private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
-    // TODO add your handling code here:
+    MenuUsuario mu = new MenuUsuario(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);    // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario1ActionPerformed
 
   private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
-    // TODO add your handling code here:
+    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario2ActionPerformed
 
   private void gestionUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario3ActionPerformed
     JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_gestionUsuario3ActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnSearchActionPerformed
+
+  private void jLabel29MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseReleased
+    MenuCirculacion mc = new MenuCirculacion(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);     // TODO add your handling code here:
+  }//GEN-LAST:event_jLabel29MouseReleased
+
+  private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtNameActionPerformed
+
+  private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtPassActionPerformed
+
+  private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    MenuUsuario mu = new MenuUsuario(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+  }//GEN-LAST:event_btnCancelActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnAccept;
+  private javax.swing.JButton btnCancel;
   private javax.swing.JButton btnSearch;
   private javax.swing.JButton gestionUsuario1;
   private javax.swing.JButton gestionUsuario2;
@@ -260,19 +359,22 @@ public class AltaUsuario extends javax.swing.JPanel {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JSeparator jSeparator5;
   private javax.swing.JSeparator jSeparator6;
+  private javax.swing.JLabel lblDireccion;
   private javax.swing.JLabel lblFEI;
   private javax.swing.JLabel lblID;
+  private javax.swing.JLabel lblMail;
+  private javax.swing.JLabel lblNombre;
+  private javax.swing.JLabel lblPass;
+  private javax.swing.JLabel lblPass2;
   private javax.swing.JLabel lblSubTitle;
-  private javax.swing.JLabel lblTel2;
+  private javax.swing.JLabel lblTel;
   private javax.swing.JLabel lblTitle;
-  private javax.swing.JLabel txtCP;
-  private javax.swing.JLabel txtCarrera;
-  private javax.swing.JLabel txtDireccion;
-  private javax.swing.JLabel txtFacultad;
-  private javax.swing.JLabel txtMail;
-  private javax.swing.JLabel txtNombre;
+  private javax.swing.JTextField txtAddress;
+  private javax.swing.JTextField txtMail;
+  private javax.swing.JTextField txtName;
+  private javax.swing.JPasswordField txtPass;
+  private javax.swing.JPasswordField txtPass2;
   private javax.swing.JTextField txtSearchbar2;
-  private javax.swing.JLabel txtTel;
-  private javax.swing.JTextField txtTel2;
+  private javax.swing.JTextField txtTel;
   // End of variables declaration//GEN-END:variables
 }

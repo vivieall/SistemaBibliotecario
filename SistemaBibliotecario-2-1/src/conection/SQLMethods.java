@@ -81,25 +81,26 @@ public class SQLMethods {
 
   }
 
-  public void agregarUsuario(String id, String nombre, String tel, String dir,
-          String email, int type, String pass) {
+  public boolean agregarUsuario(Usuario usuario, String pass) {
     Connection connection;
     PreparedStatement ps;
     ResultSet rs;
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("INSERT INTO USUARIO (ID, Nombre, "
-              + "Telefono, Direccion, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
-      ps.setString(1, id);
-      ps.setString(2, nombre);
-      ps.setString(3, tel);
-      ps.setString(4, dir);
-      ps.setString(5, email);
-      ps.setInt(6, type);
+              + "Telefono, Dirección, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
+      ps.setString(1, usuario.getId());
+      ps.setString(2, usuario.getName());
+      ps.setString(3, usuario.getTel());
+      ps.setString(4, usuario.getDirec());
+      ps.setString(5, usuario.getCorreo());
+      ps.setInt(6, 1);
       ps.setString(7, parsePass(pass));
       int res = ps.executeUpdate();
       if (res > 0) {
         JOptionPane.showMessageDialog(null, "Usuario Guardado");
+        connection.close();
+        return true;
       } else {
         JOptionPane.showMessageDialog(null, "Error al Guardar Usuario");
       }
@@ -110,6 +111,7 @@ public class SQLMethods {
             UnsupportedEncodingException | HeadlessException ex) {
       System.out.println(ex);
     }
+    return false;
   }
 
   public void eliminarUsuario(String id) {
