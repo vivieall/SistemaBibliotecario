@@ -27,8 +27,7 @@ public class SQLMethods {
 
       Connection con = Conexion.getConnection();
       String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
-      System.out.println(selectSQL);
-
+      
       ps = con.prepareStatement(selectSQL);
       ps.setString(1, user);
       rs = ps.executeQuery();
