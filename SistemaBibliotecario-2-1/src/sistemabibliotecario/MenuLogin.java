@@ -50,6 +50,7 @@ public class MenuLogin extends javax.swing.JFrame {
     lblFEI = new javax.swing.JLabel();
     lblTitle1 = new javax.swing.JLabel();
     icnUVLogo = new javax.swing.JLabel();
+    lblPeek = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setBackground(new java.awt.Color(255, 255, 255));
@@ -125,6 +126,7 @@ public class MenuLogin extends javax.swing.JFrame {
     jSeparator3.setPreferredSize(new java.awt.Dimension(755, 2));
 
     txtPass.setForeground(new java.awt.Color(102, 102, 102));
+    txtPass.setForeground(Color.gray);
     txtPass.setText("Contraseña");
     txtPass.setEchoChar((char) 0);
     txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -133,6 +135,11 @@ public class MenuLogin extends javax.swing.JFrame {
       }
       public void focusLost(java.awt.event.FocusEvent evt) {
         txtPassFocusLost(evt);
+      }
+    });
+    txtPass.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtPassActionPerformed(evt);
       }
     });
 
@@ -151,24 +158,46 @@ public class MenuLogin extends javax.swing.JFrame {
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
 
+    lblPeek.setForeground(new java.awt.Color(102, 102, 102));
+    lblPeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_remove_red_eye_black_24dp_1x.png"))); // NOI18N
+    lblPeek.setToolTipText("See Password");
+    lblPeek.setMinimumSize(new java.awt.Dimension(24, 24));
+    lblPeek.setName(""); // NOI18N
+    lblPeek.setPreferredSize(new java.awt.Dimension(24, 24));
+    lblPeek.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblPeekMouseClicked(evt);
+      }
+      public void mousePressed(java.awt.event.MouseEvent evt) {
+        lblPeekMousePressed(evt);
+      }
+      public void mouseReleased(java.awt.event.MouseEvent evt) {
+        lblPeekMouseReleased(evt);
+      }
+    });
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGap(0, 18, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+        .addGap(24, 24, 24)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle1)
           .addComponent(lblFEI)
-          .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(lblError)
-          .addComponent(btnIngresar))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+          .addComponent(btnIngresar)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+              .addComponent(txtPass))
+            .addGap(5, 5, 5)
+            .addComponent(lblPeek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        .addGap(0, 0, 0)
         .addComponent(icnUVLogo)
-        .addGap(0, 20, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(jPanel1Layout.createSequentialGroup()
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(jPanel1Layout.createSequentialGroup()
@@ -179,12 +208,9 @@ public class MenuLogin extends javax.swing.JFrame {
           .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(10, 10, 10)
             .addComponent(lblRecuperarUsuario)))
-        .addGap(356, 356, 356))
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-          .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-        .addGap(0, 0, 0))
+        .addGap(356, 365, Short.MAX_VALUE))
+      .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+      .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,20 +231,23 @@ public class MenuLogin extends javax.swing.JFrame {
             .addGap(42, 42, 42)
             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+        .addGap(55, 55, 55)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblPeek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
         .addComponent(lblError)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
         .addComponent(btnIngresar)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
         .addComponent(lblRecuperarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(19, 19, 19))
     );
 
-    txtUsuario.requestFocus();
+    //txtUsuario.requestFocus();
+    btnIngresar.requestFocus();
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -250,7 +279,7 @@ public class MenuLogin extends javax.swing.JFrame {
     char c[] = txtPass.getPassword();
     String s = new String(c);
 
-    if(s.equals("Contraseña")){
+    if (s.equals("Contraseña")) {
       txtPass.setEchoChar('*');
       txtPass.setText("");
       txtPass.setForeground(Color.black);
@@ -268,22 +297,22 @@ public class MenuLogin extends javax.swing.JFrame {
     SQLMethods sql = new SQLMethods();
     switch (sql.validarIngreso(txtUsuario.getText(), password)) {
       case 1:
-      MenuCirculacion mc = new MenuCirculacion(sql
-        .consultarUsuario(txtUsuario.getText()));
-      System.out.println(mc.getUsuario().getId());
-      PaneB.callNxtPane(this, mc);
-      //JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
+        MenuCirculacion mc = new MenuCirculacion(sql
+            .consultarUsuario(txtUsuario.getText()));
+        System.out.println(mc.getUsuario().getId());
+        PaneB.callNxtPane(this, mc);
+        //JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
         //        "Biblioteca BUAEEI ", JOptionPane.INFORMATION_MESSAGE);
-      break;
+        break;
       case 0:
-      JOptionPane.showMessageDialog(null,
-        "Verifique que sus datos sean correctos",
-        "Acceso denegado.",
-        JOptionPane.ERROR_MESSAGE);
-      lblError.setVisible(true);
-      break;
+        JOptionPane.showMessageDialog(null,
+            "Verifique que sus datos sean correctos",
+            "Acceso denegado.",
+            JOptionPane.ERROR_MESSAGE);
+        lblError.setVisible(true);
+        break;
       default:
-      break;
+        break;
     }
   }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -307,9 +336,9 @@ public class MenuLogin extends javax.swing.JFrame {
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     JOptionPane.showMessageDialog(null,
-      "Por Implementar",
-      "Por Implementar",
-      JOptionPane.ERROR_MESSAGE);
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
@@ -327,8 +356,29 @@ public class MenuLogin extends javax.swing.JFrame {
     if (txtSearchbar.getText().equals("Búsqueda...")) {
       txtSearchbar.setText("");
       txtSearchbar.setForeground(Color.black);
+    }
   }//GEN-LAST:event_txtSearchbarFocusGained
-  }
+
+  private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtPassActionPerformed
+
+  private void lblPeekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeekMouseClicked
+    //txtPass.setEchoChar((char) 0);
+  }//GEN-LAST:event_lblPeekMouseClicked
+
+  private void lblPeekMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeekMouseReleased
+    if (txtPass.getForeground() != Color.gray) {
+      txtPass.setEchoChar('*');
+    }
+  }//GEN-LAST:event_lblPeekMouseReleased
+
+  private void lblPeekMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeekMousePressed
+    if (txtPass.getForeground() != Color.gray) {
+      txtPass.setEchoChar((char) 0);
+    }
+  }//GEN-LAST:event_lblPeekMousePressed
+
   /**
    * @param args the command line arguments
    */
@@ -372,6 +422,7 @@ public class MenuLogin extends javax.swing.JFrame {
   private javax.swing.JSeparator jSeparator3;
   private javax.swing.JLabel lblError;
   private javax.swing.JLabel lblFEI;
+  private javax.swing.JLabel lblPeek;
   private javax.swing.JLabel lblRecuperarUsuario;
   private javax.swing.JLabel lblTitle1;
   private javax.swing.JPasswordField txtPass;
