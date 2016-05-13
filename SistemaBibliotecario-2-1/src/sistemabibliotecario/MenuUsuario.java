@@ -219,7 +219,7 @@ public class MenuUsuario extends javax.swing.JPanel {
     jPanel4Layout.setHorizontalGroup(
       jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel4Layout.createSequentialGroup()
-        .addGap(18, 18, 18)
+        .addContainerGap(38, Short.MAX_VALUE)
         .addComponent(icnBooks)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -228,7 +228,7 @@ public class MenuUsuario extends javax.swing.JPanel {
           .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addGap(20, 20, 20))
+        .addContainerGap(27, Short.MAX_VALUE))
       .addComponent(jSeparator4)
       .addComponent(jSeparator5)
       .addGroup(jPanel4Layout.createSequentialGroup()

@@ -118,11 +118,11 @@ public class MenuLogin extends javax.swing.JFrame {
     lblRecuperarUsuario.setText("*Si desea recuperar su cuenta, preséntese en la biblioteca.");
 
     jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
+    jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
     jSeparator2.setPreferredSize(new java.awt.Dimension(755, 2));
 
     jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
+    jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
     jSeparator3.setPreferredSize(new java.awt.Dimension(755, 2));
 
     txtPass.setForeground(new java.awt.Color(102, 102, 102));
@@ -161,9 +161,7 @@ public class MenuLogin extends javax.swing.JFrame {
     lblPeek.setForeground(new java.awt.Color(102, 102, 102));
     lblPeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_remove_red_eye_black_24dp_1x.png"))); // NOI18N
     lblPeek.setToolTipText("See Password");
-    lblPeek.setMinimumSize(new java.awt.Dimension(24, 24));
     lblPeek.setName(""); // NOI18N
-    lblPeek.setPreferredSize(new java.awt.Dimension(24, 24));
     lblPeek.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         lblPeekMouseClicked(evt);
@@ -194,7 +192,7 @@ public class MenuLogin extends javax.swing.JFrame {
               .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
               .addComponent(txtPass))
             .addGap(5, 5, 5)
-            .addComponent(lblPeek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(lblPeek)))
         .addGap(0, 0, 0)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
@@ -209,7 +207,7 @@ public class MenuLogin extends javax.swing.JFrame {
             .addGap(10, 10, 10)
             .addComponent(lblRecuperarUsuario)))
         .addGap(356, 365, Short.MAX_VALUE))
-      .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+      .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
     );
     jPanel1Layout.setVerticalGroup(
@@ -220,7 +218,7 @@ public class MenuLogin extends javax.swing.JFrame {
           .addComponent(icnBooks)
           .addGroup(jPanel1Layout.createSequentialGroup()
             .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(2, 2, 2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(lblFEI))
           .addComponent(icnUVLogo))
         .addGap(20, 20, 20)
@@ -236,7 +234,7 @@ public class MenuLogin extends javax.swing.JFrame {
         .addGap(55, 55, 55)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(lblPeek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(lblPeek))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
         .addComponent(lblError)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
