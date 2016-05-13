@@ -20,39 +20,45 @@ import sistemabibliotecario.Usuario;
 
 public class SQLMethods {
 
-  public boolean validarIngreso(String user, String pass) {
-    boolean success = false;
+  public int validarIngreso(String user, String pass) {
+    int success = 0;
     try {
       PreparedStatement ps;
       ResultSet rs;
 
       Connection con = Conexion.getConnection();
-      String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
-      
-      ps = con.prepareStatement(selectSQL);
-      ps.setString(1, user);
-      rs = ps.executeQuery();
+      if (con != null) {
+        String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
 
-      if (rs.next()) {
-        pass = parsePass(pass);
-        String password = rs.getString("PASSWORD");
-        if (password.equals(pass)) {
-          success = true;
+        ps = con.prepareStatement(selectSQL);
+        ps.setString(1, user);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+          pass = parsePass(pass);
+          String password = rs.getString("PASSWORD");
+          if (password.equals(pass)) {
+            success = 1;
+          }
+        } else {
+          success = 0;
         }
-      } else {
-        success = false;
+        con.close();
+      }else{
+        return -1;
       }
-      con.close();
     } catch (SQLException |
-            NoSuchAlgorithmException |
-            UnsupportedEncodingException e) {
+        NoSuchAlgorithmException |
+        UnsupportedEncodingException e) {
       System.out.println(e);
+    } catch (Exception e) {
+
     }
     return success;
   }
 
   private String parsePass(String pass)
-          throws NoSuchAlgorithmException, UnsupportedEncodingException {
+      throws NoSuchAlgorithmException, UnsupportedEncodingException {
     MessageDigest md;
     md = MessageDigest.getInstance("SHA-256");
     md.update(pass.getBytes("UTF-8"));
@@ -69,13 +75,13 @@ public class SQLMethods {
       Connection con = Conexion.getConnection();
       pass = parsePass(pass);
       String selectSQL = "UPDATE USUARIO SET PASSWORD='" + pass
-              + "' WHERE ID = 'Vivie'";
+          + "' WHERE ID = 'Vivie'";
       ps = con.prepareStatement(selectSQL);
       ps.execute(selectSQL);
       con.close();
     } catch (SQLException |
-            NoSuchAlgorithmException |
-            UnsupportedEncodingException e) {
+        NoSuchAlgorithmException |
+        UnsupportedEncodingException e) {
       System.out.println(e);
     }
 
@@ -88,7 +94,7 @@ public class SQLMethods {
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("INSERT INTO USUARIO (ID, Nombre, "
-              + "Telefono, Dirección, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
+          + "Telefono, Dirección, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
       ps.setString(1, usuario.getId());
       ps.setString(2, usuario.getName());
       ps.setString(3, usuario.getTel());
@@ -108,7 +114,7 @@ public class SQLMethods {
       connection.close();
 
     } catch (SQLException | NoSuchAlgorithmException |
-            UnsupportedEncodingException | HeadlessException ex) {
+        UnsupportedEncodingException | HeadlessException ex) {
       System.out.println(ex);
     }
     return false;
@@ -143,8 +149,8 @@ public class SQLMethods {
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("UPDATE USUARIO "
-              + "SET Nombre=?, Telefono=?, Dirección=?, Correo=? "
-              + "WHERE ID = ?");
+          + "SET Nombre=?, Telefono=?, Dirección=?, Correo=? "
+          + "WHERE ID = ?");
       ps.setString(1, user.getName());
       ps.setString(2, user.getTel());
       ps.setString(3, user.getDirec());
@@ -164,8 +170,8 @@ public class SQLMethods {
     }
     return false;
   }
-  
-  public Usuario consultarUsuario(String ID){
+
+  public Usuario consultarUsuario(String ID) {
     Usuario us = new Usuario();
     Connection connection;
     PreparedStatement ps;
@@ -175,22 +181,20 @@ public class SQLMethods {
       ps = connection.prepareStatement("SELECT * from USUARIO WHERE ID = ?");
       ps.setString(1, ID);
       rs = ps.executeQuery();
-      if (rs.next()){
+      if (rs.next()) {
         us.setId(rs.getString(1));
         us.setName(rs.getString("nombre"));
         us.setTel(rs.getString("telefono"));
         us.setDirec(rs.getString("dirección"));
         us.setCorreo(rs.getString("correo"));
       }
-      
+
       connection.close();
-    } catch(Exception e){
-    
+    } catch (Exception e) {
+
     }
     return us;
   }
-  
-
 
   public ArrayList registrarPrestamo(String numFolio) {
     //POR IMPLEMENTAR.
@@ -208,7 +212,7 @@ public class SQLMethods {
         //return user;
       } else {
         JOptionPane.showMessageDialog(null,
-                "No existe el Usuario " + numFolio + ".");
+            "No existe el Usuario " + numFolio + ".");
       }
       connection.close();
     } catch (SQLException | HeadlessException ex) {

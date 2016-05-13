@@ -6,6 +6,7 @@
 package sistemabibliotecario;
 
 import conection.SQLMethods;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -47,7 +48,8 @@ public class MenuCirculacion extends javax.swing.JPanel {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    jLabel12 = new javax.swing.JLabel();
+    jSeparator4 = new javax.swing.JSeparator();
+    jSeparator5 = new javax.swing.JSeparator();
     icnBooks = new javax.swing.JLabel();
     lblFEI = new javax.swing.JLabel();
     lblTitle = new javax.swing.JLabel();
@@ -63,80 +65,68 @@ public class MenuCirculacion extends javax.swing.JPanel {
     txtSubTitle = new javax.swing.JLabel();
     icnUser = new javax.swing.JLabel();
     lblID = new javax.swing.JLabel();
-    jSeparator5 = new javax.swing.JSeparator();
-    txtSearchbar2 = new javax.swing.JTextField();
-    jButton6 = new javax.swing.JButton();
     btnGestionarUsuario = new javax.swing.JButton();
-    jLabel29 = new javax.swing.JLabel();
-    jSeparator6 = new javax.swing.JSeparator();
     btnGestionarPrestamo = new javax.swing.JButton();
     btnVerificarAdeudo = new javax.swing.JButton();
     btnCerrarSesion = new javax.swing.JButton();
-
-    jLabel12.setBackground(new java.awt.Color(204, 204, 204));
-    jLabel12.setText("Jonh Snow");
-    jLabel12.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+    txtSearchbar = new javax.swing.JTextField();
+    btnSearch = new javax.swing.JButton();
+    btnCerrarSesion1 = new javax.swing.JButton();
 
     setBackground(new java.awt.Color(255, 255, 255));
-    setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+    setPreferredSize(new java.awt.Dimension(750, 600));
+
+    jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+    jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
+
+    jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+    jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
 
     icnBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b1.png"))); // NOI18N
-    add(icnBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
     lblFEI.setText("Facultad de Estadística e Informática, Universidad Veracruzana");
-    add(lblFEI, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
     lblTitle.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
     lblTitle.setForeground(new java.awt.Color(0, 0, 102));
-    lblTitle.setText(" Sistema Bibliotecario \"BUAEEI\"");
-    add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 58));
+    lblTitle.setText("Sistema Bibliotecario \"BUAEEI\"");
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
-    add(icnUVLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
 
     lblNombre.setBackground(new java.awt.Color(204, 204, 204));
     lblNombre.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     lblNombre.setText("Nombre: ");
-    add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 70, 22));
 
     lblTel.setBackground(new java.awt.Color(204, 204, 204));
     lblTel.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     lblTel.setText("Telefono:");
-    add(lblTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 70, 22));
 
     lblMail.setBackground(new java.awt.Color(204, 204, 204));
     lblMail.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     lblMail.setText("Correo: ");
-    add(lblMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 70, 22));
 
     lblAddress.setBackground(new java.awt.Color(204, 204, 204));
     lblAddress.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     lblAddress.setText("Dirección:");
-    add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 70, 22));
 
     txtName.setBackground(new java.awt.Color(204, 204, 204));
     txtName.setText("Maria Rosa Lopez");
     txtName.setText(usuario.getName());
     txtName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 160, 22));
 
     txtMail.setBackground(new java.awt.Color(204, 204, 204));
     txtMail.setText("lopezmr@gmail.com");
     txtMail.setText(usuario.getCorreo());
     txtMail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 160, 22));
 
     txtAddress.setBackground(new java.awt.Color(204, 204, 204));
     txtAddress.setText("Av. Jose Azueta #123");
     txtAddress.setText(usuario.getDirec());
     txtAddress.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 160, 22));
 
     txtTel.setBackground(new java.awt.Color(204, 204, 204));
     txtTel.setText("22-88-54-45-34");
     txtTel.setText(usuario.getTel());
     txtTel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 160, 22));
 
     txtSubTitle.setBackground(new java.awt.Color(204, 204, 204));
     txtSubTitle.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -144,32 +134,16 @@ public class MenuCirculacion extends javax.swing.JPanel {
     txtSubTitle.setText("Bibliotecario de circulación");
     txtSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     txtSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-    add(txtSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, 22));
 
     icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/14-128.png"))); // NOI18N
-    add(icnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 120, 130));
 
     lblID.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+    lblID.setText("text");
     lblID.setText("ID: " + usuario.getId());
-    add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
-
-    jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
-    add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 104, 750, 10));
-
-    txtSearchbar2.setText("Búsqueda...");
-    txtSearchbar2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtSearchbar2ActionPerformed(evt);
-      }
-    });
-    add(txtSearchbar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 189, -1));
-
-    jButton6.setText("Ir");
-    add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 53, -1));
 
     btnGestionarUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnGestionarUsuario.setText("Gestionar usuario");
+    btnGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_account_box_black_24dp_1x.png"))); // NOI18N
+    btnGestionarUsuario.setToolTipText("Usuarios");
     btnGestionarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         btnGestionarUsuarioMouseClicked(evt);
@@ -180,46 +154,179 @@ public class MenuCirculacion extends javax.swing.JPanel {
         btnGestionarUsuarioActionPerformed(evt);
       }
     });
-    add(btnGestionarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
-
-    jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
-    add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 120, -1, 26));
-
-    jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator6.setForeground(new java.awt.Color(51, 51, 51));
-    add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 151, 750, 10));
 
     btnGestionarPrestamo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnGestionarPrestamo.setText("Gestionar préstamo");
+    btnGestionarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_book_black_24dp_1x.png"))); // NOI18N
+    btnGestionarPrestamo.setToolTipText("Préstamos");
     btnGestionarPrestamo.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnGestionarPrestamoActionPerformed(evt);
       }
     });
-    add(btnGestionarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, 26));
 
     btnVerificarAdeudo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnVerificarAdeudo.setText("Verificar adeudo");
+    btnVerificarAdeudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_attach_money_black_24dp_1x.png"))); // NOI18N
+    btnVerificarAdeudo.setToolTipText("Adeudo");
     btnVerificarAdeudo.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnVerificarAdeudoActionPerformed(evt);
       }
     });
-    add(btnVerificarAdeudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, 26));
 
     btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnCerrarSesion.setText("Cerrar Sesión");
+    btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
+    btnCerrarSesion.setToolTipText("Cerrar Sesión");
     btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnCerrarSesionActionPerformed(evt);
       }
     });
-    add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 120, 30));
-  }// </editor-fold>//GEN-END:initComponents
 
-  private void txtSearchbar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbar2ActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtSearchbar2ActionPerformed
+    txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchbar.setText("Búsqueda...");
+    txtSearchbar.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(java.awt.event.FocusEvent evt) {
+        txtSearchbarFocusGained(evt);
+      }
+      public void focusLost(java.awt.event.FocusEvent evt) {
+        txtSearchbarFocusLost(evt);
+      }
+    });
+    txtSearchbar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtSearchbarActionPerformed(evt);
+      }
+    });
+
+    btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
+    btnSearch.setToolTipText("Buscar");
+    btnSearch.setName("Search"); // NOI18N
+    btnSearch.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearchActionPerformed(evt);
+      }
+    });
+
+    btnCerrarSesion1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_home_black_24dp_1x.png"))); // NOI18N
+    btnCerrarSesion1.setToolTipText("Inicio");
+    btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCerrarSesion1ActionPerformed(evt);
+      }
+    });
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    this.setLayout(layout);
+    layout.setHorizontalGroup(
+      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addComponent(jSeparator5)
+      .addComponent(jSeparator4)
+      .addGroup(layout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(txtSubTitle, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+              .addComponent(icnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(lblID))
+            .addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
+              .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        .addGap(0, 0, Short.MAX_VALUE))
+      .addGroup(layout.createSequentialGroup()
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+            .addGap(10, 10, 10)
+            .addComponent(icnBooks)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+              .addComponent(lblTitle)
+              .addComponent(lblFEI))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+            .addComponent(icnUVLogo))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(20, 20, 20)
+            .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCerrarSesion)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btnCerrarSesion1)))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    layout.setVerticalGroup(
+      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(layout.createSequentialGroup()
+        .addGap(10, 10, 10)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(icnBooks)
+          .addGroup(layout.createSequentialGroup()
+            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(2, 2, 2)
+            .addComponent(lblFEI))
+          .addComponent(icnUVLogo))
+        .addGap(15, 15, 15)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addGroup(layout.createSequentialGroup()
+            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(42, 42, 42)
+            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(18, 18, 18)
+        .addComponent(txtSubTitle)
+        .addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addComponent(icnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(lblID))
+          .addGroup(layout.createSequentialGroup()
+            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25)
+            .addComponent(lblTel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25)
+            .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25)
+            .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(layout.createSequentialGroup()
+            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(28, 28, 28)
+            .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(141, 141, 141)
+            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        .addContainerGap(223, Short.MAX_VALUE))
+    );
+  }// </editor-fold>//GEN-END:initComponents
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     MenuUsuario mu = new MenuUsuario(usuario);
@@ -250,6 +357,36 @@ public class MenuCirculacion extends javax.swing.JPanel {
     SwingUtilities.getWindowAncestor(this).dispose();
     
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+  private void txtSearchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchbarFocusGained
+    if (txtSearchbar.getText().equals("Búsqueda...")) {
+      txtSearchbar.setText("");
+      txtSearchbar.setForeground(Color.black);
+  }//GEN-LAST:event_txtSearchbarFocusGained
+  }
+  private void txtSearchbarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchbarFocusLost
+    if (txtSearchbar.getText().equals("")) {
+      txtSearchbar.setText("Búsqueda...");
+      txtSearchbar.setForeground(Color.gray);
+    }    // TODO add your handling code here:
+  }//GEN-LAST:event_txtSearchbarFocusLost
+
+  private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtSearchbarActionPerformed
+
+  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    JOptionPane.showMessageDialog(null,
+      "Por Implementar",
+      "Por Implementar",
+      JOptionPane.ERROR_MESSAGE);
+  }//GEN-LAST:event_btnSearchActionPerformed
+
+  private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
+    // TODO add your handling code here:
+    MenuCirculacion mc = new MenuCirculacion(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);
+  }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
     public static void main(String args[]) {
     /* Set the Nimbus look and feel */
@@ -283,17 +420,16 @@ public class MenuCirculacion extends javax.swing.JPanel {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnCerrarSesion;
+  private javax.swing.JButton btnCerrarSesion1;
   private javax.swing.JButton btnGestionarPrestamo;
   public javax.swing.JButton btnGestionarUsuario;
+  private javax.swing.JButton btnSearch;
   private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
   private javax.swing.JLabel icnUser;
-  private javax.swing.JButton jButton6;
-  private javax.swing.JLabel jLabel12;
-  private javax.swing.JLabel jLabel29;
+  private javax.swing.JSeparator jSeparator4;
   private javax.swing.JSeparator jSeparator5;
-  private javax.swing.JSeparator jSeparator6;
   private javax.swing.JLabel lblAddress;
   private javax.swing.JLabel lblFEI;
   private javax.swing.JLabel lblID;
@@ -304,7 +440,7 @@ public class MenuCirculacion extends javax.swing.JPanel {
   private javax.swing.JLabel txtAddress;
   private javax.swing.JLabel txtMail;
   private javax.swing.JLabel txtName;
-  private javax.swing.JTextField txtSearchbar2;
+  private javax.swing.JTextField txtSearchbar;
   private javax.swing.JLabel txtSubTitle;
   private javax.swing.JLabel txtTel;
   // End of variables declaration//GEN-END:variables

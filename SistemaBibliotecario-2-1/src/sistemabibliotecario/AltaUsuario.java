@@ -35,7 +35,7 @@ public class AltaUsuario extends javax.swing.JPanel {
   }
 
   private boolean isValidText(JTextField field) {
-    return !field.getText().equals("") && !field.getText().trim().isEmpty();
+    return (!field.getText().equals("") && !field.getText().trim().isEmpty());
   }
 
   private boolean validateTexts() {

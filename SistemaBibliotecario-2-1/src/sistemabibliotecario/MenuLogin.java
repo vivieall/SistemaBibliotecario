@@ -5,9 +5,9 @@
  */
 package sistemabibliotecario;
 
-
 import javax.swing.JOptionPane;
 import conection.SQLMethods;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -40,8 +40,6 @@ public class MenuLogin extends javax.swing.JFrame {
     txtSearchbar = new javax.swing.JTextField();
     btnSearch = new javax.swing.JButton();
     txtUsuario = new javax.swing.JTextField();
-    lblIDRqst = new javax.swing.JLabel();
-    lblPassRqst = new javax.swing.JLabel();
     btnIngresar = new javax.swing.JButton();
     lblRecuperarUsuario = new javax.swing.JLabel();
     jSeparator2 = new javax.swing.JSeparator();
@@ -59,39 +57,48 @@ public class MenuLogin extends javax.swing.JFrame {
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
     jPanel1.setMinimumSize(new java.awt.Dimension(750, 600));
     jPanel1.setPreferredSize(new java.awt.Dimension(750, 600));
-    jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+    txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
     txtSearchbar.setText("Búsqueda...");
+    txtSearchbar.setToolTipText("");
+    txtSearchbar.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(java.awt.event.FocusEvent evt) {
+        txtSearchbarFocusGained(evt);
+      }
+      public void focusLost(java.awt.event.FocusEvent evt) {
+        txtSearchbarFocusLost(evt);
+      }
+    });
     txtSearchbar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtSearchbarActionPerformed(evt);
       }
     });
-    jPanel1.add(txtSearchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 313, -1));
 
-    btnSearch.setText("Ir");
+    btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
+    btnSearch.setToolTipText("Buscar");
+    btnSearch.setName("Search"); // NOI18N
     btnSearch.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnSearchActionPerformed(evt);
       }
     });
-    jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 53, -1));
 
+    txtUsuario.setForeground(new java.awt.Color(102, 102, 102));
+    txtUsuario.setText("Usuario");
+    txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(java.awt.event.FocusEvent evt) {
+        txtUsuarioFocusGained(evt);
+      }
+      public void focusLost(java.awt.event.FocusEvent evt) {
+        txtUsuarioFocusLost(evt);
+      }
+    });
     txtUsuario.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtUsuarioActionPerformed(evt);
       }
     });
-    jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 260, 160, -1));
-    txtUsuario.requestFocus();
-
-    lblIDRqst.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
-    lblIDRqst.setText("Ingresar ID");
-    jPanel1.add(lblIDRqst, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
-
-    lblPassRqst.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
-    lblPassRqst.setText("Contraseña");
-    jPanel1.add(lblPassRqst, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, -1));
 
     btnIngresar.setText("Ingresar");
     btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,98 +111,224 @@ public class MenuLogin extends javax.swing.JFrame {
         btnIngresarKeyReleased(evt);
       }
     });
-    jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, -1, -1));
 
     lblRecuperarUsuario.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     lblRecuperarUsuario.setForeground(new java.awt.Color(51, 0, 102));
     lblRecuperarUsuario.setText("*Si desea recuperar su cuenta, preséntese en la biblioteca.");
-    jPanel1.add(lblRecuperarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, -1, -1));
 
     jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
-    jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 766, -1));
+    jSeparator2.setPreferredSize(new java.awt.Dimension(755, 2));
 
     jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
-    jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 766, -1));
-    jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 340, 160, -1));
+    jSeparator3.setPreferredSize(new java.awt.Dimension(755, 2));
+
+    txtPass.setForeground(new java.awt.Color(102, 102, 102));
+    txtPass.setText("Contraseña");
+    txtPass.setEchoChar((char) 0);
+    txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(java.awt.event.FocusEvent evt) {
+        txtPassFocusGained(evt);
+      }
+      public void focusLost(java.awt.event.FocusEvent evt) {
+        txtPassFocusLost(evt);
+      }
+    });
 
     lblError.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 13)); // NOI18N
     lblError.setForeground(new java.awt.Color(255, 0, 0));
     lblError.setText("Usuario y/o contraseña incorrectos");
     lblError.setVisible(false);
-    jPanel1.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
 
     icnBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b1.png"))); // NOI18N
-    jPanel1.add(icnBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
     lblFEI.setText("Facultad de Estadística e Informática, Universidad Veracruzana");
-    jPanel1.add(lblFEI, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
     lblTitle1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
     lblTitle1.setForeground(new java.awt.Color(0, 0, 102));
-    lblTitle1.setText(" Sistema Bibliotecario \"BUAEEI\"");
-    jPanel1.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 58));
+    lblTitle1.setText("Sistema Bibliotecario \"BUAEEI\"");
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
-    jPanel1.add(icnUVLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(0, 18, Short.MAX_VALUE)
+        .addComponent(icnBooks)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(lblTitle1)
+          .addComponent(lblFEI)
+          .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblError)
+          .addComponent(btnIngresar))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+        .addComponent(icnUVLogo)
+        .addGap(0, 20, Short.MAX_VALUE))
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(20, 20, 20)
+            .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(10, 10, 10)
+            .addComponent(lblRecuperarUsuario)))
+        .addGap(356, 356, 356))
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+          .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+          .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+        .addGap(0, 0, 0))
+    );
+    jPanel1Layout.setVerticalGroup(
+      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(10, 10, 10)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(icnBooks)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(2, 2, 2)
+            .addComponent(lblFEI))
+          .addComponent(icnUVLogo))
+        .addGap(20, 20, 20)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(42, 42, 42)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+        .addComponent(lblError)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+        .addComponent(btnIngresar)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+        .addComponent(lblRecuperarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(19, 19, 19))
+    );
+
+    txtUsuario.requestFocus();
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addGroup(layout.createSequentialGroup()
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGap(0, 0, 0))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addGroup(layout.createSequentialGroup()
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGap(0, 0, 0))
     );
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtUsuarioActionPerformed
-
-  private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtSearchbarActionPerformed
-
-  private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-    // TODO add your handling code here:    
-    char pass[] = txtPass.getPassword();
-    String password = new String(pass);
-    SQLMethods sql = new SQLMethods();
-    if (sql.validarIngreso(txtUsuario.getText(), password) == true) {
-      
-      MenuCirculacion mc = new MenuCirculacion(sql
-          .consultarUsuario(txtUsuario.getText()));
-      
-      System.out.println(mc.getUsuario().getId());
-      PaneB.callNxtPane(this, mc);
-      //JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
-      //        "Biblioteca BUAEEI ", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-      JOptionPane.showMessageDialog(null,
-              "Verifique que sus datos sean correctos",
-              "Acceso denegado.",
-              JOptionPane.ERROR_MESSAGE);
-      lblError.setVisible(true);
+  private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
+    if (txtPass.getPassword().length == 0) {
+      txtPass.setEchoChar((char) 0);
+      txtPass.setText("Contraseña");
+      txtPass.setForeground(Color.gray);
     }
-  }//GEN-LAST:event_btnIngresarActionPerformed
+  }//GEN-LAST:event_txtPassFocusLost
 
-  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);
-  }//GEN-LAST:event_btnSearchActionPerformed
+  private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
+    char c[] = txtPass.getPassword();
+    String s = new String(c);
+
+    if(s.equals("Contraseña")){
+      txtPass.setEchoChar('*');
+      txtPass.setText("");
+      txtPass.setForeground(Color.black);
+    }
+  }//GEN-LAST:event_txtPassFocusGained
 
   private void btnIngresarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyReleased
     // TODO add your handling code here:
   }//GEN-LAST:event_btnIngresarKeyReleased
 
+  private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    // TODO add your handling code here:
+    char pass[] = txtPass.getPassword();
+    String password = new String(pass);
+    SQLMethods sql = new SQLMethods();
+    switch (sql.validarIngreso(txtUsuario.getText(), password)) {
+      case 1:
+      MenuCirculacion mc = new MenuCirculacion(sql
+        .consultarUsuario(txtUsuario.getText()));
+      System.out.println(mc.getUsuario().getId());
+      PaneB.callNxtPane(this, mc);
+      //JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
+        //        "Biblioteca BUAEEI ", JOptionPane.INFORMATION_MESSAGE);
+      break;
+      case 0:
+      JOptionPane.showMessageDialog(null,
+        "Verifique que sus datos sean correctos",
+        "Acceso denegado.",
+        JOptionPane.ERROR_MESSAGE);
+      lblError.setVisible(true);
+      break;
+      default:
+      break;
+    }
+  }//GEN-LAST:event_btnIngresarActionPerformed
+
+  private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtUsuarioActionPerformed
+
+  private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+    if (txtUsuario.getText().equals("")) {
+      txtUsuario.setText("Usuario");
+      txtUsuario.setForeground(Color.gray);
+    }
+  }//GEN-LAST:event_txtUsuarioFocusLost
+
+  private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+    if (txtUsuario.getText().equals("Usuario")) {
+      txtUsuario.setText("");
+      txtUsuario.setForeground(Color.black);
+    }
+  }//GEN-LAST:event_txtUsuarioFocusGained
+
+  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    JOptionPane.showMessageDialog(null,
+      "Por Implementar",
+      "Por Implementar",
+      JOptionPane.ERROR_MESSAGE);
+  }//GEN-LAST:event_btnSearchActionPerformed
+
+  private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtSearchbarActionPerformed
+
+  private void txtSearchbarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchbarFocusLost
+    if (txtSearchbar.getText().equals("")) {
+      txtSearchbar.setText("Búsqueda...");
+      txtSearchbar.setForeground(Color.gray);
+    }    // TODO add your handling code here:
+  }//GEN-LAST:event_txtSearchbarFocusLost
+
+  private void txtSearchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchbarFocusGained
+    if (txtSearchbar.getText().equals("Búsqueda...")) {
+      txtSearchbar.setText("");
+      txtSearchbar.setForeground(Color.black);
+  }//GEN-LAST:event_txtSearchbarFocusGained
+  }
   /**
    * @param args the command line arguments
    */
@@ -226,7 +359,7 @@ public class MenuLogin extends javax.swing.JFrame {
     java.awt.EventQueue.invokeLater(() -> {
       new MenuLogin().setVisible(true);
     });
-    
+
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,13 +372,11 @@ public class MenuLogin extends javax.swing.JFrame {
   private javax.swing.JSeparator jSeparator3;
   private javax.swing.JLabel lblError;
   private javax.swing.JLabel lblFEI;
-  private javax.swing.JLabel lblIDRqst;
-  private javax.swing.JLabel lblPassRqst;
   private javax.swing.JLabel lblRecuperarUsuario;
   private javax.swing.JLabel lblTitle1;
   private javax.swing.JPasswordField txtPass;
   private javax.swing.JTextField txtSearchbar;
-  public static javax.swing.JTextField txtUsuario;
+  private javax.swing.JTextField txtUsuario;
   // End of variables declaration//GEN-END:variables
 
 }
