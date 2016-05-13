@@ -74,7 +74,8 @@ public class MenuCirculacion extends javax.swing.JPanel {
     btnCerrarSesion1 = new javax.swing.JButton();
 
     setBackground(new java.awt.Color(255, 255, 255));
-    setPreferredSize(new java.awt.Dimension(750, 600));
+    setMinimumSize(new java.awt.Dimension(755, 600));
+    setPreferredSize(new java.awt.Dimension(755, 600));
 
     jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
@@ -248,15 +249,15 @@ public class MenuCirculacion extends javax.swing.JPanel {
               .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
         .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle)
           .addComponent(lblFEI))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,9 +299,9 @@ public class MenuCirculacion extends javax.swing.JPanel {
             .addGap(42, 42, 42)
             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(40, 40, 40)
+        .addGap(42, 42, 42)
         .addComponent(txtSubTitle)
-        .addGap(18, 18, 18)
+        .addGap(50, 50, 50)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
             .addComponent(icnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)

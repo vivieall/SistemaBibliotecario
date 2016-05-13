@@ -56,8 +56,8 @@ public class MenuLogin extends javax.swing.JFrame {
     setBackground(new java.awt.Color(255, 255, 255));
 
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-    jPanel1.setMinimumSize(new java.awt.Dimension(750, 600));
-    jPanel1.setPreferredSize(new java.awt.Dimension(750, 600));
+    jPanel1.setMinimumSize(new java.awt.Dimension(755, 600));
+    jPanel1.setPreferredSize(new java.awt.Dimension(755, 600));
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
     txtSearchbar.setText("Búsqueda...");
@@ -181,7 +181,7 @@ public class MenuLogin extends javax.swing.JFrame {
       .addGroup(jPanel1Layout.createSequentialGroup()
         .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(24, 24, 24)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle1)
           .addComponent(lblFEI)
@@ -193,7 +193,7 @@ public class MenuLogin extends javax.swing.JFrame {
               .addComponent(txtPass))
             .addGap(5, 5, 5)
             .addComponent(lblPeek)))
-        .addGap(0, 0, 0)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(jPanel1Layout.createSequentialGroup()
@@ -206,7 +206,7 @@ public class MenuLogin extends javax.swing.JFrame {
           .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(10, 10, 10)
             .addComponent(lblRecuperarUsuario)))
-        .addGap(356, 365, Short.MAX_VALUE))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
     );

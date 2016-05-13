@@ -87,6 +87,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     btnCerrarSesion1 = new javax.swing.JButton();
 
     setBackground(new java.awt.Color(255, 255, 255));
+    setMinimumSize(new java.awt.Dimension(755, 600));
     setPreferredSize(new java.awt.Dimension(755, 600));
 
     icnBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b1.png"))); // NOI18N
@@ -246,9 +247,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
         .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(25, 25, 25))
       .addGroup(layout.createSequentialGroup()
-        .addContainerGap(27, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -271,9 +272,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
             .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(lblFEI)
             .addComponent(lblTitle2)))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(27, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addGap(85, 85, 85)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
