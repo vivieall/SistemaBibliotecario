@@ -11,6 +11,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import sistemabibliotecario.Usuario;
 
 public class SQLMethods {
 
-  public int validarIngreso(String user, String pass) {
+  public static int validarIngreso(String user, String pass) {
     int success = 0;
     Connection con = null;
     try {
@@ -29,19 +30,26 @@ public class SQLMethods {
 
       con = Conexion.getConnection();
       if (con != null) {
-        String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
+        String selectSQL = "SELECT usuario_id, password, tipo FROM "
+            + "Usuario WHERE  + usuario_id = ?";
 
         ps = con.prepareStatement(selectSQL);
         ps.setString(1, user);
         rs = ps.executeQuery();
 
-        if (rs.next()) {
+        if (rs.next() && (rs.getInt("tipo") != 1)) {
           pass = parsePass(pass);
-          String password = rs.getString("PASSWORD");
+          String password = rs.getString("password");
           if (password.equals(pass)) {
             success = 1;
           }
-        } else {
+        } else if (rs.getInt("tipo") == 1){
+          pass = parsePass(pass);
+          String password = rs.getString("password");
+          if (password.equals(pass)) {
+            success = 2;
+          }
+        } else{
           success = 0;
         }
       }else{
@@ -62,7 +70,7 @@ public class SQLMethods {
     return success;
   }
 
-  private String parsePass(String pass)
+  private static String parsePass(String pass)
       throws NoSuchAlgorithmException, UnsupportedEncodingException {
     MessageDigest md;
     md = MessageDigest.getInstance("SHA-256");
@@ -73,14 +81,14 @@ public class SQLMethods {
     return hashTxt;
   }
 
-  public void insertPass(String pass) {
+  public static void insertPass(String pass) {
     PreparedStatement ps;
     ResultSet rs;
     try {
       Connection con = Conexion.getConnection();
       pass = parsePass(pass);
-      String selectSQL = "UPDATE USUARIO SET PASSWORD='" + pass
-          + "' WHERE ID = 'Vivie'";
+      String selectSQL = "UPDATE USUARIO SET password='" + pass
+          + "' WHERE usuario_id = 'zS11012696'";
       ps = con.prepareStatement(selectSQL);
       ps.execute(selectSQL);
       con.close();
@@ -92,20 +100,23 @@ public class SQLMethods {
 
   }
 
-  public boolean agregarUsuario(Usuario usuario, String pass) {
+  public static boolean agregarUsuario(Usuario usuario, String pass) {
     Connection connection = null;
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO USUARIO (ID, Nombre, "
-          + "Telefono, Dirección, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
+      ps = connection.prepareStatement("INSERT INTO USUARIO (usuario_id,"
+          + " nombre, telefono, direccion, correo, tipo, password , img_path,"
+          + " ingreso_fecha) " + "VALUES (?,?,?,?,?,?,?,?,?)");
       ps.setString(1, usuario.getId());
       ps.setString(2, usuario.getName());
       ps.setString(3, usuario.getTel());
       ps.setString(4, usuario.getDirec());
       ps.setString(5, usuario.getCorreo());
-      ps.setInt(6, 1);
+      ps.setInt(6, usuario.getTipo());
       ps.setString(7, parsePass(pass));
+      ps.setString(8, usuario.getImgPath());
+      ps.setDate(9, new java.sql.Date(usuario.getFechaIngreso().getTime()));
       int res = ps.executeUpdate();
       if (res > 0) {
         JOptionPane.showMessageDialog(null, "Usuario Guardado");
@@ -130,12 +141,12 @@ public class SQLMethods {
     return false;
   }
 
-  public void eliminarUsuario(String id) {
+  public static void eliminarUsuario(String id) {
     Connection connection = null;
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("DELETE FROM USUARIO WHERE id=?");
+      ps = connection.prepareStatement("DELETE FROM USUARIO WHERE usuario_id=?");
       ps.setString(1, id);
       int res = ps.executeUpdate();
       if (res > 0) {
@@ -157,14 +168,14 @@ public class SQLMethods {
     }
   }
 
-  public boolean modificarUsuario(Usuario user) {
+  public static boolean modificarUsuario(Usuario user) {
     Connection connection = null;
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("UPDATE USUARIO "
-          + "SET Nombre=?, Telefono=?, Dirección=?, Correo=? "
-          + "WHERE ID = ?");
+          + "SET nombre=?, telefono=?, direccion=?, correo=? "
+          + "WHERE usuario_id = ?");
       ps.setString(1, user.getName());
       ps.setString(2, user.getTel());
       ps.setString(3, user.getDirec());
@@ -192,22 +203,26 @@ public class SQLMethods {
     return false;
   }
 
-  public Usuario consultarUsuario(String ID) {
+  public static Usuario consultarUsuario(String ID) {
     Usuario us = new Usuario();
     Connection connection = null;
     PreparedStatement ps;
     ResultSet rs;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("SELECT * from USUARIO WHERE ID = ?");
+      ps = connection.prepareStatement("SELECT * from USUARIO "
+          + "WHERE usuario_id = ?");
       ps.setString(1, ID);
       rs = ps.executeQuery();
       if (rs.next()) {
         us.setId(rs.getString(1));
         us.setName(rs.getString("nombre"));
         us.setTel(rs.getString("telefono"));
-        us.setDirec(rs.getString("dirección"));
+        us.setDirec(rs.getString("direccion"));
         us.setCorreo(rs.getString("correo"));
+        us.setFechaIngreso(rs.getDate("ingreso_fecha"));
+        us.setImgPath(rs.getString("img_path"));
+        us.setTipo(rs.getInt("tipo"));
       }
 
     } catch(SQLException sqx){

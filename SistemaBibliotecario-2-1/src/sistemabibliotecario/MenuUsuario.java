@@ -112,7 +112,7 @@ public class MenuUsuario extends javax.swing.JPanel {
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
 
-    txtSearchID.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchID.setForeground(java.awt.SystemColor.textInactiveText);
     txtSearchID.setText("Usuario");
     txtSearchID.addFocusListener(new java.awt.event.FocusAdapter() {
       public void focusGained(java.awt.event.FocusEvent evt) {
@@ -308,12 +308,14 @@ public class MenuUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchIDActionPerformed
 
   private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
-    SQLMethods sql = new SQLMethods();
-    Usuario user = sql.consultarUsuario(txtSearchID.getText());
-    if ((!txtSearchID.getText().equals("")) && (user.getId() == null)) {
+    Usuario user = SQLMethods.consultarUsuario(txtSearchID.getText());
+    if ((!txtSearchID.getText().equals("")) 
+        && (!txtSearchID.getText().equals("Usuario")) 
+        && (user.getId() == null)) {
       AltaUsuario au = new AltaUsuario(usuario, txtSearchID.getText());
       PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), au);
-    } else if (!txtSearchID.getText().equals("")) {
+    } else if (!txtSearchID.getText().equals("") && 
+        (!txtSearchID.getText().equals("Usuario"))) {
       JOptionPane.showMessageDialog(null,
           "El usuario ya existe",
           "Error",
@@ -327,8 +329,7 @@ public class MenuUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnDarAltaActionPerformed
 
   private void btnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarUsuarioActionPerformed
-    SQLMethods sql = new SQLMethods();
-    Usuario user = sql.consultarUsuario(txtSearchID.getText());
+    Usuario user = SQLMethods.consultarUsuario(txtSearchID.getText());
     if ((!txtSearchID.getText().equals("")) && (user.getId() != null)) {
       ModificarUsuario mu = new ModificarUsuario(usuario, user);
       PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);

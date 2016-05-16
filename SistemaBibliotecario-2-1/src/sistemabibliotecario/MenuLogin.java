@@ -303,19 +303,23 @@ public class MenuLogin extends javax.swing.JFrame {
     // TODO add your handling code here:
     char pass[] = txtPass.getPassword();
     String password = new String(pass);
-    SQLMethods sql = new SQLMethods();
-    switch (sql.validarIngreso(txtUsuario.getText(), password)) {
+    System.out.println(SQLMethods.validarIngreso(txtUsuario.getText(), password));
+    switch (SQLMethods.validarIngreso(txtUsuario.getText(), password)) {
       case 1:
-        MenuCirculacion mc = new MenuCirculacion(sql
-            .consultarUsuario(txtUsuario.getText()));
-        System.out.println(mc.getUsuario().getId());
+        MenuCirculacion mc = new MenuCirculacion(SQLMethods
+            .consultarUsuario(txtUsuario.getText()));        
         PaneB.callNxtPane(this, mc);
-        //JOptionPane.showMessageDialog(null, "Bienvenido " + txtUsuario.getText() + "\nhas ingresado satisfactoriamente al sistema.",
-        //        "Biblioteca BUAEEI ", JOptionPane.INFORMATION_MESSAGE);
         break;
       case 0:
         JOptionPane.showMessageDialog(null,
             "Verifique que sus datos sean correctos",
+            "Acceso denegado.",
+            JOptionPane.ERROR_MESSAGE);
+        lblError.setVisible(true);
+        break;
+      case 2:
+        JOptionPane.showMessageDialog(null,
+            "Usuario no autorizado",
             "Acceso denegado.",
             JOptionPane.ERROR_MESSAGE);
         lblError.setVisible(true);

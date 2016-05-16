@@ -355,8 +355,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
       us.setTel(txtTel.getText());
       us.setDirec(txtAddress.getText());
       us.setCorreo(txtMail.getText());
-      SQLMethods sql = new SQLMethods();
-      if (sql.modificarUsuario(us)) {
+      if (SQLMethods.modificarUsuario(us)) {
         MenuUsuario mu = new MenuUsuario(usuario);
         PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
       }

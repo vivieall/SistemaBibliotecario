@@ -5,6 +5,8 @@
  */
 package sistemabibliotecario;
 
+import java.util.Date;
+
 /**
  *
  * @author mauri
@@ -16,6 +18,24 @@ public class Usuario {
   private String direc;
   private String correo;
   private int tipo;
+  private String imgPath;
+  private Date fechaIngreso;
+
+  public Date getFechaIngreso() {
+    return fechaIngreso;
+  }
+
+  public void setFechaIngreso(Date fechaIngreso) {
+    this.fechaIngreso = fechaIngreso;
+  }
+
+  public String getImgPath() {
+    return imgPath;
+  }
+
+  public void setImgPath(String imgPath) {
+    this.imgPath = imgPath;
+  }
 
   public String getId() {
     return id;
