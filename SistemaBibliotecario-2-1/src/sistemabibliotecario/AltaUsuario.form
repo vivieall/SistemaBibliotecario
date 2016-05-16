@@ -275,9 +275,13 @@
         <Component class="javax.swing.JLabel" name="icnUser">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/2-user_-_single_add-128.png"/>
+              <Image iconType="3" name="/ic_add_a_photo_black_48dp_2x.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Agregar Imagen"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icnUserMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblID">
           <Properties>

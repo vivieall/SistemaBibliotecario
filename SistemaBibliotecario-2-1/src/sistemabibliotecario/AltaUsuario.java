@@ -6,7 +6,9 @@
 package sistemabibliotecario;
 
 import conection.SQLMethods;
-import java.util.Arrays;
+import java.awt.image.ImageFilter;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -137,7 +139,13 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblDireccion.setText("Dirección:");
     lblDireccion.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
 
-    icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2-user_-_single_add-128.png"))); // NOI18N
+    icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_add_a_photo_black_48dp_2x.png"))); // NOI18N
+    icnUser.setToolTipText("Agregar Imagen");
+    icnUser.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        icnUserMouseClicked(evt);
+      }
+    });
 
     lblID.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     lblID.setText("ID: zS1401643 ");
@@ -463,6 +471,18 @@ public class AltaUsuario extends javax.swing.JPanel {
     MenuCirculacion mc = new MenuCirculacion(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
+
+  private void icnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icnUserMouseClicked
+    /*JFileChooser fc = new JFileChooser();
+    fc.addChoosableFileFilter(new ImageFilter());
+    fc.setAcceptAllFileFilterUsed(false);
+    int returnVal = fc.showOpenDialog(jPanel1);
+    
+    if (returnVal == JFileChooser.APPROVE_OPTION){
+      
+    */
+// TODO add your handling code here:
+  }//GEN-LAST:event_icnUserMouseClicked
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

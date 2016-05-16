@@ -22,11 +22,12 @@ public class SQLMethods {
 
   public int validarIngreso(String user, String pass) {
     int success = 0;
+    Connection con = null;
     try {
       PreparedStatement ps;
       ResultSet rs;
 
-      Connection con = Conexion.getConnection();
+      con = Conexion.getConnection();
       if (con != null) {
         String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
 
@@ -43,16 +44,20 @@ public class SQLMethods {
         } else {
           success = 0;
         }
-        con.close();
       }else{
         return -1;
       }
-    } catch (SQLException |
-        NoSuchAlgorithmException |
-        UnsupportedEncodingException e) {
-      System.out.println(e);
-    } catch (Exception e) {
-
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException |
+        NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+      System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(con);
     }
     return success;
   }
@@ -79,7 +84,7 @@ public class SQLMethods {
       ps = con.prepareStatement(selectSQL);
       ps.execute(selectSQL);
       con.close();
-    } catch (SQLException |
+    } catch (ClassNotFoundException | SQLException |
         NoSuchAlgorithmException |
         UnsupportedEncodingException e) {
       System.out.println(e);
@@ -88,9 +93,8 @@ public class SQLMethods {
   }
 
   public boolean agregarUsuario(Usuario usuario, String pass) {
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
-    ResultSet rs;
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("INSERT INTO USUARIO (ID, Nombre, "
@@ -111,19 +115,24 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null, "Error al Guardar Usuario");
       }
 
-      connection.close();
-
-    } catch (SQLException | NoSuchAlgorithmException |
-        UnsupportedEncodingException | HeadlessException ex) {
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException |
+        NoSuchAlgorithmException | UnsupportedEncodingException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return false;
   }
 
   public void eliminarUsuario(String id) {
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
-    ResultSet rs;
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("DELETE FROM USUARIO WHERE id=?");
@@ -135,17 +144,22 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null, "Error al Eliminar Usuario");
       }
 
-      connection.close();
-
-    } catch (SQLException | HeadlessException ex) {
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
   }
 
   public boolean modificarUsuario(Usuario user) {
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
-    ResultSet rs;
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("UPDATE USUARIO "
@@ -164,16 +178,23 @@ public class SQLMethods {
       } else {
         JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
       }
-      connection.close();
-    } catch (SQLException | HeadlessException ex) {
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return false;
   }
 
   public Usuario consultarUsuario(String ID) {
     Usuario us = new Usuario();
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
     ResultSet rs;
     try {
@@ -189,16 +210,23 @@ public class SQLMethods {
         us.setCorreo(rs.getString("correo"));
       }
 
-      connection.close();
-    } catch (Exception e) {
-
+    } catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return us;
   }
 
   public ArrayList registrarPrestamo(String numFolio) {
     //POR IMPLEMENTAR.
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
     ResultSet rs;
     //ArrayList<String> user = new ArrayList();
@@ -214,9 +242,16 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null,
             "No existe el Usuario " + numFolio + ".");
       }
-      connection.close();
-    } catch (SQLException | HeadlessException ex) {
+    } catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return null;
   }

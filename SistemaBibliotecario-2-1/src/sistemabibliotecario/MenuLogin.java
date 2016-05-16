@@ -50,7 +50,7 @@ public class MenuLogin extends javax.swing.JFrame {
     lblFEI = new javax.swing.JLabel();
     lblTitle1 = new javax.swing.JLabel();
     icnUVLogo = new javax.swing.JLabel();
-    lblPeek = new javax.swing.JLabel();
+    peekBtn = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setBackground(new java.awt.Color(255, 255, 255));
@@ -58,6 +58,11 @@ public class MenuLogin extends javax.swing.JFrame {
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
     jPanel1.setMinimumSize(new java.awt.Dimension(755, 600));
     jPanel1.setPreferredSize(new java.awt.Dimension(755, 600));
+    jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        jPanel1KeyPressed(evt);
+      }
+    });
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
     txtSearchbar.setText("Búsqueda...");
@@ -101,7 +106,8 @@ public class MenuLogin extends javax.swing.JFrame {
       }
     });
 
-    btnIngresar.setText("Ingresar");
+    btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_done_black_24dp_1x.png"))); // NOI18N
+    btnIngresar.setToolTipText("Ingresar");
     btnIngresar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnIngresarActionPerformed(evt);
@@ -158,19 +164,22 @@ public class MenuLogin extends javax.swing.JFrame {
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
 
-    lblPeek.setForeground(new java.awt.Color(102, 102, 102));
-    lblPeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_remove_red_eye_black_24dp_1x.png"))); // NOI18N
-    lblPeek.setToolTipText("See Password");
-    lblPeek.setName(""); // NOI18N
-    lblPeek.addMouseListener(new java.awt.event.MouseAdapter() {
-      public void mouseClicked(java.awt.event.MouseEvent evt) {
-        lblPeekMouseClicked(evt);
-      }
+    peekBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_remove_red_eye_black_24dp_1x.png"))); // NOI18N
+    peekBtn.setMaximumSize(new java.awt.Dimension(57, 33));
+    peekBtn.setMinimumSize(new java.awt.Dimension(57, 33));
+    peekBtn.setPreferredSize(new java.awt.Dimension(57, 33));
+    peekBtn.setContentAreaFilled(false);
+    peekBtn.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mousePressed(java.awt.event.MouseEvent evt) {
-        lblPeekMousePressed(evt);
+        peekBtnMousePressed(evt);
       }
       public void mouseReleased(java.awt.event.MouseEvent evt) {
-        lblPeekMouseReleased(evt);
+        peekBtnMouseReleased(evt);
+      }
+    });
+    peekBtn.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        peekBtnActionPerformed(evt);
       }
     });
 
@@ -187,12 +196,12 @@ public class MenuLogin extends javax.swing.JFrame {
           .addComponent(lblFEI)
           .addComponent(lblError)
           .addComponent(btnIngresar)
-          .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-              .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-              .addComponent(txtPass))
-            .addGap(5, 5, 5)
-            .addComponent(lblPeek)))
+          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+              .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+              .addComponent(peekBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
@@ -206,9 +215,9 @@ public class MenuLogin extends javax.swing.JFrame {
           .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(10, 10, 10)
             .addComponent(lblRecuperarUsuario)))
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+      .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,17 +238,17 @@ public class MenuLogin extends javax.swing.JFrame {
             .addGap(42, 42, 42)
             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+        .addGap(74, 74, 74)
         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(55, 55, 55)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(lblPeek))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+          .addComponent(peekBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
         .addComponent(lblError)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
         .addComponent(btnIngresar)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
         .addComponent(lblRecuperarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(19, 19, 19))
     );
@@ -261,6 +270,8 @@ public class MenuLogin extends javax.swing.JFrame {
         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGap(0, 0, 0))
     );
+
+    this.getRootPane().setDefaultButton(btnIngresar);
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
@@ -361,21 +372,29 @@ public class MenuLogin extends javax.swing.JFrame {
     // TODO add your handling code here:
   }//GEN-LAST:event_txtPassActionPerformed
 
-  private void lblPeekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeekMouseClicked
-    //txtPass.setEchoChar((char) 0);
-  }//GEN-LAST:event_lblPeekMouseClicked
+  private void peekBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peekBtnActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_peekBtnActionPerformed
 
-  private void lblPeekMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeekMouseReleased
-    if (txtPass.getForeground() != Color.gray) {
-      txtPass.setEchoChar('*');
-    }
-  }//GEN-LAST:event_lblPeekMouseReleased
-
-  private void lblPeekMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeekMousePressed
+  private void peekBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peekBtnMousePressed
+    peekBtn.setIcon(new javax.swing.ImageIcon(getClass()
+        .getResource("/ic_remove_red_eye_gray_24dp_1x.png")));
     if (txtPass.getForeground() != Color.gray) {
       txtPass.setEchoChar((char) 0);
     }
-  }//GEN-LAST:event_lblPeekMousePressed
+  }//GEN-LAST:event_peekBtnMousePressed
+
+  private void peekBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peekBtnMouseReleased
+    peekBtn.setIcon(new javax.swing.ImageIcon(getClass()
+        .getResource("/ic_remove_red_eye_black_24dp_1x.png")));
+    if (txtPass.getForeground() != Color.gray) {
+      txtPass.setEchoChar('*');
+    } // TODO add your handling code here:
+  }//GEN-LAST:event_peekBtnMouseReleased
+
+  private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jPanel1KeyPressed
 
   /**
    * @param args the command line arguments
@@ -420,9 +439,9 @@ public class MenuLogin extends javax.swing.JFrame {
   private javax.swing.JSeparator jSeparator3;
   private javax.swing.JLabel lblError;
   private javax.swing.JLabel lblFEI;
-  private javax.swing.JLabel lblPeek;
   private javax.swing.JLabel lblRecuperarUsuario;
   private javax.swing.JLabel lblTitle1;
+  private javax.swing.JButton peekBtn;
   private javax.swing.JPasswordField txtPass;
   private javax.swing.JTextField txtSearchbar;
   private javax.swing.JTextField txtUsuario;
