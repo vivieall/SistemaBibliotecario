@@ -4,36 +4,34 @@
  * and open the template in the editor.
  */
 package conection;
-import java.sql.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
  * @author Vivie
  */
 public class Conexion {
-    
-    public static final String URL = "jdbc:mysql://localhost/BibliotecaFEI";
-    public static final String USERNAME = "root";
-    public static final String PASSWORD = "root";
-    
 
-    public static Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e);
-        }
-        return connection;
-    }
+  public static final String URL = "jdbc:mysql://localhost:8889/BibliotecaFEI";
+  public static final String USERNAME = "root";
+  public static final String PASSWORD = "root";
+
+  public static Connection getConnection() 
+      throws SQLException, ClassNotFoundException {
+    Connection connection;
+      Class.forName("com.mysql.jdbc.Driver");
+      connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
     
-    public void cerrarConexion (Connection con){
-      try{
-        con.close();
-      }catch(SQLException e){
-      }
+      return connection;
+  }
+
+  public static void cerrarConexion(Connection con) {
+    try {
+      con.close();
+    } catch (SQLException e) {
     }
+  }
 }

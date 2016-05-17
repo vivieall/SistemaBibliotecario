@@ -18,4 +18,5 @@ public class PaneB {
     frame.setContentPane(jpanel);
     frame.revalidate();
   }
+    
 }

@@ -6,15 +6,26 @@
 package sistemabibliotecario;
 
 import conection.SQLMethods;
-import java.util.Arrays;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author ruben
+ * @author Vivie
  */
 public class AltaUsuario extends javax.swing.JPanel {
 
@@ -35,7 +46,7 @@ public class AltaUsuario extends javax.swing.JPanel {
   }
 
   private boolean isValidText(JTextField field) {
-    return !field.getText().equals("") && !field.getText().trim().isEmpty();
+    return (!field.getText().equals("") && !field.getText().trim().isEmpty());
   }
 
   private boolean validateTexts() {
@@ -91,14 +102,6 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblID = new javax.swing.JLabel();
     btnAccept = new javax.swing.JButton();
     lblMail = new javax.swing.JLabel();
-    jSeparator5 = new javax.swing.JSeparator();
-    txtSearchbar2 = new javax.swing.JTextField();
-    btnSearch = new javax.swing.JButton();
-    gestionUsuario1 = new javax.swing.JButton();
-    jLabel29 = new javax.swing.JLabel();
-    jSeparator6 = new javax.swing.JSeparator();
-    gestionUsuario2 = new javax.swing.JButton();
-    gestionUsuario3 = new javax.swing.JButton();
     lblSubTitle = new javax.swing.JLabel();
     txtMail = new javax.swing.JTextField();
     txtAddress = new javax.swing.JTextField();
@@ -109,119 +112,77 @@ public class AltaUsuario extends javax.swing.JPanel {
     txtPass2 = new javax.swing.JPasswordField();
     txtPass = new javax.swing.JPasswordField();
     btnCancel = new javax.swing.JButton();
+    jSeparator5 = new javax.swing.JSeparator();
+    txtSearchbar = new javax.swing.JTextField();
+    btnSearch = new javax.swing.JButton();
+    btnGestionarUsuario = new javax.swing.JButton();
+    btnGestionarPrestamo = new javax.swing.JButton();
+    btnCerrarSesion = new javax.swing.JButton();
+    btnCerrarSesion1 = new javax.swing.JButton();
+    jSeparator4 = new javax.swing.JSeparator();
+    jComboBox1 = new javax.swing.JComboBox<>();
 
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-    jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+    jPanel1.setMinimumSize(new java.awt.Dimension(755, 600));
+    jPanel1.setPreferredSize(new java.awt.Dimension(755, 600));
 
     icnBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b1.png"))); // NOI18N
-    jPanel1.add(icnBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
     lblFEI.setText("Facultad de Estadística e Informática, Universidad Veracruzana");
-    jPanel1.add(lblFEI, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
     lblTitle.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
     lblTitle.setForeground(new java.awt.Color(0, 0, 102));
-    lblTitle.setText(" Sistema Bibliotecario \"BUAEEI\"");
-    jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 58));
+    lblTitle.setText("Sistema Bibliotecario \"BUAEEI\"");
 
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
-    jPanel1.add(icnUVLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 102, -1));
 
-    lblNombre.setBackground(new java.awt.Color(255, 255, 255));
     lblNombre.setText("Nombre: ");
-    lblNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 130, 22));
+    lblNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+    lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    lblNombre.setMinimumSize(new java.awt.Dimension(110, 37));
+    lblNombre.setName(""); // NOI18N
 
-    lblTel.setBackground(new java.awt.Color(204, 204, 204));
     lblTel.setText("Teléfono:");
-    lblTel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 130, 22));
+    lblTel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+    lblTel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    lblTel.setMinimumSize(new java.awt.Dimension(110, 37));
+    lblTel.setName(""); // NOI18N
 
-    lblDireccion.setBackground(new java.awt.Color(204, 204, 204));
     lblDireccion.setText("Dirección:");
-    lblDireccion.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 130, 22));
+    lblDireccion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+    lblDireccion.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    lblDireccion.setMinimumSize(new java.awt.Dimension(110, 37));
+    lblDireccion.setName(""); // NOI18N
 
-    icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2-user_-_single_add-128.png"))); // NOI18N
-    jPanel1.add(icnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+    icnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_add_a_photo_black_48dp_2x.png"))); // NOI18N
+    icnUser.setToolTipText("Agregar Imagen");
+    icnUser.setMaximumSize(new java.awt.Dimension(100, 100));
+    icnUser.setMinimumSize(new java.awt.Dimension(100, 100));
+    icnUser.setPreferredSize(new java.awt.Dimension(100, 100));
+    icnUser.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        icnUserMouseClicked(evt);
+      }
+    });
 
     lblID.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     lblID.setText("ID: zS1401643 ");
     lblID.setText("ID: " + alta);
-    jPanel1.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, 20));
 
     btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-    btnAccept.setText("Aceptar");
+    btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_save_black_24dp_1x.png"))); // NOI18N
+    btnAccept.setToolTipText("Aceptar");
     btnAccept.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnAcceptActionPerformed(evt);
       }
     });
-    jPanel1.add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, -1, -1));
 
-    lblMail.setBackground(new java.awt.Color(204, 204, 204));
     lblMail.setText("Correo:");
-    lblMail.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 130, 22));
-
-    jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
-    jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 104, 750, 10));
-
-    txtSearchbar2.setText("Búsqueda...");
-    txtSearchbar2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtSearchbar2ActionPerformed(evt);
-      }
-    });
-    jPanel1.add(txtSearchbar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 189, -1));
-
-    btnSearch.setText("Ir");
-    btnSearch.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnSearchActionPerformed(evt);
-      }
-    });
-    jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 53, -1));
-
-    gestionUsuario1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario1.setText("Gestionar usuario");
-    gestionUsuario1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario1ActionPerformed(evt);
-      }
-    });
-    jPanel1.add(gestionUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 26));
-
-    jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
-    jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
-      public void mouseReleased(java.awt.event.MouseEvent evt) {
-        jLabel29MouseReleased(evt);
-      }
-    });
-    jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, -1, 26));
-
-    jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
-    jSeparator6.setForeground(new java.awt.Color(51, 51, 51));
-    jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 150, 750, 11));
-
-    gestionUsuario2.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario2.setText("Gestionar préstamo");
-    gestionUsuario2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario2ActionPerformed(evt);
-      }
-    });
-    jPanel1.add(gestionUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, -1, 26));
-
-    gestionUsuario3.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    gestionUsuario3.setText("Verificar adeudo");
-    gestionUsuario3.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        gestionUsuario3ActionPerformed(evt);
-      }
-    });
-    jPanel1.add(gestionUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, 26));
+    lblMail.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+    lblMail.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    lblMail.setMinimumSize(new java.awt.Dimension(110, 37));
+    lblMail.setName(""); // NOI18N
 
     lblSubTitle.setBackground(new java.awt.Color(204, 204, 204));
     lblSubTitle.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -229,107 +190,282 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblSubTitle.setText("Registrar Usuario");
     lblSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     lblSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-    jPanel1.add(lblSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 220, 22));
-    jPanel1.add(txtMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 300, -1));
-    jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 300, -1));
 
     txtName.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtNameActionPerformed(evt);
       }
     });
-    jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 300, -1));
-    jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 300, -1));
 
-    lblPass.setBackground(new java.awt.Color(204, 204, 204));
     lblPass.setText("Contraseña:");
-    lblPass.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 130, 22));
+    lblPass.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+    lblPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    lblPass.setMinimumSize(new java.awt.Dimension(110, 37));
+    lblPass.setName(""); // NOI18N
+    lblPass.setVisible(false);
 
-    lblPass2.setBackground(new java.awt.Color(204, 204, 204));
     lblPass2.setText("Confirmar Contraseña:");
-    lblPass2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
-    jPanel1.add(lblPass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 130, 22));
-    jPanel1.add(txtPass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 300, -1));
+    lblPass2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+    lblPass2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    lblPass2.setMinimumSize(new java.awt.Dimension(110, 37));
+    lblPass2.setName(""); // NOI18N
+    lblPass2.setVisible(false);
+
+    txtPass2.setVisible(false);
 
     txtPass.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtPassActionPerformed(evt);
       }
     });
-    jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 300, -1));
+    txtPass.setVisible(false);
 
     btnCancel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-    btnCancel.setText("Cancelar");
+    btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_cancel_black_24dp_1x.png"))); // NOI18N
+    btnCancel.setToolTipText("Cancelar");
     btnCancel.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnCancelActionPerformed(evt);
       }
     });
-    jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, -1, -1));
+
+    jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+    jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
+
+    txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchbar.setText("Búsqueda...");
+
+    btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
+    btnSearch.setToolTipText("Buscar");
+    btnSearch.setName("Search"); // NOI18N
+    btnSearch.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearchActionPerformed(evt);
+      }
+    });
+
+    btnGestionarUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_account_box_black_24dp_1x.png"))); // NOI18N
+    btnGestionarUsuario.setToolTipText("Usuarios");
+    btnGestionarUsuario.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGestionarUsuarioActionPerformed(evt);
+      }
+    });
+
+    btnGestionarPrestamo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_book_black_24dp_1x.png"))); // NOI18N
+    btnGestionarPrestamo.setToolTipText("Préstamos");
+    btnGestionarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGestionarPrestamoActionPerformed(evt);
+      }
+    });
+
+    btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
+    btnCerrarSesion.setToolTipText("Cerrar Sesión");
+    btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCerrarSesionActionPerformed(evt);
+      }
+    });
+
+    btnCerrarSesion1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_home_black_24dp_1x.png"))); // NOI18N
+    btnCerrarSesion1.setToolTipText("Inicio");
+    btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCerrarSesion1ActionPerformed(evt);
+      }
+    });
+
+    jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+    jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
+
+    jComboBox1.setMaximumRowCount(2);
+    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Bibliotecario" }));
+    jComboBox1.setToolTipText("Tipo de Usuario");
+    jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jComboBox1ActionPerformed(evt);
+      }
+    });
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(0, 22, Short.MAX_VALUE)
+        .addComponent(icnBooks)
+        .addGap(0, 22, Short.MAX_VALUE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblFEI)
+          .addComponent(lblTitle))
+        .addGap(0, 22, Short.MAX_VALUE)
+        .addComponent(icnUVLogo)
+        .addGap(0, 25, Short.MAX_VALUE))
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(20, 20, 20)
+        .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(18, 18, 18)
+        .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(18, 18, 18)
+        .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(25, 25, 25))
+      .addComponent(jSeparator5)
+      .addComponent(jSeparator4)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(icnUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblID)
+          .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(27, 27, 27)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(btnAccept)
+            .addGap(138, 138, 138)
+            .addComponent(btnCancel))
+          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+              .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(lblPass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+              .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                  .addGap(10, 10, 10)
+                  .addComponent(txtPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                  .addGap(10, 10, 10)
+                  .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+              .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+              .addGap(10, 10, 10)
+              .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel1Layout.setVerticalGroup(
+      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(10, 10, 10)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(icnUVLogo)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(lblFEI))
+          .addComponent(icnBooks))
+        .addGap(20, 20, 20)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(42, 42, 42)
+            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(42, 42, 42)
+        .addComponent(lblSubTitle)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+              .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(icnUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+              .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(22, 22, 22)
+            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(lblTel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(lblPass, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(lblPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(btnAccept)
+              .addComponent(btnCancel))
+            .addGap(32, 32, 32))))
+    );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
   }// </editor-fold>//GEN-END:initComponents
 
   private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-    if (validateTexts()) {
-      Usuario us = new Usuario();
-      us.setId(alta);
-      us.setName(txtName.getText());
-      us.setTel(txtTel.getText());
-      us.setDirec(txtAddress.getText());
-      us.setCorreo(txtMail.getText());
-      String pass = new String(txtPass.getPassword());
-      SQLMethods sql = new SQLMethods();
-      if (sql.agregarUsuario(us, pass)) {
-        MenuUsuario mu = new MenuUsuario(usuario);
-        PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+    int btnOpt = JOptionPane.YES_NO_OPTION;
+    int dResult = JOptionPane.showConfirmDialog(this,
+        "¿Desea guardar el usuario " + alta + "?", " ", btnOpt);
+    if (dResult == JOptionPane.YES_OPTION) {
+      if (validateTexts()) {
+        Usuario us = new Usuario();
+        us.setId(alta);
+        us.setName(txtName.getText());
+        us.setTel(txtTel.getText());
+        us.setDirec(txtAddress.getText());
+        us.setCorreo(txtMail.getText());
+        us.setTipo(jComboBox1.getSelectedIndex() + 1);
+        us.setImgPath(usuario.getImgPath());
+        us.setFechaIngreso(new java.util.Date(System.currentTimeMillis()));
+        String pass = new String(txtPass.getPassword());
+        if (SQLMethods.agregarUsuario(us, pass)) {
+          MenuUsuario mu = new MenuUsuario(usuario);
+          PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+        }
       }
+
     }
+
     // TODO add your handling code here:
   }//GEN-LAST:event_btnAcceptActionPerformed
-
-  private void txtSearchbar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbar2ActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtSearchbar2ActionPerformed
-
-  private void gestionUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario1ActionPerformed
-    MenuUsuario mu = new MenuUsuario(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);    // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario1ActionPerformed
-
-  private void gestionUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario2ActionPerformed
-    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario2ActionPerformed
-
-  private void gestionUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario3ActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
-  }//GEN-LAST:event_gestionUsuario3ActionPerformed
-
-  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
-  }//GEN-LAST:event_btnSearchActionPerformed
-
-  private void jLabel29MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseReleased
-    MenuCirculacion mc = new MenuCirculacion(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);     // TODO add your handling code here:
-  }//GEN-LAST:event_jLabel29MouseReleased
 
   private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
     // TODO add your handling code here:
@@ -344,21 +480,105 @@ public class AltaUsuario extends javax.swing.JPanel {
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
   }//GEN-LAST:event_btnCancelActionPerformed
 
+  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    JOptionPane.showMessageDialog(null,
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+  }//GEN-LAST:event_btnSearchActionPerformed
+
+  private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
+    MenuUsuario mu = new MenuUsuario(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);    // TODO add your handling code here:
+  }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
+
+  private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
+    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
+  }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
+
+  private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+int btnOpt = JOptionPane.YES_NO_OPTION;
+    int dResult = JOptionPane.showConfirmDialog(this,
+        "¿Cerrar Sesión?", " ", btnOpt);
+    if (dResult == JOptionPane.YES_OPTION) { 
+    java.awt.EventQueue.invokeLater(() -> {
+      new MenuLogin().setVisible(true);
+    });
+    SwingUtilities.getWindowAncestor(this).dispose();
+    }// TODO add your handling code here:
+  }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+  private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
+    // TODO add your handling code here:
+    MenuBibliotecario mc = new MenuBibliotecario(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
+  }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
+
+  private void icnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icnUserMouseClicked
+    JFileChooser fc = new JFileChooser();
+    fc.addChoosableFileFilter(new FileNameExtensionFilter("Images",
+        "jpeg", "jpg", "png"));
+    fc.setAcceptAllFileFilterUsed(false);
+    int returnVal = fc.showOpenDialog(jPanel1);
+
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+      File sFile = fc.getSelectedFile();
+      File dFile = new File("udata/r_usricn_" + alta + ".png");
+      try {
+        BufferedImage bImg = ImageIO.read(sFile);
+        ImageIcon icon = new ImageIcon(
+            bImg.getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        icnUser.setIcon(icon);
+        ImageIO.write(bImg, "png", dFile);
+        dFile.getParentFile().mkdirs();
+        dFile.createNewFile();
+        usuario.setImgPath(dFile.getPath());
+        //Files.copy(sFile.toPath(), dFile.toPath(),
+        //    StandardCopyOption.REPLACE_EXISTING);
+
+      } catch (IOException ex) {
+        Logger.getLogger(AltaUsuario.class.getName()).log(Level.SEVERE, null, ex);
+      }
+
+    }
+// TODO add your handling code here:
+  }//GEN-LAST:event_icnUserMouseClicked
+
+  private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    if (jComboBox1.getSelectedItem() == "Usuario"){
+      lblPass.setVisible(false);
+      lblPass2.setVisible(false);
+      txtPass.setVisible(false);
+      txtPass2.setVisible(false);
+    } 
+    if (jComboBox1.getSelectedItem() == "Bibliotecario"){
+      lblPass.setVisible(true);
+      lblPass2.setVisible(true);
+      txtPass.setVisible(true);
+      txtPass2.setVisible(true);
+    } 
+    
+    usuario.setTipo(jComboBox1.getSelectedIndex() + 1);
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnAccept;
   private javax.swing.JButton btnCancel;
+  private javax.swing.JButton btnCerrarSesion;
+  private javax.swing.JButton btnCerrarSesion1;
+  private javax.swing.JButton btnGestionarPrestamo;
+  public javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnSearch;
-  private javax.swing.JButton gestionUsuario1;
-  private javax.swing.JButton gestionUsuario2;
-  private javax.swing.JButton gestionUsuario3;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
   private javax.swing.JLabel icnUser;
-  private javax.swing.JLabel jLabel29;
+  private javax.swing.JComboBox<String> jComboBox1;
   private javax.swing.JPanel jPanel1;
+  private javax.swing.JSeparator jSeparator4;
   private javax.swing.JSeparator jSeparator5;
-  private javax.swing.JSeparator jSeparator6;
   private javax.swing.JLabel lblDireccion;
   private javax.swing.JLabel lblFEI;
   private javax.swing.JLabel lblID;
@@ -374,7 +594,7 @@ public class AltaUsuario extends javax.swing.JPanel {
   private javax.swing.JTextField txtName;
   private javax.swing.JPasswordField txtPass;
   private javax.swing.JPasswordField txtPass2;
-  private javax.swing.JTextField txtSearchbar2;
+  private javax.swing.JTextField txtSearchbar;
   private javax.swing.JTextField txtTel;
   // End of variables declaration//GEN-END:variables
 }

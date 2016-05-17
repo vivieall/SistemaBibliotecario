@@ -11,48 +11,68 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import sistemabibliotecario.Usuario;
+import sistemabibliotecario.Material;
 
 public class SQLMethods {
 
-  public boolean validarIngreso(String user, String pass) {
-    boolean success = false;
+  public static int validarIngreso(String user, String pass) {
+    int success = 0;
+    Connection con = null;
     try {
       PreparedStatement ps;
       ResultSet rs;
 
-      Connection con = Conexion.getConnection();
-      String selectSQL = "SELECT ID,PASSWORD FROM Usuario WHERE  + ID = ?";
-      
-      ps = con.prepareStatement(selectSQL);
-      ps.setString(1, user);
-      rs = ps.executeQuery();
+      con = Conexion.getConnection();
+      if (con != null) {
+        String selectSQL = "SELECT bibliotecario_id, password, tipo FROM "
+            + "bibliotecario WHERE  + bibliotecario_id = ?";
 
-      if (rs.next()) {
-        pass = parsePass(pass);
-        String password = rs.getString("PASSWORD");
-        if (password.equals(pass)) {
-          success = true;
+        ps = con.prepareStatement(selectSQL);
+        ps.setString(1, user);
+        rs = ps.executeQuery();
+
+        if (rs.next() && (rs.getInt("tipo") != 1)) {
+          pass = parsePass(pass);
+          String password = rs.getString("password");
+          if (password.equals(pass)) {
+            success = 1;
+          }
+        } else if (rs.getInt("tipo") == 1){
+          pass = parsePass(pass);
+          String password = rs.getString("password");
+          if (password.equals(pass)) {
+            success = 2;
+          }
+        } else{
+          success = 0;
         }
-      } else {
-        success = false;
+      }else{
+        return -1;
       }
-      con.close();
-    } catch (SQLException |
-            NoSuchAlgorithmException |
-            UnsupportedEncodingException e) {
-      System.out.println(e);
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException |
+        NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+      System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(con);
     }
     return success;
   }
 
-  private String parsePass(String pass)
-          throws NoSuchAlgorithmException, UnsupportedEncodingException {
+  private static String parsePass(String pass)
+      throws NoSuchAlgorithmException, UnsupportedEncodingException {
     MessageDigest md;
     md = MessageDigest.getInstance("SHA-256");
     md.update(pass.getBytes("UTF-8"));
@@ -62,40 +82,43 @@ public class SQLMethods {
     return hashTxt;
   }
 
-  public void insertPass(String pass) {
+  public static void insertPass(String pass) {
     PreparedStatement ps;
     ResultSet rs;
     try {
       Connection con = Conexion.getConnection();
       pass = parsePass(pass);
-      String selectSQL = "UPDATE USUARIO SET PASSWORD='" + pass
-              + "' WHERE ID = 'Vivie'";
+      String selectSQL = "UPDATE bibliotecario SET password='" + pass
+          + "' WHERE bibliotecario_id = 'zS11012696'";
       ps = con.prepareStatement(selectSQL);
       ps.execute(selectSQL);
       con.close();
-    } catch (SQLException |
-            NoSuchAlgorithmException |
-            UnsupportedEncodingException e) {
+    } catch (ClassNotFoundException | SQLException |
+        NoSuchAlgorithmException |
+        UnsupportedEncodingException e) {
       System.out.println(e);
     }
 
   }
 
-  public boolean agregarUsuario(Usuario usuario, String pass) {
-    Connection connection;
+  public static boolean agregarUsuario(Usuario usuario, String pass) {
+    Connection connection = null;
     PreparedStatement ps;
-    ResultSet rs;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO USUARIO (ID, Nombre, "
-              + "Telefono, Dirección, Correo, Tipo, Password) " + "VALUES (?,?,?,?,?,?,?)");
+      ps = connection.prepareStatement("INSERT INTO bilbiotecario "
+          + "(bibliotecario_id, nombre, telefono, direccion, correo, tipo,"
+          + " password , img_path, ingreso_fecha) " 
+          + "VALUES (?,?,?,?,?,?,?,?,?)");
       ps.setString(1, usuario.getId());
       ps.setString(2, usuario.getName());
       ps.setString(3, usuario.getTel());
       ps.setString(4, usuario.getDirec());
       ps.setString(5, usuario.getCorreo());
-      ps.setInt(6, 1);
+      ps.setInt(6, usuario.getTipo());
       ps.setString(7, parsePass(pass));
+      ps.setString(8, usuario.getImgPath());
+      ps.setDate(9, new java.sql.Date(usuario.getFechaIngreso().getTime()));
       int res = ps.executeUpdate();
       if (res > 0) {
         JOptionPane.showMessageDialog(null, "Usuario Guardado");
@@ -105,22 +128,27 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null, "Error al Guardar Usuario");
       }
 
-      connection.close();
-
-    } catch (SQLException | NoSuchAlgorithmException |
-            UnsupportedEncodingException | HeadlessException ex) {
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException |
+        NoSuchAlgorithmException | UnsupportedEncodingException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return false;
   }
 
-  public void eliminarUsuario(String id) {
-    Connection connection;
+  public static void eliminarUsuario(String id) {
+    Connection connection = null;
     PreparedStatement ps;
-    ResultSet rs;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("DELETE FROM USUARIO WHERE id=?");
+      ps = connection.prepareStatement("DELETE FROM USUARIO WHERE usuario_id=?");
       ps.setString(1, id);
       int res = ps.executeUpdate();
       if (res > 0) {
@@ -129,22 +157,27 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null, "Error al Eliminar Usuario");
       }
 
-      connection.close();
-
-    } catch (SQLException | HeadlessException ex) {
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
   }
 
-  public boolean modificarUsuario(Usuario user) {
-    Connection connection;
+  public static boolean modificarUsuario(Usuario user) {
+    Connection connection = null;
     PreparedStatement ps;
-    ResultSet rs;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("UPDATE USUARIO "
-              + "SET Nombre=?, Telefono=?, Dirección=?, Correo=? "
-              + "WHERE ID = ?");
+      ps = connection.prepareStatement("UPDATE bibliotecario "
+          + "SET nombre=?, telefono=?, direccion=?, correo=? " 
+          + "WHERE bibliotecario_id = ?");
       ps.setString(1, user.getName());
       ps.setString(2, user.getTel());
       ps.setString(3, user.getDirec());
@@ -158,43 +191,59 @@ public class SQLMethods {
       } else {
         JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
       }
-      connection.close();
-    } catch (SQLException | HeadlessException ex) {
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return false;
   }
-  
-  public Usuario consultarUsuario(String ID){
+
+  public static Usuario consultarUsuario(String ID) {
     Usuario us = new Usuario();
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
     ResultSet rs;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("SELECT * from USUARIO WHERE ID = ?");
+      ps = connection.prepareStatement("SELECT * from bibliotecario "
+          + "WHERE bibliotecario_id = ?");
       ps.setString(1, ID);
       rs = ps.executeQuery();
-      if (rs.next()){
+      if (rs.next()) {
         us.setId(rs.getString(1));
         us.setName(rs.getString("nombre"));
         us.setTel(rs.getString("telefono"));
-        us.setDirec(rs.getString("dirección"));
+        us.setDirec(rs.getString("direccion"));
         us.setCorreo(rs.getString("correo"));
+        us.setFechaIngreso(rs.getDate("ingreso_fecha"));
+        us.setImgPath(rs.getString("img_path"));
+        us.setTipo(rs.getInt("tipo"));
       }
-      
-      connection.close();
-    } catch(Exception e){
-    
+
+    } catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return us;
   }
-  
-
 
   public ArrayList registrarPrestamo(String numFolio) {
     //POR IMPLEMENTAR.
-    Connection connection;
+    Connection connection = null;
     PreparedStatement ps;
     ResultSet rs;
     //ArrayList<String> user = new ArrayList();
@@ -208,13 +257,59 @@ public class SQLMethods {
         //return user;
       } else {
         JOptionPane.showMessageDialog(null,
-                "No existe el Usuario " + numFolio + ".");
+            "No existe el Usuario " + numFolio + ".");
       }
-      connection.close();
-    } catch (SQLException | HeadlessException ex) {
+    } catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
     }
     return null;
   }
 
+    public static boolean agregarMaterial(Material material, String pass) {
+    Connection connection = null;
+    PreparedStatement ps;
+    try {
+      connection = Conexion.getConnection();
+      ps = connection.prepareStatement("INSERT INTO MATERIAL (titulo, folio, autor, editorial, estado, tipo, nro_ejemplares , fechapublicacion) "
+              + "VALUES (?,?,?,?,?,?,?,?)");
+      ps.setString(1, material.getTitulo());
+      ps.setString(2, material.getFolio());
+      ps.setString(3, material.getAutor());
+      ps.setString(4, material.getEditorial());
+      ps.setString(5, material.getEstado());
+      ps.setInt(6, material.getTipo());
+      ps.setString(7, material.getNroEjemplares());
+      ps.setString(8, material.getFechaPublicacion());
+      //ps.setDate(9, new java.sql.Date(material.getFechaIngreso().getTime()));
+      int res = ps.executeUpdate();
+      if (res > 0) {
+        JOptionPane.showMessageDialog(null, "Material agregado");
+        connection.close();
+        return true;
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al guardar el Material");
+      }
+
+    }  catch(SQLException sqx){
+      JOptionPane.showMessageDialog(null,
+            "No se pudo conectar a la base de datos.",
+            "Error.",
+            JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    }finally{
+      Conexion.cerrarConexion(connection);
+    }
+    return false;
+}
+  
 }

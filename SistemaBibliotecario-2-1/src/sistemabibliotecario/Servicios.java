@@ -34,7 +34,7 @@ public class Servicios {
         JOptionPane.showMessageDialog(null, "No se pudo registrar el préstamo.");
       }
       connection.close();
-    } catch (SQLException | HeadlessException ex) {
+    } catch (ClassNotFoundException | SQLException | HeadlessException ex) {
       System.out.println(ex);
     }
   }

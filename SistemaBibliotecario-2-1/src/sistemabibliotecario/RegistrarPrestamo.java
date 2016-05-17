@@ -174,7 +174,7 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
     jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     jLabel2.setText("Escanee el código del material ó ingrese el número de folio:");
     jPanel4.add(jLabel2);
-    jLabel2.setBounds(40, 250, 385, 18);
+    jLabel2.setBounds(40, 240, 385, 18);
 
     txtSearchbar7.setText("111222323123");
     txtSearchbar7.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +183,7 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
       }
     });
     jPanel4.add(txtSearchbar7);
-    txtSearchbar7.setBounds(480, 250, 192, 20);
+    txtSearchbar7.setBounds(480, 240, 192, 20);
 
     gestionUsuario8.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     gestionUsuario8.setText("Registar renovación");
@@ -272,7 +272,7 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
   }//GEN-LAST:event_gestionUsuario5ActionPerformed
 
   private void jLabel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseReleased
-    MenuCirculacion mc = new MenuCirculacion(usuario);
+    MenuBibliotecario mc = new MenuBibliotecario(usuario);
     PaneB.callNxtPane( (JFrame)SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_jLabel19MouseReleased
 
