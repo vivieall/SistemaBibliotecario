@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -19,3 +20,25 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="Estructura de Datos">
+            <file>file:/Users/Vivie/Documents/SistemaBibliotecarioUV/SistemaBibliotecario-2-1/src/sistemabibliotecario/menuCirculacion.java</file>
+            <file>file:/Users/Vivie/Documents/SistemaBibliotecarioUV/SistemaBibliotecario-2-1/src/sistemabibliotecario/menuLogin.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/conection/Conexion.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/ModificarUsuario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuUsuario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/conection/SQLMethods.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/Servicios.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuLogin.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/AltaUsuario.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> origin/master
