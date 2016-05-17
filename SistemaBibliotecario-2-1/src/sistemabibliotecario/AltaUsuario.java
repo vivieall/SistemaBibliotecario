@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author ruben
+ * @author ruben. mauricio
  */
 public class AltaUsuario extends javax.swing.JPanel {
 
@@ -37,6 +37,11 @@ public class AltaUsuario extends javax.swing.JPanel {
     initComponents();
   }
 
+  /**
+   *
+   * @param usuario
+   * @param alta
+   */
   public AltaUsuario(Usuario usuario, String alta) {
     this.usuario = usuario;
     this.alta = alta;

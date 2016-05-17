@@ -10,15 +10,32 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author Vivie
+ * 
+ * @author mauricio, vivie
  */
 public class Conexion {
 
+  /**
+   * String de conexión a la BD
+   */
   public static final String URL = "jdbc:mysql://localhost:8889/BibliotecaFEI";
+
+  /**
+   * Nombre de usuario para la conexión a BD
+   */
   public static final String USERNAME = "root";
+
+  /**
+   * Contraseña de la BD
+   */
   public static final String PASSWORD = "root";
 
+  /**
+   * Inicializa la conexión a la base de datos e incluye el driver jdbc
+   * @return Conexión a la base de datos
+   * @throws SQLException
+   * @throws ClassNotFoundException
+   */
   public static Connection getConnection() 
       throws SQLException, ClassNotFoundException {
     Connection connection;
@@ -28,6 +45,10 @@ public class Conexion {
       return connection;
   }
 
+  /**
+   * Cierra la conexión a la base de datos
+   * @param con conexión previamente establecida
+   */
   public static void cerrarConexion(Connection con) {
     try {
       con.close();

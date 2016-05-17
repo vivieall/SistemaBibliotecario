@@ -18,8 +18,21 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import sistemabibliotecario.Usuario;
 
+/**
+ *
+ * @author mauricio, vivie
+ */
 public class SQLMethods {
 
+  /**
+   * Confirma que el usuario exista y tenga privilegios de bibliotecario
+   * @param user Datos de login del usuario
+   * @param pass Contraseña ingresada
+   * @return = 1 si el usuario existe y tiene privilegios
+   *         = 0 si el usuario no existe
+   *         = 2 si el usuario existe pero no tiene privilegios
+   *         = -1 si ocurrió un error de conexión
+   */
   public static int validarIngreso(String user, String pass) {
     int success = 0;
     Connection con = null;
@@ -69,6 +82,7 @@ public class SQLMethods {
     return success;
   }
 
+  
   private static String parsePass(String pass)
       throws NoSuchAlgorithmException, UnsupportedEncodingException {
     MessageDigest md;
@@ -80,6 +94,10 @@ public class SQLMethods {
     return hashTxt;
   }
 
+  /**
+   * 
+   * @param pass
+   */
   public static void insertPass(String pass) {
     PreparedStatement ps;
     ResultSet rs;
@@ -99,6 +117,12 @@ public class SQLMethods {
 
   }
 
+  /**
+   * Inserta los datos de un nuevo usuario a la base de datos
+   * @param usuario Datos del usuario 
+   * @return = true si la insercion fue exitosa
+   *         = false si no pudo agregarse el registro
+   */
   public static boolean agregarUsuario(Usuario usuario) {
     Connection connection = null;
     PreparedStatement ps;
@@ -137,6 +161,14 @@ public class SQLMethods {
     return false;
   }
 
+  /**
+   * Inserta los datos de un nuevo usuario con derechos de bibliotecario
+   * a la base de datos
+   * @param usuario Datos del usuario 
+   * @param pass Contraseña de inicio de sesión
+   * @return = true si la insercion fue exitosa
+   *         = false si falló al agregar el registro
+   */
   public static boolean agregarUsuario(Usuario usuario, String pass) {
     Connection connection = null;
     PreparedStatement ps;
@@ -179,6 +211,10 @@ public class SQLMethods {
     return false;
   }
 
+  /**
+   * Elimina un registro de la base de datos
+   * @param id identificador del registro a borrar
+   */
   public static void eliminarUsuario(String id) {
     Connection connection = null;
     PreparedStatement ps;
@@ -206,6 +242,12 @@ public class SQLMethods {
     }
   }
 
+  /**
+   * Actualiza la información personal de un usuario
+   * @param user Información del usuario
+   * @return = true si la actualización fue exitosa
+   *         = false si falló al modificar el registro
+   */
   public static boolean modificarUsuario(Usuario user) {
     Connection connection = null;
     PreparedStatement ps;
@@ -252,12 +294,11 @@ public class SQLMethods {
       return false;
     }
 
-  
-
-    
-
-  
-
+  /**
+   * Búsca un usuario o bibliotecario en la base de datos
+   * @param ID Identificador, ya sea matricula o nombre de usuario
+   * @return Datos del usuario extraídos de la base de datos
+   */
   public static Usuario consultarUsuario(String ID) {
     Usuario us = new Usuario();
     Connection connection = null;
@@ -308,6 +349,11 @@ public class SQLMethods {
     return us;
   }
 
+  /**
+   *
+   * @param numFolio
+   * @return
+   */
   public ArrayList registrarPrestamo(String numFolio) {
     //POR IMPLEMENTAR.
     Connection connection = null;
