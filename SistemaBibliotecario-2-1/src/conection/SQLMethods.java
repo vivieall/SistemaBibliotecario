@@ -11,7 +11,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,28 +42,28 @@ public class SQLMethods {
           if (password.equals(pass)) {
             success = 1;
           }
-        } else if (rs.getInt("tipo") == 1){
+        } else if (rs.getInt("tipo") == 1) {
           pass = parsePass(pass);
           String password = rs.getString("password");
           if (password.equals(pass)) {
             success = 2;
           }
-        } else{
+        } else {
           success = 0;
         }
-      }else{
+      } else {
         return -1;
       }
-    }  catch(SQLException sqx){
+    } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
       sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException |
         NoSuchAlgorithmException | UnsupportedEncodingException ex) {
       System.out.println(ex);
-    }finally{
+    } finally {
       Conexion.cerrarConexion(con);
     }
     return success;
@@ -100,6 +99,44 @@ public class SQLMethods {
 
   }
 
+  public static boolean agregarUsuario(Usuario usuario) {
+    Connection connection = null;
+    PreparedStatement ps;
+    try {
+      connection = Conexion.getConnection();
+      ps = connection.prepareStatement("INSERT INTO usuario "
+          + "(usuario_id, nombre, telefono, direccion, correo,"
+          + " ingreso_fecha) "
+          + "VALUES (?,?,?,?,?,?)");
+      ps.setString(1, usuario.getId());
+      ps.setString(2, usuario.getName());
+      ps.setString(3, usuario.getTel());
+      ps.setString(4, usuario.getDirec());
+      ps.setString(5, usuario.getCorreo());
+      ps.setDate(6, new java.sql.Date(usuario.getFechaIngreso().getTime()));
+      int res = ps.executeUpdate();
+      if (res > 0) {
+        JOptionPane.showMessageDialog(null, "Usuario Guardado");
+        connection.close();
+        return true;
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al Guardar Usuario");
+      }
+
+    } catch (SQLException sqx) {
+      JOptionPane.showMessageDialog(null,
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    } finally {
+      Conexion.cerrarConexion(connection);
+    }
+    return false;
+  }
+
   public static boolean agregarUsuario(Usuario usuario, String pass) {
     Connection connection = null;
     PreparedStatement ps;
@@ -107,7 +144,7 @@ public class SQLMethods {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("INSERT INTO bilbiotecario "
           + "(bibliotecario_id, nombre, telefono, direccion, correo, tipo,"
-          + " password , img_path, ingreso_fecha) " 
+          + " password , img_path, ingreso_fecha) "
           + "VALUES (?,?,?,?,?,?,?,?,?)");
       ps.setString(1, usuario.getId());
       ps.setString(2, usuario.getName());
@@ -127,16 +164,16 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null, "Error al Guardar Usuario");
       }
 
-    }  catch(SQLException sqx){
+    } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
       sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException |
         NoSuchAlgorithmException | UnsupportedEncodingException ex) {
       System.out.println(ex);
-    }finally{
+    } finally {
       Conexion.cerrarConexion(connection);
     }
     return false;
@@ -156,15 +193,15 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null, "Error al Eliminar Usuario");
       }
 
-    }  catch(SQLException sqx){
+    } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
       sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
-    }finally{
+    } finally {
       Conexion.cerrarConexion(connection);
     }
   }
@@ -174,35 +211,52 @@ public class SQLMethods {
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("UPDATE bibliotecario "
-          + "SET nombre=?, telefono=?, direccion=?, correo=? " 
-          + "WHERE bibliotecario_id = ?");
-      ps.setString(1, user.getName());
-      ps.setString(2, user.getTel());
-      ps.setString(3, user.getDirec());
-      ps.setString(4, user.getCorreo());
-      ps.setString(5, user.getId());
-      int res = ps.executeUpdate();
-      if (res > 0) {
-        JOptionPane.showMessageDialog(null, "Usuario Modificado");
-        connection.close();
-        return true;
+      if (user.getTipo() != -1) {
+        ps = connection.prepareStatement("UPDATE bibliotecario "
+            + "SET nombre=?, telefono=?, direccion=?, correo=? "
+            + "WHERE bibliotecario_id = ?");
+        ps.setString(1, user.getName());
+        ps.setString(2, user.getTel());
+        ps.setString(3, user.getDirec());
+        ps.setString(4, user.getCorreo());
+        ps.setString(5, user.getId());
       } else {
-        JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
+        ps = connection.prepareStatement("UPDATE usuario "
+            + "SET nombre=?, telefono=?, direccion=?, correo=? "
+            + "WHERE usuario_id = ?");
+        ps.setString(1, user.getName());
+        ps.setString(2, user.getTel());
+        ps.setString(3, user.getDirec());
+        ps.setString(4, user.getCorreo());
+        ps.setString(5, user.getId());
       }
-    }  catch(SQLException sqx){
-      JOptionPane.showMessageDialog(null,
+        int res = ps.executeUpdate();
+        if (res > 0) {
+          JOptionPane.showMessageDialog(null, "Usuario Modificado");
+          connection.close();
+          return true;
+        } else {
+          JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
+        }
+      }catch (SQLException sqx) {
+        JOptionPane.showMessageDialog(null,
             "No se pudo conectar a la base de datos.",
             "Error.",
             JOptionPane.ERROR_MESSAGE);
-      sqx.printStackTrace();
-    } catch (ClassNotFoundException | HeadlessException ex) {
-      System.out.println(ex);
-    }finally{
-      Conexion.cerrarConexion(connection);
+        sqx.printStackTrace();
+      }catch (ClassNotFoundException | HeadlessException ex) {
+        System.out.println(ex);
+      }finally {
+        Conexion.cerrarConexion(connection);
+      }
+      return false;
     }
-    return false;
-  }
+
+  
+
+    
+
+  
 
   public static Usuario consultarUsuario(String ID) {
     Usuario us = new Usuario();
@@ -224,17 +278,31 @@ public class SQLMethods {
         us.setFechaIngreso(rs.getDate("ingreso_fecha"));
         us.setImgPath(rs.getString("img_path"));
         us.setTipo(rs.getInt("tipo"));
+      } else {
+        ps = connection.prepareStatement("SELECT * from usuario "
+            + "WHERE usuario_id = ?");
+        ps.setString(1, ID);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+          us.setId(rs.getString(1));
+          us.setName(rs.getString("nombre"));
+          us.setTel(rs.getString("telefono"));
+          us.setDirec(rs.getString("direccion"));
+          us.setCorreo(rs.getString("correo"));
+          us.setFechaIngreso(rs.getDate("ingreso_fecha"));
+
+        }
       }
 
-    } catch(SQLException sqx){
+    } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
       sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
-    }finally{
+    } finally {
       Conexion.cerrarConexion(connection);
     }
     return us;
@@ -258,15 +326,15 @@ public class SQLMethods {
         JOptionPane.showMessageDialog(null,
             "No existe el Usuario " + numFolio + ".");
       }
-    } catch(SQLException sqx){
+    } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
       sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
-    }finally{
+    } finally {
       Conexion.cerrarConexion(connection);
     }
     return null;

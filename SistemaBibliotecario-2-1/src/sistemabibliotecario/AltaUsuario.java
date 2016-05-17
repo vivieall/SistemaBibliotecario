@@ -10,8 +10,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -456,9 +454,16 @@ public class AltaUsuario extends javax.swing.JPanel {
         us.setImgPath(usuario.getImgPath());
         us.setFechaIngreso(new java.util.Date(System.currentTimeMillis()));
         String pass = new String(txtPass.getPassword());
-        if (SQLMethods.agregarUsuario(us, pass)) {
+        if (jComboBox1.getSelectedItem() == "Bibliotecario") {
+          if (SQLMethods.agregarUsuario(us, pass)) {
+            MenuUsuario mu = new MenuUsuario(usuario);
+            PaneB.callNxtPane((JFrame) SwingUtilities
+                .getWindowAncestor(this), mu);
+          }
+        } else if (SQLMethods.agregarUsuario(us)) {
           MenuUsuario mu = new MenuUsuario(usuario);
-          PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+          PaneB.callNxtPane((JFrame) SwingUtilities
+              .getWindowAncestor(this), mu);
         }
       }
 
@@ -498,14 +503,14 @@ public class AltaUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-int btnOpt = JOptionPane.YES_NO_OPTION;
+    int btnOpt = JOptionPane.YES_NO_OPTION;
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
-    if (dResult == JOptionPane.YES_OPTION) { 
-    java.awt.EventQueue.invokeLater(() -> {
-      new MenuLogin().setVisible(true);
-    });
-    SwingUtilities.getWindowAncestor(this).dispose();
+    if (dResult == JOptionPane.YES_OPTION) {
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
     }// TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -546,19 +551,19 @@ int btnOpt = JOptionPane.YES_NO_OPTION;
   }//GEN-LAST:event_icnUserMouseClicked
 
   private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-    if (jComboBox1.getSelectedItem() == "Usuario"){
+    if (jComboBox1.getSelectedItem() == "Usuario") {
       lblPass.setVisible(false);
       lblPass2.setVisible(false);
       txtPass.setVisible(false);
       txtPass2.setVisible(false);
-    } 
-    if (jComboBox1.getSelectedItem() == "Bibliotecario"){
+    }
+    if (jComboBox1.getSelectedItem() == "Bibliotecario") {
       lblPass.setVisible(true);
       lblPass2.setVisible(true);
       txtPass.setVisible(true);
       txtPass2.setVisible(true);
-    } 
-    
+    }
+
     usuario.setTipo(jComboBox1.getSelectedIndex() + 1);
     // TODO add your handling code here:
   }//GEN-LAST:event_jComboBox1ActionPerformed

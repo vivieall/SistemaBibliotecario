@@ -17,7 +17,7 @@ public class Usuario {
   private String tel;
   private String direc;
   private String correo;
-  private int tipo;
+  private int tipo = -1;
   private String imgPath;
   private Date fechaIngreso;
 
