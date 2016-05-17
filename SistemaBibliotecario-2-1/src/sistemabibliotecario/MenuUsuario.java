@@ -184,7 +184,6 @@ public class MenuUsuario extends javax.swing.JPanel {
     btnGestionarPrestamo.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnGestionarPrestamoActionPerformed(evt);
-<<<<<<< HEAD
       }
     });
 
@@ -206,29 +205,6 @@ public class MenuUsuario extends javax.swing.JPanel {
       }
     });
 
-=======
-      }
-    });
-
-    btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
-    btnCerrarSesion.setToolTipText("Cerrar Sesión");
-    btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnCerrarSesionActionPerformed(evt);
-      }
-    });
-
-    btnCerrarSesion1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_home_black_24dp_1x.png"))); // NOI18N
-    btnCerrarSesion1.setToolTipText("Inicio");
-    btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnCerrarSesion1ActionPerformed(evt);
-      }
-    });
-
->>>>>>> origin/master
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
@@ -408,11 +384,7 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
     // TODO add your handling code here:
-<<<<<<< HEAD
-    MenuBibliotecario mc = new MenuBibliotecario(usuario);
-=======
     MenuCirculacion mc = new MenuCirculacion(usuario);
->>>>>>> origin/master
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 

@@ -18,7 +18,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import sistemabibliotecario.Usuario;
-import sistemabibliotecario.Material;
 
 public class SQLMethods {
 
@@ -273,43 +272,4 @@ public class SQLMethods {
     return null;
   }
 
-    public static boolean agregarMaterial(Material material, String pass) {
-    Connection connection = null;
-    PreparedStatement ps;
-    try {
-      connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO MATERIAL (titulo, folio, autor, editorial, estado, tipo, nro_ejemplares , fechapublicacion) "
-              + "VALUES (?,?,?,?,?,?,?,?)");
-      ps.setString(1, material.getTitulo());
-      ps.setString(2, material.getFolio());
-      ps.setString(3, material.getAutor());
-      ps.setString(4, material.getEditorial());
-      ps.setString(5, material.getEstado());
-      ps.setInt(6, material.getTipo());
-      ps.setString(7, material.getNroEjemplares());
-      ps.setString(8, material.getFechaPublicacion());
-      //ps.setDate(9, new java.sql.Date(material.getFechaIngreso().getTime()));
-      int res = ps.executeUpdate();
-      if (res > 0) {
-        JOptionPane.showMessageDialog(null, "Material agregado");
-        connection.close();
-        return true;
-      } else {
-        JOptionPane.showMessageDialog(null, "Error al guardar el Material");
-      }
-
-    }  catch(SQLException sqx){
-      JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
-      sqx.printStackTrace();
-    } catch (ClassNotFoundException | HeadlessException ex) {
-      System.out.println(ex);
-    }finally{
-      Conexion.cerrarConexion(connection);
-    }
-    return false;
-}
-  
 }

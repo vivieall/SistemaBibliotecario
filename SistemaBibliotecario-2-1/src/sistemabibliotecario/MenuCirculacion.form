@@ -67,37 +67,6 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-<<<<<<< HEAD:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.form
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
-                  <Component id="icnBooks" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="lblTitle" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblFEI" alignment="2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
-                  <Component id="icnUVLogo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="txtSearchbar" min="-2" pref="240" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnSearch" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnGestionarUsuario" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnGestionarPrestamo" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnMateriales" min="-2" pref="57" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCerrarSesion1" min="-2" max="-2" attributes="0"/>
-              </Group>
-=======
           <Group type="102" attributes="0">
               <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
               <Component id="icnBooks" min="-2" max="-2" attributes="0"/>
@@ -124,7 +93,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCerrarSesion1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
->>>>>>> origin/master:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.form
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,10 +122,6 @@
                       <Component id="jSeparator4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnCerrarSesion1" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-<<<<<<< HEAD:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.form
-                  <Component id="btnMateriales" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-=======
->>>>>>> origin/master:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.form
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="txtSubTitle" min="-2" max="-2" attributes="0"/>
@@ -195,11 +159,7 @@
                       </Group>
                   </Group>
               </Group>
-<<<<<<< HEAD:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.form
-              <EmptySpace pref="145" max="32767" attributes="0"/>
-=======
               <EmptySpace pref="167" max="32767" attributes="0"/>
->>>>>>> origin/master:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.form
           </Group>
       </Group>
     </DimensionLayout>
@@ -444,7 +404,6 @@
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ic_exit_to_app_black_24dp_1x.png"/>
-<<<<<<< HEAD:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.form
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
       </Properties>
@@ -478,95 +437,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCerrarSesion1">
-=======
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesionActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtSearchbar">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="66" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="B&#xfa;squeda..."/>
-      </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSearchbarFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSearchbarFocusLost"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchbarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnSearch">
->>>>>>> origin/master:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.form
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ic_search_black_24dp_1x.png"/>
-        </Property>
-<<<<<<< HEAD:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.form
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ic_home_black_24dp_1x.png"/>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Inicio"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesion1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblFecha">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Apple SD Gothic Neo" size="13" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="F.Ingreso"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="txtFecha">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="0/0/0" postCode="if (usuario.getFechaIngreso() != null){&#xa;txtFecha.setText(usuario.getFechaIngreso().toString());&#xa;}"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder>
-              <Color PropertyName="highlight" blue="cc" green="cc" red="cc" type="rgb"/>
-              <Color PropertyName="shadow" blue="cc" green="cc" red="cc" type="rgb"/>
-            </EtchetBorder>
-          </Border>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnMateriales">
-=======
-        <Property name="toolTipText" type="java.lang.String" value="Buscar"/>
-        <Property name="name" type="java.lang.String" value="Search" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCerrarSesion1">
->>>>>>> origin/master:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.form
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="12" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-<<<<<<< HEAD:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.form
-          <Image iconType="3" name="/ic_note_add_black_24dp_1x.png"/>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Materiales"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMaterialesActionPerformed"/>
-      </Events>
-=======
           <Image iconType="3" name="/ic_home_black_24dp_1x.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Inicio"/>
@@ -601,7 +476,6 @@
           </Border>
         </Property>
       </Properties>
->>>>>>> origin/master:SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuCirculacion.form
     </Component>
   </SubComponents>
 </Form>

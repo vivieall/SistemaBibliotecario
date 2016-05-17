@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author Vivie
+ * @author ruben
  */
 public class AltaUsuario extends javax.swing.JPanel {
 
@@ -511,11 +511,7 @@ int btnOpt = JOptionPane.YES_NO_OPTION;
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
     // TODO add your handling code here:
-<<<<<<< HEAD
-    MenuBibliotecario mc = new MenuBibliotecario(usuario);
-=======
     MenuCirculacion mc = new MenuCirculacion(usuario);
->>>>>>> origin/master
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 

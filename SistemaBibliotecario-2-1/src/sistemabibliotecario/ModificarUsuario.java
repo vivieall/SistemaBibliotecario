@@ -394,7 +394,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnCancelActionPerformed
 
   private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
-<<<<<<< HEAD
     // TODO add your handling code here:
   }//GEN-LAST:event_txtAddressActionPerformed
 
@@ -423,36 +422,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
     JOptionPane.showMessageDialog(null,
         "Por Implementar",
         "Por Implementar",
-=======
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtAddressActionPerformed
-
-  private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_txtTelActionPerformed
-
-  private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
-  }//GEN-LAST:event_btnSearchActionPerformed
-
-  private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
-    MenuUsuario mu = new MenuUsuario(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);    // TODO add your handling code here:
-  }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
-
-  private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
-    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
-  }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
-
-  private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
->>>>>>> origin/master
         JOptionPane.ERROR_MESSAGE);      // TODO add your handling code here:
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
@@ -470,11 +439,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
     // TODO add your handling code here:
-<<<<<<< HEAD
-    MenuBibliotecario mc = new MenuBibliotecario(usuario);
-=======
     MenuCirculacion mc = new MenuCirculacion(usuario);
->>>>>>> origin/master
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 

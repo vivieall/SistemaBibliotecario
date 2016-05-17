@@ -306,11 +306,7 @@ public class MenuLogin extends javax.swing.JFrame {
     System.out.println(SQLMethods.validarIngreso(txtUsuario.getText(), password));
     switch (SQLMethods.validarIngreso(txtUsuario.getText(), password)) {
       case 1:
-<<<<<<< HEAD
-        MenuBibliotecario mc = new MenuBibliotecario(SQLMethods
-=======
         MenuCirculacion mc = new MenuCirculacion(SQLMethods
->>>>>>> origin/master
             .consultarUsuario(txtUsuario.getText()));        
         PaneB.callNxtPane(this, mc);
         break;
