@@ -30,8 +30,8 @@ public class SQLMethods {
 
       con = Conexion.getConnection();
       if (con != null) {
-        String selectSQL = "SELECT usuario_id, password, tipo FROM "
-            + "Usuario WHERE  + usuario_id = ?";
+        String selectSQL = "SELECT bibliotecario_id, password, tipo FROM "
+            + "bibliotecario WHERE  + bibliotecario_id = ?";
 
         ps = con.prepareStatement(selectSQL);
         ps.setString(1, user);
@@ -87,8 +87,8 @@ public class SQLMethods {
     try {
       Connection con = Conexion.getConnection();
       pass = parsePass(pass);
-      String selectSQL = "UPDATE USUARIO SET password='" + pass
-          + "' WHERE usuario_id = 'zS11012696'";
+      String selectSQL = "UPDATE bibliotecario SET password='" + pass
+          + "' WHERE bibliotecario_id = 'zS11012696'";
       ps = con.prepareStatement(selectSQL);
       ps.execute(selectSQL);
       con.close();
@@ -105,9 +105,10 @@ public class SQLMethods {
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO USUARIO (usuario_id,"
-          + " nombre, telefono, direccion, correo, tipo, password , img_path,"
-          + " ingreso_fecha) " + "VALUES (?,?,?,?,?,?,?,?,?)");
+      ps = connection.prepareStatement("INSERT INTO bilbiotecario "
+          + "(bibliotecario_id, nombre, telefono, direccion, correo, tipo,"
+          + " password , img_path, ingreso_fecha) " 
+          + "VALUES (?,?,?,?,?,?,?,?,?)");
       ps.setString(1, usuario.getId());
       ps.setString(2, usuario.getName());
       ps.setString(3, usuario.getTel());
@@ -173,9 +174,9 @@ public class SQLMethods {
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("UPDATE USUARIO "
+      ps = connection.prepareStatement("UPDATE bibliotecario "
           + "SET nombre=?, telefono=?, direccion=?, correo=? " 
-          + "WHERE usuario_id = ?");
+          + "WHERE bibliotecario_id = ?");
       ps.setString(1, user.getName());
       ps.setString(2, user.getTel());
       ps.setString(3, user.getDirec());
@@ -210,8 +211,8 @@ public class SQLMethods {
     ResultSet rs;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("SELECT * from USUARIO "
-          + "WHERE usuario_id = ?");
+      ps = connection.prepareStatement("SELECT * from bibliotecario "
+          + "WHERE bibliotecario_id = ?");
       ps.setString(1, ID);
       rs = ps.executeQuery();
       if (rs.next()) {

@@ -202,18 +202,23 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
     lblPass.setMinimumSize(new java.awt.Dimension(110, 37));
     lblPass.setName(""); // NOI18N
+    lblPass.setVisible(false);
 
     lblPass2.setText("Confirmar Contraseña:");
     lblPass2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
     lblPass2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
     lblPass2.setMinimumSize(new java.awt.Dimension(110, 37));
     lblPass2.setName(""); // NOI18N
+    lblPass2.setVisible(false);
+
+    txtPass2.setVisible(false);
 
     txtPass.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtPassActionPerformed(evt);
       }
     });
+    txtPass.setVisible(false);
 
     btnCancel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
     btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_cancel_black_24dp_1x.png"))); // NOI18N
@@ -278,8 +283,8 @@ public class AltaUsuario extends javax.swing.JPanel {
     jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
 
-    jComboBox1.setMaximumRowCount(3);
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Bibliotecario", "Administrador" }));
+    jComboBox1.setMaximumRowCount(2);
+    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Bibliotecario" }));
     jComboBox1.setToolTipText("Tipo de Usuario");
     jComboBox1.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -541,6 +546,19 @@ int btnOpt = JOptionPane.YES_NO_OPTION;
   }//GEN-LAST:event_icnUserMouseClicked
 
   private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    if (jComboBox1.getSelectedItem() == "Usuario"){
+      lblPass.setVisible(false);
+      lblPass2.setVisible(false);
+      txtPass.setVisible(false);
+      txtPass2.setVisible(false);
+    } 
+    if (jComboBox1.getSelectedItem() == "Bibliotecario"){
+      lblPass.setVisible(true);
+      lblPass2.setVisible(true);
+      txtPass.setVisible(true);
+      txtPass2.setVisible(true);
+    } 
+    
     usuario.setTipo(jComboBox1.getSelectedIndex() + 1);
     // TODO add your handling code here:
   }//GEN-LAST:event_jComboBox1ActionPerformed
