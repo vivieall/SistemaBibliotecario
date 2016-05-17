@@ -94,7 +94,6 @@ public class MenuUsuario extends javax.swing.JPanel {
     btnSearch = new javax.swing.JButton();
     btnGestionarUsuario = new javax.swing.JButton();
     btnGestionarPrestamo = new javax.swing.JButton();
-    btnVerificarAdeudo = new javax.swing.JButton();
     btnCerrarSesion = new javax.swing.JButton();
     btnCerrarSesion1 = new javax.swing.JButton();
 
@@ -188,15 +187,6 @@ public class MenuUsuario extends javax.swing.JPanel {
       }
     });
 
-    btnVerificarAdeudo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnVerificarAdeudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_attach_money_black_24dp_1x.png"))); // NOI18N
-    btnVerificarAdeudo.setToolTipText("Adeudo");
-    btnVerificarAdeudo.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnVerificarAdeudoActionPerformed(evt);
-      }
-    });
-
     btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
     btnCerrarSesion.setToolTipText("Cerrar Sesión");
@@ -224,9 +214,15 @@ public class MenuUsuario extends javax.swing.JPanel {
         .addComponent(icnBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-          .addComponent(lblTitle1)
+          .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(lblFEI)
-          .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(lblTitle1)
+          .addGroup(jPanel4Layout.createSequentialGroup()
+            .addComponent(btnVerHistorial)
+            .addGap(50, 50, 50)
+            .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(50, 50, 50)
+            .addComponent(btnDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
@@ -241,21 +237,11 @@ public class MenuUsuario extends javax.swing.JPanel {
         .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(25, 25, 25))
-      .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel4Layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(btnDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(65, 65, 65)
-        .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(67, 67, 67)
-        .addComponent(btnVerHistorial)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel4Layout.setVerticalGroup(
       jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,17 +264,16 @@ public class MenuUsuario extends javax.swing.JPanel {
           .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(42, 42, 42)
         .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(199, 199, 199)
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(btnDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnVerHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(148, Short.MAX_VALUE))
+          .addComponent(btnVerHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -309,13 +294,13 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
     Usuario user = SQLMethods.consultarUsuario(txtSearchID.getText());
-    if ((!txtSearchID.getText().equals("")) 
-        && (!txtSearchID.getText().equals("Usuario")) 
+    if ((!txtSearchID.getText().equals(""))
+        && (!txtSearchID.getText().equals("Usuario"))
         && (user.getId() == null)) {
       AltaUsuario au = new AltaUsuario(usuario, txtSearchID.getText());
       PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), au);
-    } else if (!txtSearchID.getText().equals("") && 
-        (!txtSearchID.getText().equals("Usuario"))) {
+    } else if (!txtSearchID.getText().equals("")
+        && (!txtSearchID.getText().equals("Usuario"))) {
       JOptionPane.showMessageDialog(null,
           "El usuario ya existe",
           "Error",
@@ -374,30 +359,27 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     JOptionPane.showMessageDialog(null,
-      "Por Implementar",
-      "Por Implementar",
-      JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
     RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
-  private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);      // TODO add your handling code here:
-  }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
-
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
- 
-    java.awt.EventQueue.invokeLater(() -> {
-      new MenuLogin().setVisible(true);
-    });
-    SwingUtilities.getWindowAncestor(this).dispose();
-        // TODO add your handling code here:
+    int btnOpt = JOptionPane.YES_NO_OPTION;
+    int dResult = JOptionPane.showConfirmDialog(this,
+        "¿Cerrar Sesión?", " ", btnOpt);
+    if (dResult == JOptionPane.YES_OPTION) {
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
+    }
+    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
@@ -416,7 +398,6 @@ public class MenuUsuario extends javax.swing.JPanel {
   private javax.swing.JButton btnModificarUsuario;
   private javax.swing.JButton btnSearch;
   private javax.swing.JButton btnVerHistorial;
-  private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
   private javax.swing.JPanel jPanel4;

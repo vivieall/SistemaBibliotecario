@@ -68,16 +68,16 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
               <Component id="icnBooks" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="lblTitle" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="lblFEI" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
               <Component id="icnUVLogo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -88,9 +88,7 @@
               <Component id="btnGestionarUsuario" min="-2" pref="57" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnGestionarPrestamo" min="-2" pref="57" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnVerificarAdeudo" min="-2" pref="57" max="-2" attributes="0"/>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCerrarSesion1" min="-2" max="-2" attributes="0"/>
@@ -114,7 +112,6 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="btnGestionarPrestamo" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btnVerificarAdeudo" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="btnSearch" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="txtSearchbar" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btnGestionarUsuario" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
@@ -400,20 +397,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionarPrestamoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnVerificarAdeudo">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Grande" size="12" style="1"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ic_attach_money_black_24dp_1x.png"/>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Adeudo"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerificarAdeudoActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnCerrarSesion">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -483,7 +466,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="0/0/0" postCode="txtFecha.setText(usuario.getFechaIngreso().toString());"/>
+        <Property name="text" type="java.lang.String" value="0/0/0" postCode="if (usuario.getFechaIngreso() != null){&#xa;txtFecha.setText(usuario.getFechaIngreso().toString());&#xa;}"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder>

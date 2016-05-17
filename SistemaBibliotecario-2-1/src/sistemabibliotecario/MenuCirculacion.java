@@ -75,7 +75,6 @@ public class MenuCirculacion extends javax.swing.JPanel {
     lblID = new javax.swing.JLabel();
     btnGestionarUsuario = new javax.swing.JButton();
     btnGestionarPrestamo = new javax.swing.JButton();
-    btnVerificarAdeudo = new javax.swing.JButton();
     btnCerrarSesion = new javax.swing.JButton();
     txtSearchbar = new javax.swing.JTextField();
     btnSearch = new javax.swing.JButton();
@@ -185,15 +184,6 @@ public class MenuCirculacion extends javax.swing.JPanel {
       }
     });
 
-    btnVerificarAdeudo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnVerificarAdeudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_attach_money_black_24dp_1x.png"))); // NOI18N
-    btnVerificarAdeudo.setToolTipText("Adeudo");
-    btnVerificarAdeudo.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnVerificarAdeudoActionPerformed(evt);
-      }
-    });
-
     btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
     btnCerrarSesion.setToolTipText("Cerrar Sesión");
@@ -243,7 +233,9 @@ public class MenuCirculacion extends javax.swing.JPanel {
 
     txtFecha.setBackground(new java.awt.Color(204, 204, 204));
     txtFecha.setText("0/0/0");
-    txtFecha.setText(usuario.getFechaIngreso().toString());
+    if (usuario.getFechaIngreso() != null){
+      txtFecha.setText(usuario.getFechaIngreso().toString());
+    }
     txtFecha.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -281,15 +273,15 @@ public class MenuCirculacion extends javax.swing.JPanel {
           .addComponent(txtSubTitle, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle)
           .addComponent(lblFEI))
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addGap(0, 0, Short.MAX_VALUE))
+        .addGap(0, 25, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,9 +291,7 @@ public class MenuCirculacion extends javax.swing.JPanel {
         .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnCerrarSesion1)
@@ -321,7 +311,6 @@ public class MenuCirculacion extends javax.swing.JPanel {
         .addGap(20, 20, 20)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,24 +362,20 @@ public class MenuCirculacion extends javax.swing.JPanel {
     PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
-  private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    JOptionPane.showMessageDialog(null,
-              "Por Implementar",
-              "Por Implementar",
-              JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
-  }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
-
   private void btnGestionarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioMouseClicked
 
   }//GEN-LAST:event_btnGestionarUsuarioMouseClicked
 
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
- 
+    int btnOpt = JOptionPane.YES_NO_OPTION;
+    int dResult = JOptionPane.showConfirmDialog(this,
+        "¿Cerrar Sesión?", " ", btnOpt);
+    if (dResult == JOptionPane.YES_OPTION) { 
     java.awt.EventQueue.invokeLater(() -> {
       new MenuLogin().setVisible(true);
     });
     SwingUtilities.getWindowAncestor(this).dispose();
-    
+    }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
   private void txtSearchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchbarFocusGained
@@ -459,7 +444,6 @@ public class MenuCirculacion extends javax.swing.JPanel {
   private javax.swing.JButton btnGestionarPrestamo;
   public javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnSearch;
-  private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
   private javax.swing.JLabel icnUser;

@@ -174,7 +174,7 @@ public class SQLMethods {
     try {
       connection = Conexion.getConnection();
       ps = connection.prepareStatement("UPDATE USUARIO "
-          + "SET nombre=?, telefono=?, direccion=?, correo=? "
+          + "SET nombre=?, telefono=?, direccion=?, correo=? " 
           + "WHERE usuario_id = ?");
       ps.setString(1, user.getName());
       ps.setString(2, user.getTel());

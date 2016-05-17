@@ -117,7 +117,6 @@ public class AltaUsuario extends javax.swing.JPanel {
     btnSearch = new javax.swing.JButton();
     btnGestionarUsuario = new javax.swing.JButton();
     btnGestionarPrestamo = new javax.swing.JButton();
-    btnVerificarAdeudo = new javax.swing.JButton();
     btnCerrarSesion = new javax.swing.JButton();
     btnCerrarSesion1 = new javax.swing.JButton();
     jSeparator4 = new javax.swing.JSeparator();
@@ -171,7 +170,7 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblID.setText("ID: " + alta);
 
     btnAccept.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-    btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_done_black_24dp_1x.png"))); // NOI18N
+    btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_save_black_24dp_1x.png"))); // NOI18N
     btnAccept.setToolTipText("Aceptar");
     btnAccept.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +216,7 @@ public class AltaUsuario extends javax.swing.JPanel {
     });
 
     btnCancel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-    btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_highlight_off_black_24dp_1x.png"))); // NOI18N
+    btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_cancel_black_24dp_1x.png"))); // NOI18N
     btnCancel.setToolTipText("Cancelar");
     btnCancel.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,15 +257,6 @@ public class AltaUsuario extends javax.swing.JPanel {
       }
     });
 
-    btnVerificarAdeudo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnVerificarAdeudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_attach_money_black_24dp_1x.png"))); // NOI18N
-    btnVerificarAdeudo.setToolTipText("Adeudo");
-    btnVerificarAdeudo.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnVerificarAdeudoActionPerformed(evt);
-      }
-    });
-
     btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
     btnCerrarSesion.setToolTipText("Cerrar Sesión");
@@ -302,16 +292,16 @@ public class AltaUsuario extends javax.swing.JPanel {
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(lblFEI)
           .addComponent(lblTitle))
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addGap(0, 0, Short.MAX_VALUE))
+        .addGap(0, 25, Short.MAX_VALUE))
       .addGroup(jPanel1Layout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,9 +311,7 @@ public class AltaUsuario extends javax.swing.JPanel {
         .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,7 +377,6 @@ public class AltaUsuario extends javax.swing.JPanel {
           .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(42, 42, 42)
@@ -449,22 +436,29 @@ public class AltaUsuario extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-    if (validateTexts()) {
-      Usuario us = new Usuario();
-      us.setId(alta);
-      us.setName(txtName.getText());
-      us.setTel(txtTel.getText());
-      us.setDirec(txtAddress.getText());
-      us.setCorreo(txtMail.getText());
-      us.setTipo(jComboBox1.getSelectedIndex() + 1);
-      us.setImgPath(usuario.getImgPath());
-      us.setFechaIngreso(new java.util.Date(System.currentTimeMillis()));
-      String pass = new String(txtPass.getPassword());
-      if (SQLMethods.agregarUsuario(us, pass)) {
-        MenuUsuario mu = new MenuUsuario(usuario);
-        PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+    int btnOpt = JOptionPane.YES_NO_OPTION;
+    int dResult = JOptionPane.showConfirmDialog(this,
+        "¿Desea guardar el usuario " + alta + "?", " ", btnOpt);
+    if (dResult == JOptionPane.YES_OPTION) {
+      if (validateTexts()) {
+        Usuario us = new Usuario();
+        us.setId(alta);
+        us.setName(txtName.getText());
+        us.setTel(txtTel.getText());
+        us.setDirec(txtAddress.getText());
+        us.setCorreo(txtMail.getText());
+        us.setTipo(jComboBox1.getSelectedIndex() + 1);
+        us.setImgPath(usuario.getImgPath());
+        us.setFechaIngreso(new java.util.Date(System.currentTimeMillis()));
+        String pass = new String(txtPass.getPassword());
+        if (SQLMethods.agregarUsuario(us, pass)) {
+          MenuUsuario mu = new MenuUsuario(usuario);
+          PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+        }
       }
+
     }
+
     // TODO add your handling code here:
   }//GEN-LAST:event_btnAcceptActionPerformed
 
@@ -483,9 +477,9 @@ public class AltaUsuario extends javax.swing.JPanel {
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     JOptionPane.showMessageDialog(null,
-      "Por Implementar",
-      "Por Implementar",
-      JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        "Por Implementar",
+        "Por Implementar",
+        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
@@ -495,23 +489,19 @@ public class AltaUsuario extends javax.swing.JPanel {
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
     RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
-  private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    JOptionPane.showMessageDialog(null,
-      "Por Implementar",
-      "Por Implementar",
-      JOptionPane.ERROR_MESSAGE);      // TODO add your handling code here:
-  }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
-
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-
+int btnOpt = JOptionPane.YES_NO_OPTION;
+    int dResult = JOptionPane.showConfirmDialog(this,
+        "¿Cerrar Sesión?", " ", btnOpt);
+    if (dResult == JOptionPane.YES_OPTION) { 
     java.awt.EventQueue.invokeLater(() -> {
       new MenuLogin().setVisible(true);
     });
     SwingUtilities.getWindowAncestor(this).dispose();
-    // TODO add your handling code here:
+    }// TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
@@ -522,12 +512,12 @@ public class AltaUsuario extends javax.swing.JPanel {
 
   private void icnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icnUserMouseClicked
     JFileChooser fc = new JFileChooser();
-    fc.addChoosableFileFilter(new FileNameExtensionFilter("Images", 
+    fc.addChoosableFileFilter(new FileNameExtensionFilter("Images",
         "jpeg", "jpg", "png"));
     fc.setAcceptAllFileFilterUsed(false);
     int returnVal = fc.showOpenDialog(jPanel1);
-    
-    if (returnVal == JFileChooser.APPROVE_OPTION){
+
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
       File sFile = fc.getSelectedFile();
       File dFile = new File("udata/r_usricn_" + alta + ".png");
       try {
@@ -545,14 +535,13 @@ public class AltaUsuario extends javax.swing.JPanel {
       } catch (IOException ex) {
         Logger.getLogger(AltaUsuario.class.getName()).log(Level.SEVERE, null, ex);
       }
-     
 
     }
 // TODO add your handling code here:
   }//GEN-LAST:event_icnUserMouseClicked
 
   private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-   usuario.setTipo(jComboBox1.getSelectedIndex() + 1);
+    usuario.setTipo(jComboBox1.getSelectedIndex() + 1);
     // TODO add your handling code here:
   }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -565,7 +554,6 @@ public class AltaUsuario extends javax.swing.JPanel {
   private javax.swing.JButton btnGestionarPrestamo;
   public javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnSearch;
-  private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
   private javax.swing.JLabel icnUser;
