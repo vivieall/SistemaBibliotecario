@@ -511,7 +511,7 @@ int btnOpt = JOptionPane.YES_NO_OPTION;
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
     // TODO add your handling code here:
-    MenuCirculacion mc = new MenuCirculacion(usuario);
+    MenuBibliotecario mc = new MenuBibliotecario(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 

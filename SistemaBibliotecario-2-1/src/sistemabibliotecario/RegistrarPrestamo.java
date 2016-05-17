@@ -272,7 +272,7 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
   }//GEN-LAST:event_gestionUsuario5ActionPerformed
 
   private void jLabel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseReleased
-    MenuCirculacion mc = new MenuCirculacion(usuario);
+    MenuBibliotecario mc = new MenuBibliotecario(usuario);
     PaneB.callNxtPane( (JFrame)SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_jLabel19MouseReleased
 

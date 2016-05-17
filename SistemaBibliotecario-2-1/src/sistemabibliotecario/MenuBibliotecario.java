@@ -25,7 +25,7 @@ import javax.swing.SwingUtilities;
  *
  * @author ruben
  */
-public class MenuCirculacion extends javax.swing.JPanel {
+public class MenuBibliotecario extends javax.swing.JPanel {
   private Usuario usuario;
 
   public Usuario getUsuario() {
@@ -39,11 +39,11 @@ public class MenuCirculacion extends javax.swing.JPanel {
   /**
    * Creates new form menu_actor
    */
-  public MenuCirculacion(Usuario user) {
+  public MenuBibliotecario(Usuario user) {
     this.usuario = user;
     initComponents();
   }
-  public MenuCirculacion(){
+  public MenuBibliotecario(){
     initComponents();
   }
 
@@ -273,29 +273,31 @@ public class MenuCirculacion extends javax.swing.JPanel {
           .addComponent(txtSubTitle, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
-        .addGap(0, 22, Short.MAX_VALUE)
-        .addComponent(icnBooks)
-        .addGap(0, 22, Short.MAX_VALUE)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-          .addComponent(lblTitle)
-          .addComponent(lblFEI))
-        .addGap(0, 22, Short.MAX_VALUE)
-        .addComponent(icnUVLogo)
-        .addGap(0, 25, Short.MAX_VALUE))
-      .addGroup(layout.createSequentialGroup()
-        .addGap(20, 20, 20)
-        .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(btnCerrarSesion)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(btnCerrarSesion1)
-        .addGap(25, 25, 25))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addGap(0, 22, Short.MAX_VALUE)
+            .addComponent(icnBooks)
+            .addGap(0, 22, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+              .addComponent(lblTitle)
+              .addComponent(lblFEI))
+            .addGap(0, 22, Short.MAX_VALUE)
+            .addComponent(icnUVLogo)
+            .addGap(0, 0, Short.MAX_VALUE))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(20, 20, 20)
+            .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCerrarSesion)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btnCerrarSesion1)))
+        .addGap(0, 0, 0))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,7 +406,7 @@ public class MenuCirculacion extends javax.swing.JPanel {
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
     // TODO add your handling code here:
-    MenuCirculacion mc = new MenuCirculacion(usuario);
+    MenuBibliotecario mc = new MenuBibliotecario(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
@@ -434,7 +436,7 @@ public class MenuCirculacion extends javax.swing.JPanel {
     //</editor-fold>
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(() -> {
-      new MenuCirculacion().setVisible(true);
+      new MenuBibliotecario().setVisible(true);
     });
   }
 
