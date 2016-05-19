@@ -38,9 +38,9 @@ public class AltaUsuario extends javax.swing.JPanel {
   }
 
   /**
-   *
-   * @param usuario
-   * @param alta
+   * Crea un panel para el registro de un nuevo usuario
+   * @param usuario Información de la cuenta activa
+   * @param alta usuario_id del usuario a registrar
    */
   public AltaUsuario(Usuario usuario, String alta) {
     this.usuario = usuario;

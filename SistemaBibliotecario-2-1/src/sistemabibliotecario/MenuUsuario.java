@@ -13,32 +13,48 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Vivie
+ * @author mauricio, Vivie
  */
 public class MenuUsuario extends javax.swing.JPanel {
 
   Usuario usuario;
 
+  /**
+   * Getter para la variable Usuario
+   * @return Información del Usuario que inició sesión
+   */
   public Usuario getUsuario() {
     return usuario;
   }
 
+  /**
+   * Setter para la variable Usuario
+   * @param usuario Información de usuario
+   */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
   }
 
   /**
-   * Creates new form Modificar1
+   * Crea un panel con opciones para administración de usuarios
    */
   public MenuUsuario() {
     initComponents();
   }
 
+  /**
+   * Crea un panel con opciones para la administración de usuarios
+   * @param usuario Información del usuario que inició sesión
+   */
   public MenuUsuario(Usuario usuario) {
     this.usuario = usuario;
     initComponents();
   }
 
+  /**
+   * Invoca el panel MenuUsuario
+   * @param args
+   */
   public static void main(String args[]) {
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

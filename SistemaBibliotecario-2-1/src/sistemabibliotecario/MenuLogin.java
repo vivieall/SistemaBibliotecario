@@ -12,12 +12,12 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Vivie
+ * @author mauricio, Vivie
  */
 public class MenuLogin extends javax.swing.JFrame {
 
   /**
-   * Creates new form Login
+   * Crea un nuevo panel para inicio de sesión
    */
   public MenuLogin() {
     initComponents();

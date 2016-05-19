@@ -18,26 +18,39 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author ruben
+ * @author mauricio, ruben
  */
 public class MenuBibliotecario extends javax.swing.JPanel {
   private Usuario usuario;
 
+  /**
+   * Getter para la variable Usuario
+   * @return Usuario que inició sesión
+   */
   public Usuario getUsuario() {
     return usuario;
   }
 
+  /**
+   * Setter para la variable Usuario
+   * @param us información del usuario que inició sesión
+   */
   public void setUsuario(Usuario us) {
     this.usuario = us;
   }
 
   /**
-   * Creates new form menu_actor
+   * Crea un panel con la información del Bibliotecario
+   * @param user Información del usuario bibliotecario
    */
   public MenuBibliotecario(Usuario user) {
     this.usuario = user;
     initComponents();
   }
+
+  /**
+   * Constructor por defecto de Panel
+   */
   public MenuBibliotecario(){
     initComponents();
   }
@@ -405,7 +418,11 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
-    public static void main(String args[]) {
+  /**
+   * Método principal que llama al Panel
+   * @param args
+   */
+  public static void main(String args[]) {
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

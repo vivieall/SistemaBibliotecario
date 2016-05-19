@@ -9,12 +9,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- *
- * @author mauri
+ * Clase con funcionaalidad de control de formas
+ * @author mauricio
  */
 public class PaneB {
   
-    public static void callNxtPane(JFrame frame,JPanel jpanel){
+  /**
+   * Llama una nueva forma dentro del JFrame activo
+   * @param frame Frame activo
+   * @param jpanel Panel que ocupará el Frame 
+   */
+  public static void callNxtPane(JFrame frame,JPanel jpanel){
     frame.setContentPane(jpanel);
     frame.revalidate();
   }
