@@ -5,6 +5,7 @@
  */
 package sistemabibliotecario;
 
+import com.sun.glass.events.KeyEvent;
 import comportamiento.PaneB;
 import comportamiento.Usuario;
 import comportamiento.JTextFieldLimit;
@@ -224,6 +225,11 @@ public class MenuBibliotecario extends javax.swing.JPanel {
         txtSearchbarActionPerformed(evt);
       }
     });
+    txtSearchbar.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtSearchbarKeyPressed(evt);
+      }
+    });
 
     btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
     btnSearch.setToolTipText("Buscar");
@@ -398,10 +404,9 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
-      java.awt.EventQueue.invokeLater(() -> {
-        new MenuLogin().setVisible(true);
-      });
-      SwingUtilities.getWindowAncestor(this).dispose();
+      MenuLogin ml = new MenuLogin();
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
+          ml.getMainPanel());
     }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -415,7 +420,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     if (txtSearchbar.getText().equals("")) {
       txtSearchbar.setText("Búsqueda...");
       txtSearchbar.setForeground(Color.gray);
-    }    // TODO add your handling code here:
+    }    
   }//GEN-LAST:event_txtSearchbarFocusLost
 
   private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
@@ -429,7 +434,6 @@ public class MenuBibliotecario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
-    // TODO add your handling code here:
     MenuBibliotecario mc = new MenuBibliotecario(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
@@ -437,8 +441,13 @@ public class MenuBibliotecario extends javax.swing.JPanel {
   private void btnGestionarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMaterialActionPerformed
     AgregarMaterial mt = new AgregarMaterial(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mt);
-    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarMaterialActionPerformed
+
+  private void txtSearchbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchbarKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnSearch.doClick();
+    }   
+  }//GEN-LAST:event_txtSearchbarKeyPressed
 
   /**
    * Método principal que llama al Panel

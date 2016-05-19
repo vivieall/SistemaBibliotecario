@@ -364,15 +364,13 @@ public class AgregarMaterial extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
-      java.awt.EventQueue.invokeLater(() -> {
-        new MenuLogin().setVisible(true);
-      });
-      SwingUtilities.getWindowAncestor(this).dispose();
+      MenuLogin ml = new MenuLogin();
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
+          ml.getMainPanel());
     }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
-    // TODO add your handling code here:
     MenuBibliotecario mc = new MenuBibliotecario(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
@@ -380,11 +378,9 @@ public class AgregarMaterial extends javax.swing.JPanel {
   private void btnGestionarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMaterialesActionPerformed
     AgregarMaterial mt = new AgregarMaterial(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mt);
-    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarMaterialesActionPerformed
 
   private void btnModificarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMaterialActionPerformed
-    // TODO add your handling code here:
     JOptionPane.showMessageDialog(null,
         "En construcción",
         "En construcción",
@@ -392,7 +388,6 @@ public class AgregarMaterial extends javax.swing.JPanel {
   }//GEN-LAST:event_btnModificarMaterialActionPerformed
 
   private void btnEliminarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMaterialActionPerformed
-    // TODO add your handling code here:
     JOptionPane.showMessageDialog(null,
         "En construcción",
         "En construcción",
@@ -450,7 +445,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
     if (txtSearchbar.getText().equals("")) {
       txtSearchbar.setText("Búsqueda...");
       txtSearchbar.setForeground(Color.gray);
-    }    // TODO add your handling code here:
+    }    
   }//GEN-LAST:event_txtSearchbarFocusLost
 
   private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
@@ -458,7 +453,8 @@ public class AgregarMaterial extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbarActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText(), usuario);
+    ConsultarCatalogo cc = new ConsultarCatalogo(
+        txtSearchbar.getText(), usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 

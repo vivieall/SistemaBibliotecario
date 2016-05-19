@@ -49,8 +49,8 @@ public class SQLMethods {
         ps = con.prepareStatement(selectSQL);
         ps.setString(1, user);
         rs = ps.executeQuery();
-
-        if (rs.next() && (rs.getInt("tipo") != 1)) {
+        if (rs.next()){
+        if (rs.getInt("tipo") != 1) {
           pass = parsePass(pass);
           String password = rs.getString("password");
           if (password.equals(pass)) {
@@ -62,6 +62,7 @@ public class SQLMethods {
           if (password.equals(pass)) {
             success = 2;
           }
+        }
         } else {
           success = 0;
         }
@@ -223,7 +224,8 @@ public class SQLMethods {
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("DELETE FROM USUARIO WHERE usuario_id=?");
+      ps = connection.prepareStatement(
+          "DELETE FROM USUARIO WHERE usuario_id=?");
       ps.setString(1, id);
       int res = ps.executeUpdate();
       if (res > 0) {
@@ -367,7 +369,8 @@ public class SQLMethods {
     //ArrayList<String> user = new ArrayList();
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("SELECT * FROM MATERIAL WHERE numFolio=?");
+      ps = connection.prepareStatement(
+          "SELECT * FROM MATERIAL WHERE numFolio=?");
       ps.setString(1, numFolio);
       rs = ps.executeQuery();
       if (rs.next()) {
@@ -467,7 +470,8 @@ public class SQLMethods {
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO MATERIAL (titulo, folio, autor, editorial, tipo"
+      ps = connection.prepareStatement(
+          "INSERT INTO MATERIAL (titulo, folio, autor, editorial, tipo"
           + ", publicacion_fecha) " + "VALUES (?,?,?,?,?,?)");
       ps.setString(1, material.getTitulo());
       ps.setString(2, material.getFolio());
@@ -512,7 +516,8 @@ public class SQLMethods {
       if (res > 0) {
         JOptionPane.showMessageDialog(null, "Se registró el préstamo.");
       } else {
-        JOptionPane.showMessageDialog(null, "No se pudo registrar el préstamo.");
+        JOptionPane.showMessageDialog(null,
+            "No se pudo registrar el préstamo.");
       }
       connection.close();
     } catch (ClassNotFoundException | SQLException | HeadlessException ex) {

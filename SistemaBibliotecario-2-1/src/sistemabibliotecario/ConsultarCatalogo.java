@@ -224,7 +224,7 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
     if (txtSearchbar.getText().equals("")) {
       txtSearchbar.setText("Búsqueda...");
       txtSearchbar.setForeground(Color.gray);
-    }    // TODO add your handling code here:
+    }    
   }//GEN-LAST:event_txtSearchbarFocusLost
 
   private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed

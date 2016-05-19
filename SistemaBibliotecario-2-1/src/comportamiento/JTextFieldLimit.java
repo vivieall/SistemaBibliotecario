@@ -8,6 +8,7 @@ package comportamiento;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+
 /**
  *
  * @author mauricio
@@ -16,18 +17,19 @@ import javax.swing.text.PlainDocument;
 
 public class JTextFieldLimit extends PlainDocument {
   private int limit;
+
+  /**
+   * Constructor con el limite de caracteres
+   * @param limit Limite de caracteres
+   */
   public JTextFieldLimit(int limit) {
     super();
     this.limit = limit;
   }
 
-  public JTextFieldLimit(int limit, boolean upper) {
-    super();
-    this.limit = limit;
-  }
-
   @Override
-  public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+  public void insertString(int offset, String str, AttributeSet attr)
+      throws BadLocationException {
     if (str == null)
       return;
 

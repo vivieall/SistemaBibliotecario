@@ -5,6 +5,7 @@
  */
 package sistemabibliotecario;
 
+import com.sun.glass.events.KeyEvent;
 import comportamiento.PaneB;
 import comportamiento.JTextFieldLimit;
 import javax.swing.JOptionPane;
@@ -24,10 +25,13 @@ public class MenuLogin extends javax.swing.JFrame {
    */
   public MenuLogin() {
     initComponents();
-    SwingUtilities.getRootPane(this).setDefaultButton(btnIngresar);
     txtUsuario.requestFocus();
   }
 
+  /**
+   *
+   * @return Panel for login in. MenuLogin
+   */
   public JPanel getMainPanel() {
     return mainPanel;
   }
@@ -86,6 +90,11 @@ public class MenuLogin extends javax.swing.JFrame {
         txtSearchbarActionPerformed(evt);
       }
     });
+    txtSearchbar.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtSearchbarKeyPressed(evt);
+      }
+    });
 
     btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
     btnSearch.setToolTipText("Buscar");
@@ -110,6 +119,11 @@ public class MenuLogin extends javax.swing.JFrame {
     txtUsuario.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtUsuarioActionPerformed(evt);
+      }
+    });
+    txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtUsuarioKeyPressed(evt);
       }
     });
 
@@ -155,6 +169,11 @@ public class MenuLogin extends javax.swing.JFrame {
     txtPass.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtPassActionPerformed(evt);
+      }
+    });
+    txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtPassKeyPressed(evt);
       }
     });
 
@@ -306,10 +325,10 @@ public class MenuLogin extends javax.swing.JFrame {
   }//GEN-LAST:event_btnIngresarKeyReleased
 
   private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-    // TODO add your handling code here:
     char pass[] = txtPass.getPassword();
     String password = new String(pass);
-    System.out.println(SQLMethods.validarIngreso(txtUsuario.getText(), password));
+    System.out.println(
+        SQLMethods.validarIngreso(txtUsuario.getText(), password));
     switch (SQLMethods.validarIngreso(txtUsuario.getText(), password)) {
     case 1:
       MenuBibliotecario mc = new MenuBibliotecario(SQLMethods
@@ -366,7 +385,7 @@ public class MenuLogin extends javax.swing.JFrame {
     if (txtSearchbar.getText().equals("")) {
       txtSearchbar.setText("Búsqueda...");
       txtSearchbar.setForeground(Color.gray);
-    }    // TODO add your handling code here:
+    }   
   }//GEN-LAST:event_txtSearchbarFocusLost
 
   private void txtSearchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchbarFocusGained
@@ -397,12 +416,30 @@ public class MenuLogin extends javax.swing.JFrame {
         .getResource("/ic_remove_red_eye_black_24dp_1x.png")));
     if (txtPass.getForeground() != Color.gray) {
       txtPass.setEchoChar('*');
-    } // TODO add your handling code here:
+    } 
   }//GEN-LAST:event_peekBtnMouseReleased
 
   private void mainPanelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mainPanelKeyPressed
-    // TODO add your handling code here:
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnIngresar.doClick();
+    }
   }//GEN-LAST:event_mainPanelKeyPressed
+
+  private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnIngresar.doClick();
+    }  }//GEN-LAST:event_txtUsuarioKeyPressed
+
+  private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnIngresar.doClick();
+    }  }//GEN-LAST:event_txtPassKeyPressed
+
+  private void txtSearchbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchbarKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnSearch.doClick();
+    }
+  }//GEN-LAST:event_txtSearchbarKeyPressed
 
   /**
    * @param args the command line arguments

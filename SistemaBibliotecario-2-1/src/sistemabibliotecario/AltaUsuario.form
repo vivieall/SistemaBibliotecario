@@ -464,6 +464,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="B&#xfa;squeda..."/>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchbarKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSearch">
           <Properties>

@@ -252,7 +252,7 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
     JOptionPane.showMessageDialog(null,
         "Por Implementar",
         "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        JOptionPane.INFORMATION_MESSAGE);   
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
   private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -277,14 +277,14 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
 
   private void jLabel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseReleased
     MenuBibliotecario mc = new MenuBibliotecario(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);  
   }//GEN-LAST:event_jLabel19MouseReleased
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     JOptionPane.showMessageDialog(null,
         "Por Implementar",
         "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+        JOptionPane.ERROR_MESSAGE);   
   }//GEN-LAST:event_btnSearchActionPerformed
 
 

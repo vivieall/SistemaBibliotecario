@@ -5,6 +5,7 @@
  */
 package sistemabibliotecario;
 
+import com.sun.glass.events.KeyEvent;
 import comportamiento.PaneB;
 import comportamiento.Usuario;
 import comportamiento.JTextFieldLimit;
@@ -201,6 +202,11 @@ public class ModificarUsuario extends javax.swing.JPanel {
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
     txtSearchbar.setDocument(new JTextFieldLimit(50));
     txtSearchbar.setText("Búsqueda...");
+    txtSearchbar.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtSearchbarKeyPressed(evt);
+      }
+    });
 
     jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
@@ -399,15 +405,16 @@ public class ModificarUsuario extends javax.swing.JPanel {
         us.setCorreo(txtMail.getText());
         if (SQLMethods.modificarUsuario(us)) {
           MenuUsuario mu = new MenuUsuario(usuario);
-          PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);
+          PaneB.callNxtPane(
+              (JFrame) SwingUtilities.getWindowAncestor(this), mu);
         }
       }
-    }    // TODO add your handling code here:
+    }    
   }//GEN-LAST:event_btnSaveActionPerformed
 
   private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
     MenuUsuario mu = new MenuUsuario(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);  
   }//GEN-LAST:event_btnCancelActionPerformed
 
   private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
@@ -425,12 +432,12 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
     MenuUsuario mu = new MenuUsuario(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mu);   
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
     RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);   
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -438,24 +445,27 @@ public class ModificarUsuario extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
-      java.awt.EventQueue.invokeLater(() -> {
-        new MenuLogin().setVisible(true);
-      });
-      SwingUtilities.getWindowAncestor(this).dispose();
-    } // TODO add your handling code here:
+      MenuLogin ml = new MenuLogin();
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
+          ml.getMainPanel());
+    } 
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
-    // TODO add your handling code here:
     MenuBibliotecario mc = new MenuBibliotecario(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
   private void btnGestionarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMaterialActionPerformed
     AgregarMaterial mt = new AgregarMaterial(usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mt);
-    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarMaterialActionPerformed
+
+  private void txtSearchbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchbarKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnSearch.doClick();
+    }    
+  }//GEN-LAST:event_txtSearchbarKeyPressed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
