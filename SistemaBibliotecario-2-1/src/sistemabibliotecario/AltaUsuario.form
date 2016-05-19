@@ -361,15 +361,27 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMail">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtMail.setDocument(new JTextFieldLimit(50));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAddress">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtAddress.setDocument(new JTextFieldLimit(100));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtName">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtName.setDocument(new JTextFieldLimit(50));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTel.setDocument(new JTextFieldLimit(20));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPass">
           <Properties>
@@ -409,7 +421,7 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPass2">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPass2.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPass2.setDocument(new JTextFieldLimit(20));&#xa;&#xa;txtPass2.setVisible(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPass">
@@ -417,6 +429,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPassActionPerformed"/>
           </Events>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtPass.setDocument(new JTextFieldLimit(20));"/>
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="txtPass.setVisible(false);"/>
           </AuxValues>
         </Component>
@@ -446,7 +459,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtSearchbar">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="txtSearchbar.setDocument(new JTextFieldLimit(50));">
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#xfa;squeda..."/>

@@ -63,6 +63,7 @@ public class MenuLogin extends javax.swing.JFrame {
     });
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchbar.setDocument(new JTextFieldLimit(100));
     txtSearchbar.setText("Búsqueda...");
     txtSearchbar.setToolTipText("");
     txtSearchbar.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -89,6 +90,7 @@ public class MenuLogin extends javax.swing.JFrame {
     });
 
     txtUsuario.setForeground(new java.awt.Color(102, 102, 102));
+    txtUsuario.setDocument(new JTextFieldLimit(50));
     txtUsuario.setText("Usuario");
     txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
       public void focusGained(java.awt.event.FocusEvent evt) {
@@ -130,6 +132,8 @@ public class MenuLogin extends javax.swing.JFrame {
     jSeparator3.setPreferredSize(new java.awt.Dimension(755, 2));
 
     txtPass.setForeground(new java.awt.Color(102, 102, 102));
+    txtPass.setDocument(new JTextFieldLimit(20));
+
     txtPass.setForeground(Color.gray);
     txtPass.setText("Contraseña");
     txtPass.setEchoChar((char) 0);
@@ -163,9 +167,6 @@ public class MenuLogin extends javax.swing.JFrame {
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
 
     peekBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_remove_red_eye_black_24dp_1x.png"))); // NOI18N
-    peekBtn.setMaximumSize(new java.awt.Dimension(57, 33));
-    peekBtn.setMinimumSize(new java.awt.Dimension(57, 33));
-    peekBtn.setPreferredSize(new java.awt.Dimension(57, 33));
     peekBtn.setContentAreaFilled(false);
     peekBtn.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -199,7 +200,7 @@ public class MenuLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
               .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-              .addComponent(peekBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+              .addComponent(peekBtn))))
         .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
@@ -236,17 +237,17 @@ public class MenuLogin extends javax.swing.JFrame {
             .addGap(42, 42, 42)
             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(74, 74, 74)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(55, 55, 55)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(peekBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+          .addComponent(peekBtn))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
         .addComponent(lblError)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
         .addComponent(btnIngresar)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
         .addComponent(lblRecuperarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(19, 19, 19))
     );
@@ -346,10 +347,8 @@ public class MenuLogin extends javax.swing.JFrame {
   }//GEN-LAST:event_txtUsuarioFocusGained
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);
+    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText());
+    PaneB.callNxtPane(this, cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed

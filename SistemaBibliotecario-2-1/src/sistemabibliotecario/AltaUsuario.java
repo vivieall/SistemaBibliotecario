@@ -194,11 +194,18 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     lblSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
+    txtMail.setDocument(new JTextFieldLimit(50));
+
+    txtAddress.setDocument(new JTextFieldLimit(100));
+
+    txtName.setDocument(new JTextFieldLimit(50));
     txtName.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtNameActionPerformed(evt);
       }
     });
+
+    txtTel.setDocument(new JTextFieldLimit(20));
 
     lblPass.setText("Contraseña:");
     lblPass.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -214,8 +221,11 @@ public class AltaUsuario extends javax.swing.JPanel {
     lblPass2.setName(""); // NOI18N
     lblPass2.setVisible(false);
 
+    txtPass2.setDocument(new JTextFieldLimit(20));
+
     txtPass2.setVisible(false);
 
+    txtPass.setDocument(new JTextFieldLimit(20));
     txtPass.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtPassActionPerformed(evt);
@@ -236,6 +246,7 @@ public class AltaUsuario extends javax.swing.JPanel {
     jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchbar.setDocument(new JTextFieldLimit(50));
     txtSearchbar.setText("Búsqueda...");
 
     btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
@@ -299,31 +310,6 @@ public class AltaUsuario extends javax.swing.JPanel {
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGap(0, 22, Short.MAX_VALUE)
-        .addComponent(icnBooks)
-        .addGap(0, 22, Short.MAX_VALUE)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-          .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(lblFEI)
-          .addComponent(lblTitle))
-        .addGap(0, 22, Short.MAX_VALUE)
-        .addComponent(icnUVLogo)
-        .addGap(0, 25, Short.MAX_VALUE))
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGap(20, 20, 20)
-        .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
-        .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(25, 25, 25))
       .addComponent(jSeparator5)
       .addComponent(jSeparator4)
       .addGroup(jPanel1Layout.createSequentialGroup()
@@ -343,13 +329,10 @@ public class AltaUsuario extends javax.swing.JPanel {
               .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(lblPass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+              .addGap(10, 10, 10)
               .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                  .addGap(10, 10, 10)
-                  .addComponent(txtPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                  .addGap(10, 10, 10)
-                  .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(txtPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
               .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -363,6 +346,30 @@ public class AltaUsuario extends javax.swing.JPanel {
                 .addComponent(txtTel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(0, 22, Short.MAX_VALUE)
+        .addComponent(icnBooks)
+        .addGap(0, 22, Short.MAX_VALUE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblFEI)
+          .addComponent(lblTitle))
+        .addGap(0, 22, Short.MAX_VALUE)
+        .addComponent(icnUVLogo)
+        .addGap(0, 0, Short.MAX_VALUE))
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(20, 20, 20)
+        .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(18, 18, 18)
+        .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(18, 18, 18)
+        .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

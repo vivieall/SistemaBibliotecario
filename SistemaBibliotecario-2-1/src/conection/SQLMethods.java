@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import sistemabibliotecario.Material;
 import sistemabibliotecario.Usuario;
 
 /**
@@ -26,12 +27,12 @@ public class SQLMethods {
 
   /**
    * Confirma que el usuario exista y tenga privilegios de bibliotecario
+   *
    * @param user Datos de login del usuario
    * @param pass Contraseña ingresada
-   * @return = 1 si el usuario existe y tiene privilegios
-   *         = 0 si el usuario no existe
-   *         = 2 si el usuario existe pero no tiene privilegios
-   *         = -1 si ocurrió un error de conexión
+   * @return = 1 si el usuario existe y tiene privilegios = 0 si el usuario no
+   * existe = 2 si el usuario existe pero no tiene privilegios = -1 si ocurrió
+   * un error de conexión
    */
   public static int validarIngreso(String user, String pass) {
     int success = 0;
@@ -82,7 +83,6 @@ public class SQLMethods {
     return success;
   }
 
-  
   private static String parsePass(String pass)
       throws NoSuchAlgorithmException, UnsupportedEncodingException {
     MessageDigest md;
@@ -95,7 +95,7 @@ public class SQLMethods {
   }
 
   /**
-   * 
+   *
    * @param pass
    */
   public static void insertPass(String pass) {
@@ -119,9 +119,10 @@ public class SQLMethods {
 
   /**
    * Inserta los datos de un nuevo usuario a la base de datos
-   * @param usuario Datos del usuario 
-   * @return = true si la insercion fue exitosa
-   *         = false si no pudo agregarse el registro
+   *
+   * @param usuario Datos del usuario
+   * @return = true si la insercion fue exitosa = false si no pudo agregarse el
+   * registro
    */
   public static boolean agregarUsuario(Usuario usuario) {
     Connection connection = null;
@@ -162,12 +163,13 @@ public class SQLMethods {
   }
 
   /**
-   * Inserta los datos de un nuevo usuario con derechos de bibliotecario
-   * a la base de datos
-   * @param usuario Datos del usuario 
+   * Inserta los datos de un nuevo usuario con derechos de bibliotecario a la
+   * base de datos
+   *
+   * @param usuario Datos del usuario
    * @param pass Contraseña de inicio de sesión
-   * @return = true si la insercion fue exitosa
-   *         = false si falló al agregar el registro
+   * @return = true si la insercion fue exitosa = false si falló al agregar el
+   * registro
    */
   public static boolean agregarUsuario(Usuario usuario, String pass) {
     Connection connection = null;
@@ -213,6 +215,7 @@ public class SQLMethods {
 
   /**
    * Elimina un registro de la base de datos
+   *
    * @param id identificador del registro a borrar
    */
   public static void eliminarUsuario(String id) {
@@ -244,9 +247,10 @@ public class SQLMethods {
 
   /**
    * Actualiza la información personal de un usuario
+   *
    * @param user Información del usuario
-   * @return = true si la actualización fue exitosa
-   *         = false si falló al modificar el registro
+   * @return = true si la actualización fue exitosa = false si falló al
+   * modificar el registro
    */
   public static boolean modificarUsuario(Usuario user) {
     Connection connection = null;
@@ -272,30 +276,31 @@ public class SQLMethods {
         ps.setString(4, user.getCorreo());
         ps.setString(5, user.getId());
       }
-        int res = ps.executeUpdate();
-        if (res > 0) {
-          JOptionPane.showMessageDialog(null, "Usuario Modificado");
-          connection.close();
-          return true;
-        } else {
-          JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
-        }
-      }catch (SQLException sqx) {
-        JOptionPane.showMessageDialog(null,
-            "No se pudo conectar a la base de datos.",
-            "Error.",
-            JOptionPane.ERROR_MESSAGE);
-        sqx.printStackTrace();
-      }catch (ClassNotFoundException | HeadlessException ex) {
-        System.out.println(ex);
-      }finally {
-        Conexion.cerrarConexion(connection);
+      int res = ps.executeUpdate();
+      if (res > 0) {
+        JOptionPane.showMessageDialog(null, "Usuario Modificado");
+        connection.close();
+        return true;
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al Modificar Usuario");
       }
-      return false;
+    } catch (SQLException sqx) {
+      JOptionPane.showMessageDialog(null,
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    } finally {
+      Conexion.cerrarConexion(connection);
     }
+    return false;
+  }
 
   /**
    * Búsca un usuario o bibliotecario en la base de datos
+   *
    * @param ID Identificador, ya sea matricula o nombre de usuario
    * @return Datos del usuario extraídos de la base de datos
    */
@@ -386,4 +391,111 @@ public class SQLMethods {
     return null;
   }
 
+  /**
+   * Buscar / hacer consulta de un material.
+   *
+   * @param busqueda Variable realizar mi búsqueda.
+   * @return el arreglo creado de mi clase Material.
+   */
+  public static ArrayList consultarCatalogo(String busqueda) {
+    ArrayList< Material> mt = new ArrayList<>();  // 
+    Material ml = new Material();
+    Connection connection = null;
+    PreparedStatement ps;
+    ResultSet rs;
+    busqueda = ("%" + busqueda + "%");
+    try {
+      connection = Conexion.getConnection();
+      ps = connection.prepareStatement("SELECT * from material "
+          + "WHERE titulo LIKE ?");
+      ps.setString(1, busqueda);
+      rs = ps.executeQuery();
+      if (rs.last()) {
+        rs.first();
+        do {
+          ml.setTitulo(rs.getString("titulo"));
+          ml.setFolio(rs.getString("folio"));
+          ml.setAutor(rs.getString("autor"));
+          ml.setEditorial(rs.getString("editorial"));
+          ml.setFechaPublicacion(rs.getString("publicacion_fecha"));
+          ml.setTipo(rs.getInt("tipo"));
+          System.out.println(ml.getTitulo());
+          mt.add(ml);
+        } while (rs.next());
+      } else {
+        ps = connection.prepareStatement("SELECT * from material "
+            + "WHERE autor LIKE ?");
+        ps.setString(1, busqueda);
+        rs = ps.executeQuery();
+        System.out.println(ps);
+        if (rs.last()) {
+          rs.first();
+          do {
+            ml.setTitulo(rs.getString("titulo"));
+            ml.setFolio(rs.getString("folio"));
+            ml.setAutor(rs.getString("autor"));
+            ml.setEditorial(rs.getString("editorial"));
+            ml.setFechaPublicacion(rs.getString("publicacion_fecha"));
+            ml.setTipo(rs.getInt("tipo"));
+            mt.add(ml);
+          } while (rs.next());
+        }
+      }
+    } catch (SQLException sqx) {
+      JOptionPane.showMessageDialog(null,
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    } finally {
+      Conexion.cerrarConexion(connection);
+    }
+    return mt;
+  }
+
+  /**
+   * Agrega un material en la base de datos, añadiendolo al catálogo.
+   *
+   * @param material, clase donde se encuentran los atributos del material
+   * (titulo, autor,folio, etc).
+   * @return = 1 si se agregó el material. = 0 si no se agregó el material.
+   */
+  public static boolean agregarMaterial(Material material) {
+    Connection connection = null;
+    PreparedStatement ps;
+    try {
+      connection = Conexion.getConnection();
+      ps = connection.prepareStatement("INSERT INTO MATERIAL (titulo, folio, autor, editorial, tipo"
+          + ", publicacion_fecha) " + "VALUES (?,?,?,?,?,?)");
+      ps.setString(1, material.getTitulo());
+      ps.setString(2, material.getFolio());
+      ps.setString(3, material.getAutor());
+      ps.setString(4, material.getEditorial());
+      ps.setInt(5, material.getTipo());
+      ps.setString(6, material.getFechaPublicacion());
+      //ps.setDate(9, new java.sql.Date(material.getFechaIngreso().getTime()));
+      int res = ps.executeUpdate();
+      if (res > 0) {
+        JOptionPane.showMessageDialog(null, "Material Agregado");
+        connection.close();
+        return true;
+      } else {
+        JOptionPane.showMessageDialog(null, "Error al Guardar el Material ");
+      }
+
+    } catch (SQLException sqx) {
+      JOptionPane.showMessageDialog(null,
+          "No se pudo conectar a la base de datos.",
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
+      sqx.printStackTrace();
+    } catch (ClassNotFoundException | HeadlessException ex) {
+      System.out.println(ex);
+    } finally {
+      Conexion.cerrarConexion(connection);
+    }
+    return false;
+  }
 }

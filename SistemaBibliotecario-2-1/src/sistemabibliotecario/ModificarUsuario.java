@@ -93,9 +93,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
     btnSearch = new javax.swing.JButton();
     btnGestionarUsuario = new javax.swing.JButton();
     btnGestionarPrestamo = new javax.swing.JButton();
-    btnVerificarAdeudo = new javax.swing.JButton();
     btnCerrarSesion = new javax.swing.JButton();
     btnCerrarSesion1 = new javax.swing.JButton();
+    btnGestionarMaterial = new javax.swing.JButton();
 
     setBackground(new java.awt.Color(255, 255, 255));
     setMinimumSize(new java.awt.Dimension(755, 600));
@@ -168,6 +168,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     lblSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     lblSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
+    txtTel.setDocument(new JTextFieldLimit(20));
     txtTel.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtTelActionPerformed(evt);
@@ -175,6 +176,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     });
     txtTel.setText(cambio.getTel());
 
+    txtAddress.setDocument(new JTextFieldLimit(100));
     txtAddress.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtAddressActionPerformed(evt);
@@ -182,12 +184,17 @@ public class ModificarUsuario extends javax.swing.JPanel {
     });
     txtAddress.setText(cambio.getDirec());
 
+    txtMail.setDocument(new JTextFieldLimit(50));
+
+    txtName.setDocument(new JTextFieldLimit(50));
+
     txtName.setText(cambio.getName());
 
     jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
     jSeparator5.setForeground(new java.awt.Color(51, 51, 51));
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchbar.setDocument(new JTextFieldLimit(50));
     txtSearchbar.setText("Búsqueda...");
 
     jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
@@ -220,15 +227,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
       }
     });
 
-    btnVerificarAdeudo.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnVerificarAdeudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_attach_money_black_24dp_1x.png"))); // NOI18N
-    btnVerificarAdeudo.setToolTipText("Adeudo");
-    btnVerificarAdeudo.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnVerificarAdeudoActionPerformed(evt);
-      }
-    });
-
     btnCerrarSesion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
     btnCerrarSesion.setToolTipText("Cerrar Sesión");
@@ -244,6 +242,15 @@ public class ModificarUsuario extends javax.swing.JPanel {
     btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btnCerrarSesion1ActionPerformed(evt);
+      }
+    });
+
+    btnGestionarMaterial.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_note_add_black_24dp_1x.png"))); // NOI18N
+    btnGestionarMaterial.setToolTipText("Préstamos");
+    btnGestionarMaterial.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGestionarMaterialActionPerformed(evt);
       }
     });
 
@@ -263,22 +270,22 @@ public class ModificarUsuario extends javax.swing.JPanel {
         .addGap(18, 18, 18)
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
-        .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+        .addComponent(btnGestionarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(25, 25, 25))
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addComponent(icnBooks)
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 32, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblFEI)
           .addComponent(lblTitle2)
           .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
         .addComponent(icnUVLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(0, 0, Short.MAX_VALUE))
+        .addGap(0, 32, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,9 +342,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
           .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnVerificarAdeudo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnGestionarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(42, 42, 42)
         .addComponent(lblSubTitle)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,13 +431,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
-  private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);      // TODO add your handling code here:
-  }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
-
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
     int btnOpt = JOptionPane.YES_NO_OPTION;
     int dResult = JOptionPane.showConfirmDialog(this,
@@ -449,16 +449,22 @@ public class ModificarUsuario extends javax.swing.JPanel {
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
+  private void btnGestionarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMaterialActionPerformed
+    AgregarMaterial mt = new AgregarMaterial(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mt);
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnGestionarMaterialActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnCancel;
   private javax.swing.JButton btnCerrarSesion;
   private javax.swing.JButton btnCerrarSesion1;
+  private javax.swing.JButton btnGestionarMaterial;
   private javax.swing.JButton btnGestionarPrestamo;
   public javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnSave;
   private javax.swing.JButton btnSearch;
-  private javax.swing.JButton btnVerificarAdeudo;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
   private javax.swing.JLabel icnUser;

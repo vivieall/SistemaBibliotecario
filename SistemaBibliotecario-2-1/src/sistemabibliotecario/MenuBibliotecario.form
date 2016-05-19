@@ -68,16 +68,16 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
               <Component id="icnBooks" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="lblTitle" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="lblFEI" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
               <Component id="icnUVLogo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -88,6 +88,8 @@
               <Component id="btnGestionarUsuario" min="-2" pref="57" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnGestionarPrestamo" min="-2" pref="57" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnGestionarMaterial" min="-2" pref="57" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -121,6 +123,7 @@
                       <Component id="jSeparator4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnCerrarSesion1" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btnGestionarMaterial" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="txtSubTitle" min="-2" max="-2" attributes="0"/>
@@ -412,7 +415,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtSearchbar">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="txtSearchbar.setDocument(new JTextFieldLimit(100));">
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="B&#xfa;squeda..."/>
@@ -475,6 +478,20 @@
           </Border>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnGestionarMaterial">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="12" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/ic_note_add_black_24dp_1x.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Pr&#xe9;stamos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionarMaterialActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -112,6 +112,7 @@ public class MenuUsuario extends javax.swing.JPanel {
     btnGestionarPrestamo = new javax.swing.JButton();
     btnCerrarSesion = new javax.swing.JButton();
     btnCerrarSesion1 = new javax.swing.JButton();
+    btnGestionarMaterial = new javax.swing.JButton();
 
     jPanel4.setBackground(new java.awt.Color(255, 255, 255));
     jPanel4.setMinimumSize(new java.awt.Dimension(755, 600));
@@ -128,6 +129,7 @@ public class MenuUsuario extends javax.swing.JPanel {
     icnUVLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uv1.png"))); // NOI18N
 
     txtSearchID.setForeground(java.awt.SystemColor.textInactiveText);
+    txtSearchID.setDocument(new JTextFieldLimit(50));
     txtSearchID.setText("Usuario");
     txtSearchID.addFocusListener(new java.awt.event.FocusAdapter() {
       public void focusGained(java.awt.event.FocusEvent evt) {
@@ -174,7 +176,13 @@ public class MenuUsuario extends javax.swing.JPanel {
     jSeparator4.setForeground(new java.awt.Color(51, 51, 51));
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
+    txtSearchbar.setDocument(new JTextFieldLimit(100));
     txtSearchbar.setText("Búsqueda...");
+    txtSearchbar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtSearchbarActionPerformed(evt);
+      }
+    });
 
     btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_search_black_24dp_1x.png"))); // NOI18N
     btnSearch.setToolTipText("Buscar");
@@ -221,6 +229,15 @@ public class MenuUsuario extends javax.swing.JPanel {
       }
     });
 
+    btnGestionarMaterial.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+    btnGestionarMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_note_add_black_24dp_1x.png"))); // NOI18N
+    btnGestionarMaterial.setToolTipText("Préstamos");
+    btnGestionarMaterial.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGestionarMaterialActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
@@ -253,6 +270,8 @@ public class MenuUsuario extends javax.swing.JPanel {
         .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(18, 18, 18)
+        .addComponent(btnGestionarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,7 +299,8 @@ public class MenuUsuario extends javax.swing.JPanel {
           .addComponent(btnGestionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(btnGestionarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(42, 42, 42)
         .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(199, 199, 199)
@@ -288,7 +308,7 @@ public class MenuUsuario extends javax.swing.JPanel {
           .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnVerHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(btnDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addContainerGap(148, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -403,11 +423,22 @@ public class MenuUsuario extends javax.swing.JPanel {
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mc);    // TODO add your handling code here:
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
+  private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_txtSearchbarActionPerformed
+
+  private void btnGestionarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarMaterialActionPerformed
+    AgregarMaterial mt = new AgregarMaterial(usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), mt);
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btnGestionarMaterialActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnCerrarSesion;
   private javax.swing.JButton btnCerrarSesion1;
   private javax.swing.JButton btnDarAlta;
+  private javax.swing.JButton btnGestionarMaterial;
   private javax.swing.JButton btnGestionarPrestamo;
   public javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnModificarUsuario;
