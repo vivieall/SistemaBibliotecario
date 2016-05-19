@@ -113,7 +113,7 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
     jScrollPane1.setViewportView(tablaCatalogo);
 
     btnCerrarSesion1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-    btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
+    btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_arrow_back_black_24dp_1x.png"))); // NOI18N
     btnCerrarSesion1.setToolTipText("Inicio");
     btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,10 +247,10 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
       MenuBibliotecario menuB = new MenuBibliotecario(usuario);
       PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), menuB);
     } else {
-      MenuLogin ml = new MenuLogin();
-
-      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
-          ml.getMainPanel());
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
     }
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
@@ -299,9 +299,7 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
       Object[] datos = {titulo, folio, autor, editorial, tipo, publicacion};
 
       model.addRow(datos);
-      model.fireTableDataChanged();
     }
-
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

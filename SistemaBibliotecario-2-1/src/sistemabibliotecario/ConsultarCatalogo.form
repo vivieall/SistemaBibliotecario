@@ -176,7 +176,7 @@
               <Font name="Lucida Grande" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/ic_exit_to_app_black_24dp_1x.png"/>
+              <Image iconType="3" name="/ic_arrow_back_black_24dp_1x.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Inicio"/>
           </Properties>

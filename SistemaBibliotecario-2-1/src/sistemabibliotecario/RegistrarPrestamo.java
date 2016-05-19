@@ -118,7 +118,7 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
     jPanel4.add(btnGestionUsuario);
     btnGestionUsuario.setBounds(270, 120, 133, 26);
 
-    jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
+    jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_home_black_24dp_1x.png"))); // NOI18N
     jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseReleased(java.awt.event.MouseEvent evt) {
         jLabel19MouseReleased(evt);
@@ -250,9 +250,9 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
 
   private void btnVerificarAdeudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAdeudoActionPerformed
     JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.INFORMATION_MESSAGE);   
+        "En construcción",
+        "En construcción",
+        JOptionPane.INFORMATION_MESSAGE); 
   }//GEN-LAST:event_btnVerificarAdeudoActionPerformed
 
   private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
@@ -282,9 +282,9 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);   
+        "En construcción",
+        "En construcción",
+        JOptionPane.INFORMATION_MESSAGE); 
   }//GEN-LAST:event_btnSearchActionPerformed
 
 

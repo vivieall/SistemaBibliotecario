@@ -381,9 +381,9 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   private void btnVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistorialActionPerformed
     JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.INFORMATION_MESSAGE); 
+        "En construcción",
+        "En construcción",
+        JOptionPane.INFORMATION_MESSAGE);
   }//GEN-LAST:event_btnVerHistorialActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
@@ -411,8 +411,10 @@ public class MenuUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
-    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);    
+    JOptionPane.showMessageDialog(null,
+        "En construcción",
+        "En construcción",
+        JOptionPane.INFORMATION_MESSAGE);  
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -420,9 +422,10 @@ public class MenuUsuario extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
-      MenuLogin ml = new MenuLogin();
-      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
-          ml.getMainPanel());
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
     }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 

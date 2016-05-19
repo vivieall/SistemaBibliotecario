@@ -318,7 +318,7 @@ public class RegistrarPrestamo2 extends javax.swing.JPanel {
     });
     jPanel2.add(gestionUsuario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, -1, 26));
 
-    jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toolbar_home.png"))); // NOI18N
+    jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_home_black_24dp_1x.png"))); // NOI18N
     jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, 26));
 
     jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libro", "Revista", "Tesis", "Item 4" }));

@@ -364,9 +364,10 @@ public class AgregarMaterial extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
-      MenuLogin ml = new MenuLogin();
-      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
-          ml.getMainPanel());
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
     }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -384,7 +385,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
     JOptionPane.showMessageDialog(null,
         "En construcción",
         "En construcción",
-        JOptionPane.ERROR_MESSAGE);
+        JOptionPane.INFORMATION_MESSAGE);
   }//GEN-LAST:event_btnModificarMaterialActionPerformed
 
   private void btnEliminarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMaterialActionPerformed

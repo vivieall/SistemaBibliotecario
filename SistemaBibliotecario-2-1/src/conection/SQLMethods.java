@@ -177,7 +177,7 @@ public class SQLMethods {
     PreparedStatement ps;
     try {
       connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO bilbiotecario "
+      ps = connection.prepareStatement("INSERT INTO bibliotecario "
           + "(bibliotecario_id, nombre, telefono, direccion, correo, tipo,"
           + " password , img_path, ingreso_fecha) "
           + "VALUES (?,?,?,?,?,?,?,?,?)");
@@ -362,7 +362,6 @@ public class SQLMethods {
    * @return
    */
   public ArrayList registrarPrestamo(String numFolio) {
-    //POR IMPLEMENTAR.
     Connection connection = null;
     PreparedStatement ps;
     ResultSet rs;
@@ -405,6 +404,7 @@ public class SQLMethods {
     Material ml = new Material();
     Connection connection = null;
     PreparedStatement ps;
+    PreparedStatement ps1;
     ResultSet rs;
     busqueda = ("%" + busqueda + "%");
     try {
@@ -412,9 +412,12 @@ public class SQLMethods {
       ps = connection.prepareStatement("SELECT * from material "
           + "WHERE titulo LIKE ?");
       ps.setString(1, busqueda);
+
+      ps1 = connection.prepareStatement("SELECT * from material "
+            + "WHERE autor LIKE ?");
+      ps1.setString(1, busqueda);
       rs = ps.executeQuery();
-      if (rs.last()) {
-        rs.first();
+      if (rs.next()) {
         do {
           ml.setTitulo(rs.getString("titulo"));
           ml.setFolio(rs.getString("folio"));
@@ -422,27 +425,22 @@ public class SQLMethods {
           ml.setEditorial(rs.getString("editorial"));
           ml.setFechaPublicacion(rs.getString("publicacion_fecha"));
           ml.setTipo(rs.getInt("tipo"));
-          System.out.println(ml.getTitulo());
           mt.add(ml);
+          ml = new Material();
         } while (rs.next());
-      } else {
-        ps = connection.prepareStatement("SELECT * from material "
-            + "WHERE autor LIKE ?");
-        ps.setString(1, busqueda);
-        rs = ps.executeQuery();
-        System.out.println(ps);
-        if (rs.last()) {
-          rs.first();
-          do {
-            ml.setTitulo(rs.getString("titulo"));
-            ml.setFolio(rs.getString("folio"));
-            ml.setAutor(rs.getString("autor"));
-            ml.setEditorial(rs.getString("editorial"));
-            ml.setFechaPublicacion(rs.getString("publicacion_fecha"));
-            ml.setTipo(rs.getInt("tipo"));
-            mt.add(ml);
-          } while (rs.next());
-        }
+      }
+      rs = ps1.executeQuery();
+      if (rs.next()) {
+        do {
+          ml.setTitulo(rs.getString("titulo"));
+          ml.setFolio(rs.getString("folio"));
+          ml.setAutor(rs.getString("autor"));
+          ml.setEditorial(rs.getString("editorial"));
+          ml.setFechaPublicacion(rs.getString("publicacion_fecha"));
+          ml.setTipo(rs.getInt("tipo"));
+          mt.add(ml);
+          ml = new Material();
+        } while (rs.next());
       }
     } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,

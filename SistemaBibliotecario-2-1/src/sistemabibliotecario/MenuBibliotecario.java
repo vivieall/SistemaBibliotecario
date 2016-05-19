@@ -391,8 +391,10 @@ public class MenuBibliotecario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
-    RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);
+    JOptionPane.showMessageDialog(null,
+        "En construcción",
+        "En construcción",
+        JOptionPane.INFORMATION_MESSAGE);
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnGestionarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioMouseClicked
@@ -404,9 +406,11 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
-      MenuLogin ml = new MenuLogin();
-      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
-          ml.getMainPanel());
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
+      
     }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
