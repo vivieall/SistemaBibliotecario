@@ -5,9 +5,12 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.PaneB;
+import comportamiento.JTextFieldLimit;
 import javax.swing.JOptionPane;
 import conection.SQLMethods;
 import java.awt.Color;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -25,6 +28,10 @@ public class MenuLogin extends javax.swing.JFrame {
     txtUsuario.requestFocus();
   }
 
+  public JPanel getMainPanel() {
+    return mainPanel;
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +41,7 @@ public class MenuLogin extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    jPanel1 = new javax.swing.JPanel();
+    mainPanel = new javax.swing.JPanel();
     txtSearchbar = new javax.swing.JTextField();
     btnSearch = new javax.swing.JButton();
     txtUsuario = new javax.swing.JTextField();
@@ -53,12 +60,12 @@ public class MenuLogin extends javax.swing.JFrame {
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setBackground(new java.awt.Color(255, 255, 255));
 
-    jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-    jPanel1.setMinimumSize(new java.awt.Dimension(755, 600));
-    jPanel1.setPreferredSize(new java.awt.Dimension(755, 600));
-    jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+    mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+    mainPanel.setMinimumSize(new java.awt.Dimension(755, 600));
+    mainPanel.setPreferredSize(new java.awt.Dimension(755, 600));
+    mainPanel.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyPressed(java.awt.event.KeyEvent evt) {
-        jPanel1KeyPressed(evt);
+        mainPanelKeyPressed(evt);
       }
     });
 
@@ -182,57 +189,57 @@ public class MenuLogin extends javax.swing.JFrame {
       }
     });
 
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
+    javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+    mainPanel.setLayout(mainPanelLayout);
+    mainPanelLayout.setHorizontalGroup(
+      mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(mainPanelLayout.createSequentialGroup()
         .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
         .addGap(0, 0, Short.MAX_VALUE)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle1)
           .addComponent(lblFEI)
           .addComponent(lblError)
           .addComponent(btnIngresar)
-          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(mainPanelLayout.createSequentialGroup()
               .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
               .addComponent(peekBtn))))
         .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jPanel1Layout.createSequentialGroup()
+      .addGroup(mainPanelLayout.createSequentialGroup()
+        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(mainPanelLayout.createSequentialGroup()
             .addGap(20, 20, 20)
             .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(jPanel1Layout.createSequentialGroup()
+          .addGroup(mainPanelLayout.createSequentialGroup()
             .addGap(10, 10, 10)
             .addComponent(lblRecuperarUsuario)))
         .addGap(0, 0, Short.MAX_VALUE))
       .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
-    jPanel1Layout.setVerticalGroup(
-      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
+    mainPanelLayout.setVerticalGroup(
+      mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(mainPanelLayout.createSequentialGroup()
         .addGap(10, 10, 10)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(icnBooks)
-          .addGroup(jPanel1Layout.createSequentialGroup()
+          .addGroup(mainPanelLayout.createSequentialGroup()
             .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(lblFEI))
           .addComponent(icnUVLogo))
         .addGap(20, 20, 20)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addGroup(jPanel1Layout.createSequentialGroup()
+          .addGroup(mainPanelLayout.createSequentialGroup()
             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(42, 42, 42)
             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -240,7 +247,7 @@ public class MenuLogin extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(55, 55, 55)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(peekBtn))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
@@ -260,13 +267,13 @@ public class MenuLogin extends javax.swing.JFrame {
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGap(0, 0, 0))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGap(0, 0, 0))
     );
 
@@ -304,27 +311,27 @@ public class MenuLogin extends javax.swing.JFrame {
     String password = new String(pass);
     System.out.println(SQLMethods.validarIngreso(txtUsuario.getText(), password));
     switch (SQLMethods.validarIngreso(txtUsuario.getText(), password)) {
-      case 1:
-        MenuBibliotecario mc = new MenuBibliotecario(SQLMethods
-            .consultarUsuario(txtUsuario.getText()));        
-        PaneB.callNxtPane(this, mc);
-        break;
-      case 0:
-        JOptionPane.showMessageDialog(null,
-            "Verifique que sus datos sean correctos",
-            "Acceso denegado.",
-            JOptionPane.ERROR_MESSAGE);
-        lblError.setVisible(true);
-        break;
-      case 2:
-        JOptionPane.showMessageDialog(null,
-            "Usuario no autorizado",
-            "Acceso denegado.",
-            JOptionPane.ERROR_MESSAGE);
-        lblError.setVisible(true);
-        break;
-      default:
-        break;
+    case 1:
+      MenuBibliotecario mc = new MenuBibliotecario(SQLMethods
+          .consultarUsuario(txtUsuario.getText()));
+      PaneB.callNxtPane(this, mc);
+      break;
+    case 0:
+      JOptionPane.showMessageDialog(null,
+          "Verifique que sus datos sean correctos",
+          "Acceso denegado.",
+          JOptionPane.ERROR_MESSAGE);
+      lblError.setVisible(true);
+      break;
+    case 2:
+      JOptionPane.showMessageDialog(null,
+          "Usuario no autorizado",
+          "Acceso denegado.",
+          JOptionPane.ERROR_MESSAGE);
+      lblError.setVisible(true);
+      break;
+    default:
+      break;
     }
   }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -393,9 +400,9 @@ public class MenuLogin extends javax.swing.JFrame {
     } // TODO add your handling code here:
   }//GEN-LAST:event_peekBtnMouseReleased
 
-  private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+  private void mainPanelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mainPanelKeyPressed
     // TODO add your handling code here:
-  }//GEN-LAST:event_jPanel1KeyPressed
+  }//GEN-LAST:event_mainPanelKeyPressed
 
   /**
    * @param args the command line arguments
@@ -435,13 +442,13 @@ public class MenuLogin extends javax.swing.JFrame {
   private javax.swing.JButton btnSearch;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;
-  private javax.swing.JPanel jPanel1;
   private javax.swing.JSeparator jSeparator2;
   private javax.swing.JSeparator jSeparator3;
   private javax.swing.JLabel lblError;
   private javax.swing.JLabel lblFEI;
   private javax.swing.JLabel lblRecuperarUsuario;
   private javax.swing.JLabel lblTitle1;
+  private javax.swing.JPanel mainPanel;
   private javax.swing.JButton peekBtn;
   private javax.swing.JPasswordField txtPass;
   private javax.swing.JTextField txtSearchbar;

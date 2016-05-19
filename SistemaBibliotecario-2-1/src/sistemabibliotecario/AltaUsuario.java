@@ -5,6 +5,9 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.PaneB;
+import comportamiento.Usuario;
+import comportamiento.JTextFieldLimit;
 import conection.SQLMethods;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -39,6 +42,7 @@ public class AltaUsuario extends javax.swing.JPanel {
 
   /**
    * Crea un panel para el registro de un nuevo usuario
+   *
    * @param usuario Información de la cuenta activa
    * @param alta usuario_id del usuario a registrar
    */
@@ -347,14 +351,14 @@ public class AltaUsuario extends javax.swing.JPanel {
                 .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGap(0, 22, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 22, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(lblFEI)
           .addComponent(lblTitle))
-        .addGap(0, 22, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
         .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(jPanel1Layout.createSequentialGroup()
@@ -498,10 +502,8 @@ public class AltaUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_btnCancelActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText(), usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed

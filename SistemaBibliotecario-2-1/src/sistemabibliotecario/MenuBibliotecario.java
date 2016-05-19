@@ -5,6 +5,9 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.PaneB;
+import comportamiento.Usuario;
+import comportamiento.JTextFieldLimit;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -15,16 +18,17 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-
 /**
  *
  * @author mauricio, ruben
  */
 public class MenuBibliotecario extends javax.swing.JPanel {
+
   private Usuario usuario;
 
   /**
    * Getter para la variable Usuario
+   *
    * @return Usuario que inició sesión
    */
   public Usuario getUsuario() {
@@ -33,6 +37,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
 
   /**
    * Setter para la variable Usuario
+   *
    * @param us información del usuario que inició sesión
    */
   public void setUsuario(Usuario us) {
@@ -41,6 +46,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
 
   /**
    * Crea un panel con la información del Bibliotecario
+   *
    * @param user Información del usuario bibliotecario
    */
   public MenuBibliotecario(Usuario user) {
@@ -51,7 +57,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
   /**
    * Constructor por defecto de Panel
    */
-  public MenuBibliotecario(){
+  public MenuBibliotecario() {
     initComponents();
   }
 
@@ -292,15 +298,15 @@ public class MenuBibliotecario extends javax.swing.JPanel {
           .addComponent(txtSubTitle, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
-        .addGap(0, 28, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 28, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle)
           .addComponent(lblFEI))
-        .addGap(0, 28, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addGap(0, 7, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,7 +386,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed
     RegistrarPrestamo rp = new RegistrarPrestamo(usuario);
-    PaneB.callNxtPane ((JFrame) SwingUtilities.getWindowAncestor(this), rp);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), rp);
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnGestionarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioMouseClicked
@@ -391,11 +397,11 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     int btnOpt = JOptionPane.YES_NO_OPTION;
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
-    if (dResult == JOptionPane.YES_OPTION) { 
-    java.awt.EventQueue.invokeLater(() -> {
-      new MenuLogin().setVisible(true);
-    });
-    SwingUtilities.getWindowAncestor(this).dispose();
+    if (dResult == JOptionPane.YES_OPTION) {
+      java.awt.EventQueue.invokeLater(() -> {
+        new MenuLogin().setVisible(true);
+      });
+      SwingUtilities.getWindowAncestor(this).dispose();
     }
   }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -417,10 +423,9 @@ public class MenuBibliotecario extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbarActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-      "Por Implementar",
-      "Por Implementar",
-      JOptionPane.ERROR_MESSAGE);
+    ConsultarCatalogo cc = new ConsultarCatalogo(
+        txtSearchbar.getText(), usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
@@ -437,6 +442,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
 
   /**
    * Método principal que llama al Panel
+   *
    * @param args
    */
   public static void main(String args[]) {
@@ -498,6 +504,4 @@ public class MenuBibliotecario extends javax.swing.JPanel {
   private javax.swing.JLabel txtTel;
   // End of variables declaration//GEN-END:variables
 
-  
-  
 }

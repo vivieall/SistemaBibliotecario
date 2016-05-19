@@ -5,6 +5,9 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.PaneB;
+import comportamiento.Usuario;
+import comportamiento.JTextFieldLimit;
 import conection.SQLMethods;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -18,6 +21,7 @@ import javax.swing.SwingUtilities;
 
 /**
  * Panel para Modificar un Usuario
+ *
  * @author mauricio, ruben
  */
 public class ModificarUsuario extends javax.swing.JPanel {
@@ -32,8 +36,9 @@ public class ModificarUsuario extends javax.swing.JPanel {
   }
 
   /**
-   * Crea una nueva forma ModificarUsuario con la información del usuario
-   * que inició sesión
+   * Crea una nueva forma ModificarUsuario con la información del usuario que
+   * inició sesión
+   *
    * @param usuario Usuario que inició sesión
    * @param cambio Información de Usuario a modificar
    */
@@ -271,24 +276,27 @@ public class ModificarUsuario extends javax.swing.JPanel {
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnGestionarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(25, 25, 25))
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+      .addGroup(layout.createSequentialGroup()
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 32, Short.MAX_VALUE)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-          .addComponent(lblFEI)
-          .addComponent(lblTitle2)
-          .addComponent(lblSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addGap(87, 87, 87)
+            .addComponent(lblFEI))
+          .addComponent(lblTitle2))
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(0, 32, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(lblSubTitle, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addGroup(layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
               .addComponent(icnUser)
@@ -320,18 +328,14 @@ public class ModificarUsuario extends javax.swing.JPanel {
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
+        .addGap(12, 12, 12)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(icnUVLogo)
+          .addComponent(icnBooks)
           .addGroup(layout.createSequentialGroup()
-            .addGap(12, 12, 12)
             .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(lblFEI))
-          .addGroup(layout.createSequentialGroup()
-            .addGap(10, 10, 10)
-            .addComponent(icnBooks))
-          .addGroup(layout.createSequentialGroup()
-            .addGap(12, 12, 12)
-            .addComponent(icnUVLogo)))
+            .addComponent(lblFEI)))
         .addGap(18, 18, 18)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,10 +419,8 @@ public class ModificarUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_txtTelActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText(), usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed

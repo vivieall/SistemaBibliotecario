@@ -16,8 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import sistemabibliotecario.Material;
-import sistemabibliotecario.Usuario;
+import comportamiento.Material;
+import comportamiento.Usuario;
 
 /**
  *
@@ -498,4 +498,26 @@ public class SQLMethods {
     }
     return false;
   }
+
+  public void registrarPrestamo(String numFolio, String ID) {
+    Connection connection;
+    PreparedStatement ps;
+    ResultSet rs;
+    try {
+      connection = Conexion.getConnection();
+      ps = connection.prepareStatement("INSERT INTO PRESTAMO(numFolio, ID,");
+      ps.setString(1, ID);
+      ps.setString(2, numFolio);
+      int res = ps.executeUpdate();
+      if (res > 0) {
+        JOptionPane.showMessageDialog(null, "Se registró el préstamo.");
+      } else {
+        JOptionPane.showMessageDialog(null, "No se pudo registrar el préstamo.");
+      }
+      connection.close();
+    } catch (ClassNotFoundException | SQLException | HeadlessException ex) {
+      System.out.println(ex);
+    }
+  }
+
 }

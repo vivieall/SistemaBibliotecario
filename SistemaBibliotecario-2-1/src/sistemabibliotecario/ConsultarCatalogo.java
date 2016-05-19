@@ -5,6 +5,7 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.Usuario;
 import conection.SQLMethods;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -12,15 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import sistemabibliotecario.Material;
-import sistemabibliotecario.PaneB;
+import comportamiento.Material;
+import comportamiento.PaneB;
 
 /**
  *
  * @author Vivie
  */
 public class ConsultarCatalogo extends javax.swing.JPanel {
-  private String  busqueda;
+
+  private String busqueda;
   private Usuario usuario;
 
   public Usuario getUsuario() {
@@ -31,42 +33,38 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
     this.usuario = usuario;
   }
   private final DefaultTableModel model = new DefaultTableModel(
-  new Object [][] {
-  },
-  new String [] {
-    "Titulo", "Folio", "Autor", "Editorial", "Tipo", "Fecha de Publicación"
-  }
-);
-  
-  public String  getBusqueda() {
+      new Object[][]{},
+      new String[]{
+        "Titulo", "Folio", "Autor", "Editorial", "Tipo", "Fecha de Publicación"
+      }
+  );
+
+  public String getBusqueda() {
     return busqueda;
   }
 
   public void setBusqueda(String busqueda) {
     this.busqueda = busqueda;
   }
-  
-  
+
   /**
    * Creates new form ConsultarCatalogo
    */
-  
   public ConsultarCatalogo(String busqueda) {
     this.busqueda = busqueda;
     convertirArreglo(busqueda);
     initComponents();
-    
-    
+
   }
-  
+
   public ConsultarCatalogo(String busqueda, Usuario usuario) {
     this.busqueda = busqueda;
     this.usuario = usuario;
     convertirArreglo(busqueda);
     initComponents();
   }
-  
-  public ConsultarCatalogo(){
+
+  public ConsultarCatalogo() {
     initComponents();
   }
 
@@ -117,6 +115,11 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
     btnCerrarSesion1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
     btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ic_exit_to_app_black_24dp_1x.png"))); // NOI18N
     btnCerrarSesion1.setToolTipText("Inicio");
+    btnCerrarSesion1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCerrarSesion1ActionPerformed(evt);
+      }
+    });
 
     txtSearchbar.setForeground(new java.awt.Color(102, 102, 102));
     txtSearchbar.setText("Búsqueda...");
@@ -161,9 +164,9 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
       .addComponent(jSeparator4)
       .addComponent(jSeparator5)
       .addGroup(jPanel4Layout.createSequentialGroup()
-        .addGap(10, 10, 10)
+        .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addGap(18, 18, 18)
         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion1)
@@ -229,9 +232,27 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbarActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText());
-    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
+    if (usuario != null) {
+      ConsultarCatalogo cc = new ConsultarCatalogo(
+          txtSearchbar.getText(), usuario);
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
+    } else {
+      ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText());
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
+    }
   }//GEN-LAST:event_btnSearchActionPerformed
+
+  private void btnCerrarSesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesion1ActionPerformed
+    if (usuario != null) {
+      MenuBibliotecario menuB = new MenuBibliotecario(usuario);
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), menuB);
+    } else {
+      MenuLogin ml = new MenuLogin();
+
+      PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this),
+          ml.getMainPanel());
+    }
+  }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
 
   public static void main(String args[]) {
     /* Set the Nimbus look and feel */
@@ -263,26 +284,26 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
       new ConsultarCatalogo().setVisible(true);
     });
   }
-  
-  private void convertirArreglo ( String busqueda ){
-    ArrayList < Material > mt = SQLMethods.consultarCatalogo(busqueda);
-    
-    for (int i = 0; i < mt.size(); i++ ){
+
+  private void convertirArreglo(String busqueda) {
+    ArrayList< Material> mt = SQLMethods.consultarCatalogo(busqueda);
+
+    for (int i = 0; i < mt.size(); i++) {
       String titulo = mt.get(i).getTitulo();
       String folio = mt.get(i).getFolio();
       String autor = mt.get(i).getAutor();
       String editorial = mt.get(i).getEditorial();
       int tipo = mt.get(i).getTipo();
       String publicacion = mt.get(i).getFechaPublicacion();
-      
+
       Object[] datos = {titulo, folio, autor, editorial, tipo, publicacion};
-      
+
       model.addRow(datos);
       model.fireTableDataChanged();
     }
- 
-  }  
-  
+
+  }
+
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnCerrarSesion1;
   private javax.swing.JButton btnSearch;

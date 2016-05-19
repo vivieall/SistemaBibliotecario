@@ -5,6 +5,9 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.PaneB;
+import comportamiento.Usuario;
+import comportamiento.JTextFieldLimit;
 import conection.SQLMethods;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -21,6 +24,7 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   /**
    * Getter para la variable Usuario
+   *
    * @return Información del Usuario que inició sesión
    */
   public Usuario getUsuario() {
@@ -29,6 +33,7 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   /**
    * Setter para la variable Usuario
+   *
    * @param usuario Información de usuario
    */
   public void setUsuario(Usuario usuario) {
@@ -44,6 +49,7 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   /**
    * Crea un panel con opciones para la administración de usuarios
+   *
    * @param usuario Información del usuario que inició sesión
    */
   public MenuUsuario(Usuario usuario) {
@@ -53,6 +59,7 @@ public class MenuUsuario extends javax.swing.JPanel {
 
   /**
    * Invoca el panel MenuUsuario
+   *
    * @param args
    */
   public static void main(String args[]) {
@@ -245,9 +252,9 @@ public class MenuUsuario extends javax.swing.JPanel {
       .addComponent(jSeparator4)
       .addComponent(jSeparator5)
       .addGroup(jPanel4Layout.createSequentialGroup()
-        .addGap(0, 31, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(0, 31, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(lblFEI)
@@ -258,9 +265,9 @@ public class MenuUsuario extends javax.swing.JPanel {
             .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(50, 50, 50)
             .addComponent(btnVerHistorial)))
-        .addGap(0, 31, Short.MAX_VALUE)
+        .addGap(0, 0, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addGap(0, 7, Short.MAX_VALUE))
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(jPanel4Layout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -393,10 +400,8 @@ public class MenuUsuario extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchIDFocusLost
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    JOptionPane.showMessageDialog(null,
-        "Por Implementar",
-        "Por Implementar",
-        JOptionPane.ERROR_MESSAGE);    // TODO add your handling code here:
+    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText(), usuario);
+    PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void btnGestionarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPrestamoActionPerformed

@@ -5,6 +5,9 @@
  */
 package sistemabibliotecario;
 
+import comportamiento.PaneB;
+import comportamiento.Material;
+import comportamiento.Usuario;
 import conection.SQLMethods;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -12,12 +15,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-
 /**
  *
  * @author vivie
  */
 public class AgregarMaterial extends javax.swing.JPanel {
+
   // Atributos de mi clase
   private Usuario usuario;
   String agregar;
@@ -28,7 +31,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
   }
 
   /**
-   * Clase de mi JPANEL 
+   * Clase de mi JPANEL
    */
   public AgregarMaterial() {
     initComponents();
@@ -359,7 +362,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
   private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
     int btnOpt = JOptionPane.YES_NO_OPTION;
     int dResult = JOptionPane.showConfirmDialog(this,
-            "¿Cerrar Sesión?", " ", btnOpt);
+        "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
       java.awt.EventQueue.invokeLater(() -> {
         new MenuLogin().setVisible(true);
@@ -383,23 +386,23 @@ public class AgregarMaterial extends javax.swing.JPanel {
   private void btnModificarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMaterialActionPerformed
     // TODO add your handling code here:
     JOptionPane.showMessageDialog(null,
-            "En construcción",
-            "En construcción",
-            JOptionPane.ERROR_MESSAGE);
+        "En construcción",
+        "En construcción",
+        JOptionPane.ERROR_MESSAGE);
   }//GEN-LAST:event_btnModificarMaterialActionPerformed
 
   private void btnEliminarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMaterialActionPerformed
     // TODO add your handling code here:
     JOptionPane.showMessageDialog(null,
-            "En construcción",
-            "En construcción",
-            JOptionPane.ERROR_MESSAGE);
+        "En construcción",
+        "En construcción",
+        JOptionPane.ERROR_MESSAGE);
   }//GEN-LAST:event_btnEliminarMaterialActionPerformed
 
   private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     int btnOpt = JOptionPane.YES_NO_OPTION;
     int dResult = JOptionPane.showConfirmDialog(this,
-            "¿Desea guardar el material?", " ", btnOpt);
+        "¿Desea guardar el material?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
       if (validateTexts()) {
         Material mt = new Material();
@@ -410,14 +413,14 @@ public class AgregarMaterial extends javax.swing.JPanel {
         mt.setTipo(comboTiposMateriales.getSelectedIndex() + 1);
         mt.setFechaPublicacion(txtPublicacion.getText());
         //mt.setFechaIngreso(new java.util.Date(System.currentTimeMillis()));
-        
+
         if (SQLMethods.agregarMaterial(mt)) {
           AgregarMaterial ml = new AgregarMaterial(usuario);
           PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), ml);
         }
-        
+
       }
-    }    
+    }
   }//GEN-LAST:event_btnGuardarActionPerformed
 
   private void txtFolioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFolioActionPerformed
@@ -455,7 +458,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
   }//GEN-LAST:event_txtSearchbarActionPerformed
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    ConsultarCatalogo cc = new ConsultarCatalogo();
+    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText(), usuario);
     PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), cc);
   }//GEN-LAST:event_btnSearchActionPerformed
 

@@ -1,4 +1,4 @@
-package sistemabibliotecario;
+package comportamiento;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,14 +14,14 @@ import javax.swing.text.PlainDocument;
  */
 
 
-class JTextFieldLimit extends PlainDocument {
+public class JTextFieldLimit extends PlainDocument {
   private int limit;
-  JTextFieldLimit(int limit) {
+  public JTextFieldLimit(int limit) {
     super();
     this.limit = limit;
   }
 
-  JTextFieldLimit(int limit, boolean upper) {
+  public JTextFieldLimit(int limit, boolean upper) {
     super();
     this.limit = limit;
   }
