@@ -19,12 +19,6 @@ public class RegistrarPrestamo extends javax.swing.JPanel {
 
   private Usuario usuario;
 
-  /**
-   * Creates new form registrarPrestamo
-   */
-  public RegistrarPrestamo() {
-    initComponents();
-  }
 
   public RegistrarPrestamo(Usuario user) {
     usuario = user;

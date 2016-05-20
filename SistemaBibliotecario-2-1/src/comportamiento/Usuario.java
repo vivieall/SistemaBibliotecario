@@ -22,6 +22,30 @@ public class Usuario {
   private String imgPath;
   private Date fechaIngreso;
 
+  public Usuario() {
+  }
+
+  /**
+   * Constructor sobrecargado
+   * @param id Cuenta de Usuario !NULL
+   * @param name Nombre del usuario 
+   * @param tel Número telefónico, en String
+   * @param direc Direccion
+   * @param correo Correo Electronico
+   * @param imgPath Dirección en disco 
+   * @param fechaIngreso Fecha de registro
+   */
+  public Usuario(String id, String name, String tel, String direc, 
+      String correo, String imgPath, Date fechaIngreso) {
+    this.id = id;
+    this.name = name;
+    this.tel = tel;
+    this.direc = direc;
+    this.correo = correo;
+    this.imgPath = imgPath;
+    this.fechaIngreso = fechaIngreso;
+  }
+
   /**
    * @return fecha de tipo Date
    */

@@ -378,8 +378,8 @@ public class RegistrarPrestamo2 extends javax.swing.JPanel {
   }//GEN-LAST:event_btnGestionarPrestamoActionPerformed
 
   private void btnGestionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuarioActionPerformed
-      MenuUsuario mu = new MenuUsuario();
-      mu.setVisible(true);    // TODO add your handling code here:
+      //MenuUsuario mu = new MenuUsuario();
+      //mu.setVisible(true);    // TODO add your handling code here:
   }//GEN-LAST:event_btnGestionarUsuarioActionPerformed
 
   private void gestionUsuario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuario6ActionPerformed

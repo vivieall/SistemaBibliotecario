@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package conection;
-
-import java.util.ArrayList;
+import comportamiento.RandomString;
+import comportamiento.Material;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,6 +13,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import comportamiento.Usuario;
+import java.security.SecureRandom;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,132 +24,129 @@ public class SQLMethodsTest {
   
   public SQLMethodsTest() {
   }
-  
-  @BeforeClass
-  public static void setUpClass() {
-  }
-  
-  @AfterClass
-  public static void tearDownClass() {
-  }
-  
-  @Before
-  public void setUp() {
-  }
-  
-  @After
-  public void tearDown() {
-  }
 
+  @Before
+  public void setUp() throws Exception {
+  }
+  
   /**
+   * Verifica que al introducir un usuario y contraseña validos, se retorne
+   * el valor adecuado, 1
    * Test of validarIngreso method, of class SQLMethods.
    */
   @Test
   public void testValidarIngreso() {
     System.out.println("validarIngreso");
-    String user = "";
-    String pass = "";
+    String user = "Gustavo";
+    String pass = "gustavo";
+    int expResult = 1;
+    int result = SQLMethods.validarIngreso(user, pass);
+    assertEquals(expResult, result);
+  }
+  
+    /**
+   * Verifica que al introducir un usuario y contraseña no validos, se retorne
+   * el valor adecuado, 0
+   * Test of validarIngreso method, of class SQLMethods.
+   */
+  @Test
+  public void testValidarMalIngreso() {
+    System.out.println("validarIngreso");
+    String user = "Gustavo";
+    String pass = "PASSWORD";
     int expResult = 0;
     int result = SQLMethods.validarIngreso(user, pass);
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
-  /**
-   * Test of insertPass method, of class SQLMethods.
+      /**
+   * Verifica que al introducir un usuario y contraseña validos pero
+   * sin autorización, se retorne el valor adecuado, 2
+   * Test of validarIngreso method, of class SQLMethods.
    */
   @Test
-  public void testInsertPass() {
-    System.out.println("insertPass");
-    String pass = "";
-    SQLMethods.insertPass(pass);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+  public void testValidarPermisosIngreso() {
+    System.out.println("validarIngreso");
+    String user = "Prueba";
+    String pass = "prueba";
+    int expResult = 2;
+    int result = SQLMethods.validarIngreso(user, pass);
+    assertEquals(expResult, result);
   }
-
+  
   /**
-   * Test of agregarUsuario method, of class SQLMethods.
+   * Verifica que al intentar ingresar un usuario vacío se atrape la excepción
    */
-  @Test
+  @Test(expected = NullPointerException.class)
   public void testAgregarUsuario_Usuario() {
     System.out.println("agregarUsuario");
     Usuario usuario = null;
-    boolean expResult = false;
-    boolean result = SQLMethods.agregarUsuario(usuario);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    SQLMethods.agregarUsuario(usuario);
+    fail();
   }
 
   /**
-   * Test of agregarUsuario method, of class SQLMethods.
+   * Verifica que al intentar ingresar un bibliotecario vacío 
+   * se atrape la excepción
    */
-  @Test
+  @Test(expected = NullPointerException.class)
   public void testAgregarUsuario_Usuario_String() {
     System.out.println("agregarUsuario");
-    Usuario usuario = null;
-    String pass = "";
-    boolean expResult = false;
-    boolean result = SQLMethods.agregarUsuario(usuario, pass);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    Usuario usuario = new Usuario();
+    String pass = "1234";
+    SQLMethods.agregarUsuario(usuario, pass);
+    fail();
   }
 
-  /**
-   * Test of eliminarUsuario method, of class SQLMethods.
-   */
-  @Test
-  public void testEliminarUsuario() {
-    System.out.println("eliminarUsuario");
-    String id = "";
-    SQLMethods.eliminarUsuario(id);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
-  }
 
   /**
-   * Test of modificarUsuario method, of class SQLMethods.
-   */
-  @Test
-  public void testModificarUsuario() {
-    System.out.println("modificarUsuario");
-    Usuario user = null;
-    boolean expResult = false;
-    boolean result = SQLMethods.modificarUsuario(user);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
-  }
-
-  /**
-   * Test of consultarUsuario method, of class SQLMethods.
+   * Verifica que al realizar una consulta, el Usuario obtenido sea el adecuado
    */
   @Test
   public void testConsultarUsuario() {
     System.out.println("consultarUsuario");
-    String ID = "";
-    Usuario expResult = null;
+    String ID = "MAURICIO";
+    String expResult = "MAURICIO";
     Usuario result = SQLMethods.consultarUsuario(ID);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+    assertEquals(expResult, result.getId());
   }
 
   /**
-   * Test of registrarPrestamo method, of class SQLMethods.
+   * Verifica que al realizar una modificación, se vea reflejada 
+   * en la base de datos con una consulta despues de la llamada
    */
   @Test
-  public void testRegistrarPrestamo() {
-    System.out.println("registrarPrestamo");
-    String numFolio = "";
-    SQLMethods instance = new SQLMethods();
-    ArrayList expResult = null;
-    ArrayList result = instance.registrarPrestamo(numFolio);
-    assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
+  public void testModificarUsuario() {
+    System.out.println("modificarUsuario");
+    SecureRandom random = new SecureRandom();
+    String name = RandomString.getSaltString();
+    Usuario eR = SQLMethods.consultarUsuario("Prueba");
+    eR.setName(name);
+    SQLMethods.modificarUsuario(eR);
+    Usuario Rs = SQLMethods.consultarUsuario("Prueba");
+    assertEquals(eR.getName(), Rs.getName());
+
   }
+
+  /**
+   * Verifica que todos los resultados de la consulta coincidan con el string
+   * de busqueda
+   */
+  @Test
+  public void testConsultarCatalogo() {
+    System.out.println("consultarCatalogo");
+    String busqueda = "Palmer";
+    boolean flag = true;
+    ArrayList<Material> result = SQLMethods.consultarCatalogo(busqueda);
+    for (Material r1 : result){
+      if (!r1.getTitulo().contains(busqueda) 
+          && !r1.getAutor().contains(busqueda)){
+        flag = false;
+      }
+    }
+    assertTrue(flag);
+  }
+
+
   
 }

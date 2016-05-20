@@ -156,10 +156,8 @@
                       <Component id="btnGestionarMateriales" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnModificarMaterial" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btnEliminarMaterial" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" alignment="2" groupAlignment="2" attributes="0">
-                          <Component id="btnSearch" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="txtSearchbar" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnSearch" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtSearchbar" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>

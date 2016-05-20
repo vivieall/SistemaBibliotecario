@@ -36,14 +36,6 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     return usuario;
   }
 
-  /**
-   * Setter para la variable Usuario
-   *
-   * @param us información del usuario que inició sesión
-   */
-  public void setUsuario(Usuario us) {
-    this.usuario = us;
-  }
 
   /**
    * Crea un panel con la información del Bibliotecario
@@ -52,13 +44,6 @@ public class MenuBibliotecario extends javax.swing.JPanel {
    */
   public MenuBibliotecario(Usuario user) {
     this.usuario = user;
-    initComponents();
-  }
-
-  /**
-   * Constructor por defecto de Panel
-   */
-  public MenuBibliotecario() {
     initComponents();
   }
 
@@ -304,15 +289,15 @@ public class MenuBibliotecario extends javax.swing.JPanel {
           .addComponent(txtSubTitle, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
           .addComponent(lblTitle)
           .addComponent(lblFEI))
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 22, Short.MAX_VALUE)
         .addComponent(icnUVLogo)
-        .addGap(0, 0, Short.MAX_VALUE))
+        .addGap(0, 25, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(txtSearchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,7 +312,8 @@ public class MenuBibliotecario extends javax.swing.JPanel {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(btnCerrarSesion1))
+        .addComponent(btnCerrarSesion1)
+        .addGap(12, 12, 12))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,7 +393,7 @@ public class MenuBibliotecario extends javax.swing.JPanel {
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
       java.awt.EventQueue.invokeLater(() -> {
-        new MenuLogin().setVisible(true);
+        MenuLogin.getInstance().setVisible(true);
       });
       SwingUtilities.getWindowAncestor(this).dispose();
       
@@ -453,47 +439,14 @@ public class MenuBibliotecario extends javax.swing.JPanel {
     }   
   }//GEN-LAST:event_txtSearchbarKeyPressed
 
-  /**
-   * Método principal que llama al Panel
-   *
-   * @param args
-   */
-  public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-        if ("Nimbus".equals(info.getName())) {
-          javax.swing.UIManager.setLookAndFeel(info.getClassName());
-          break;
-        }
-      }
-    } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
-    //</editor-fold>
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(() -> {
-      new MenuBibliotecario().setVisible(true);
-    });
-  }
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnCerrarSesion;
   private javax.swing.JButton btnCerrarSesion1;
   private javax.swing.JButton btnGestionarMaterial;
   private javax.swing.JButton btnGestionarPrestamo;
-  public javax.swing.JButton btnGestionarUsuario;
+  private javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnSearch;
   private javax.swing.JLabel icnBooks;
   private javax.swing.JLabel icnUVLogo;

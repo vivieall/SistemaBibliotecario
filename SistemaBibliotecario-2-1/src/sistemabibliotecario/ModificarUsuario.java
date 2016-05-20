@@ -9,6 +9,7 @@ import com.sun.glass.events.KeyEvent;
 import comportamiento.PaneB;
 import comportamiento.Usuario;
 import comportamiento.JTextFieldLimit;
+import comportamiento.JTextIntLimit;
 import conection.SQLMethods;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -29,12 +30,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
   private Usuario usuario, cambio;
 
-  /**
-   * Crea una nueva forma ModificarUsuario
-   */
-  public ModificarUsuario() {
-    initComponents();
-  }
 
   /**
    * Crea una nueva forma ModificarUsuario con la información del usuario que
@@ -174,7 +169,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     lblSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     lblSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-    txtTel.setDocument(new JTextFieldLimit(20));
+    txtTel.setDocument(new JTextIntLimit(20));
     txtTel.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtTelActionPerformed(evt);
@@ -282,23 +277,23 @@ public class ModificarUsuario extends javax.swing.JPanel {
         .addComponent(btnGestionarPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(btnGestionarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(btnCerrarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(25, 25, 25))
+        .addContainerGap())
       .addGroup(layout.createSequentialGroup()
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 25, Short.MAX_VALUE)
         .addComponent(icnBooks)
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 25, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
             .addGap(87, 87, 87)
             .addComponent(lblFEI))
           .addComponent(lblTitle2))
-        .addGap(0, 0, Short.MAX_VALUE)
+        .addGap(0, 25, Short.MAX_VALUE)
         .addComponent(icnUVLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(0, 0, Short.MAX_VALUE))
+        .addGap(0, 27, Short.MAX_VALUE))
       .addGroup(layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,11 +319,11 @@ public class ModificarUsuario extends javax.swing.JPanel {
               .addGroup(layout.createSequentialGroup()
                 .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-          .addGroup(layout.createSequentialGroup()
-            .addComponent(btnSave)
-            .addGap(112, 112, 112)
-            .addComponent(btnCancel)))
+                .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(layout.createSequentialGroup()
+                .addComponent(btnSave)
+                .addGap(112, 112, 112)
+                .addComponent(btnCancel)))))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
@@ -375,11 +370,11 @@ public class ModificarUsuario extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
               .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(46, 46, 46)
+            .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING)
               .addComponent(btnCancel, javax.swing.GroupLayout.Alignment.TRAILING))
-            .addGap(108, 108, 108))
+            .addGap(98, 98, 98))
           .addGroup(layout.createSequentialGroup()
             .addGap(56, 56, 56)
             .addComponent(icnUser)
@@ -448,7 +443,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
       java.awt.EventQueue.invokeLater(() -> {
-        new MenuLogin().setVisible(true);
+       MenuLogin.getInstance().setVisible(true);
       });
       SwingUtilities.getWindowAncestor(this).dispose();
     } 
@@ -477,7 +472,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
   private javax.swing.JButton btnCerrarSesion1;
   private javax.swing.JButton btnGestionarMaterial;
   private javax.swing.JButton btnGestionarPrestamo;
-  public javax.swing.JButton btnGestionarUsuario;
+  private javax.swing.JButton btnGestionarUsuario;
   private javax.swing.JButton btnSave;
   private javax.swing.JButton btnSearch;
   private javax.swing.JLabel icnBooks;

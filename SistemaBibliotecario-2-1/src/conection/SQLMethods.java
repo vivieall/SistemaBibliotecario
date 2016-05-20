@@ -44,7 +44,7 @@ public class SQLMethods {
       con = Conexion.getConnection();
       if (con != null) {
         String selectSQL = "SELECT bibliotecario_id, password, tipo FROM "
-            + "bibliotecario WHERE  + bibliotecario_id = ?";
+            + "bibliotecario WHERE bibliotecario_id = ?";
 
         ps = con.prepareStatement(selectSQL);
         ps.setString(1, user);
@@ -95,29 +95,25 @@ public class SQLMethods {
     return hashTxt;
   }
 
-  /**
-   *
-   * @param pass
-   */
-  public static void insertPass(String pass) {
-    PreparedStatement ps;
-    ResultSet rs;
-    try {
-      Connection con = Conexion.getConnection();
-      pass = parsePass(pass);
-      String selectSQL = "UPDATE bibliotecario SET password='" + pass
-          + "' WHERE bibliotecario_id = 'zS11012696'";
-      ps = con.prepareStatement(selectSQL);
-      ps.execute(selectSQL);
-      con.close();
-    } catch (ClassNotFoundException | SQLException |
-        NoSuchAlgorithmException |
-        UnsupportedEncodingException e) {
-      System.out.println(e);
-    }
-
-  }
-
+//  private ResultSet consulta(
+//      String sel, String from, String where, String que, int val){
+//      
+//      for (int i = 0; i < val; i++){
+//        
+//      }
+//    String query = "SELECT " + sel + 
+//                   " FROM " + from + 
+//                   " WHERE " + where +
+//                   
+//        String selectSQL = "SELECT bibliotecario_id, password, tipo FROM "
+//            + "bibliotecario WHERE  + bibliotecario_id = ?";
+//
+//        ps = con.prepareStatement(selectSQL);
+//        ps.setString(1, user);
+//        rs = ps.executeQuery();
+//    return rs;
+//  }
+//  
   /**
    * Inserta los datos de un nuevo usuario a la base de datos
    *
@@ -219,34 +215,34 @@ public class SQLMethods {
    *
    * @param id identificador del registro a borrar
    */
-  public static void eliminarUsuario(String id) {
-    Connection connection = null;
-    PreparedStatement ps;
-    try {
-      connection = Conexion.getConnection();
-      ps = connection.prepareStatement(
-          "DELETE FROM USUARIO WHERE usuario_id=?");
-      ps.setString(1, id);
-      int res = ps.executeUpdate();
-      if (res > 0) {
-        JOptionPane.showMessageDialog(null, "Usuario Eliminado");
-      } else {
-        JOptionPane.showMessageDialog(null, "Error al Eliminar Usuario");
-      }
-
-    } catch (SQLException sqx) {
-      JOptionPane.showMessageDialog(null,
-          "No se pudo conectar a la base de datos.",
-          "Error.",
-          JOptionPane.ERROR_MESSAGE);
-      sqx.printStackTrace();
-    } catch (ClassNotFoundException | HeadlessException ex) {
-      System.out.println(ex);
-    } finally {
-      Conexion.cerrarConexion(connection);
-    }
-  }
-
+/*  public static void eliminarUsuario(String id) {
+*   Connection connection = null;
+*    PreparedStatement ps;
+*    try {
+*      connection = Conexion.getConnection();
+*      ps = connection.prepareStatement(
+*          "DELETE FROM USUARIO WHERE usuario_id=?");
+*      ps.setString(1, id);
+*      int res = ps.executeUpdate();
+*     if (res > 0) {
+*        JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+*      } else {
+*        JOptionPane.showMessageDialog(null, "Error al Eliminar Usuario");
+*      }
+*
+*    } catch (SQLException sqx) {
+*      JOptionPane.showMessageDialog(null,
+*          "No se pudo conectar a la base de datos.",
+*          "Error.",
+*          JOptionPane.ERROR_MESSAGE);
+*      sqx.printStackTrace();
+*    } catch (ClassNotFoundException | HeadlessException ex) {
+*      System.out.println(ex);
+*    } finally {
+*      Conexion.cerrarConexion(connection);
+*    }
+*  }
+*/
   /**
    * Actualiza la información personal de un usuario
    *
@@ -291,7 +287,6 @@ public class SQLMethods {
           "No se pudo conectar a la base de datos.",
           "Error.",
           JOptionPane.ERROR_MESSAGE);
-      sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException ex) {
       System.out.println(ex);
     } finally {
@@ -344,12 +339,15 @@ public class SQLMethods {
 
     } catch (SQLException sqx) {
       JOptionPane.showMessageDialog(null,
-          "No se pudo conectar a la base de datos.",
+          sqx.getMessage(),
           "Error.",
           JOptionPane.ERROR_MESSAGE);
       sqx.printStackTrace();
     } catch (ClassNotFoundException | HeadlessException ex) {
-      System.out.println(ex);
+      JOptionPane.showMessageDialog(null,
+          ex.getMessage(),
+          "Error.",
+          JOptionPane.ERROR_MESSAGE);
     } finally {
       Conexion.cerrarConexion(connection);
     }
@@ -500,27 +498,27 @@ public class SQLMethods {
     }
     return false;
   }
-
-  public void registrarPrestamo(String numFolio, String ID) {
-    Connection connection;
-    PreparedStatement ps;
-    ResultSet rs;
-    try {
-      connection = Conexion.getConnection();
-      ps = connection.prepareStatement("INSERT INTO PRESTAMO(numFolio, ID,");
-      ps.setString(1, ID);
-      ps.setString(2, numFolio);
-      int res = ps.executeUpdate();
-      if (res > 0) {
-        JOptionPane.showMessageDialog(null, "Se registró el préstamo.");
-      } else {
-        JOptionPane.showMessageDialog(null,
-            "No se pudo registrar el préstamo.");
-      }
-      connection.close();
-    } catch (ClassNotFoundException | SQLException | HeadlessException ex) {
-      System.out.println(ex);
-    }
-  }
+//
+//  public void registrarPrestamo(String numFolio, String ID) {
+//    Connection connection;
+//    PreparedStatement ps;
+//    ResultSet rs;
+//    try {
+//      connection = Conexion.getConnection();
+//      ps = connection.prepareStatement("INSERT INTO PRESTAMO(numFolio, ID,");
+//      ps.setString(1, ID);
+//      ps.setString(2, numFolio);
+//      int res = ps.executeUpdate();
+//      if (res > 0) {
+//        JOptionPane.showMessageDialog(null, "Se registró el préstamo.");
+//      } else {
+//        JOptionPane.showMessageDialog(null,
+//            "No se pudo registrar el préstamo.");
+//      }
+//      connection.close();
+//    } catch (ClassNotFoundException | SQLException | HeadlessException ex) {
+//      System.out.println(ex);
+//    }
+//  }
 
 }

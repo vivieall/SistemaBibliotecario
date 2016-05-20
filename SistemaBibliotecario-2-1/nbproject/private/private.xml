@@ -7,13 +7,32 @@
             <file>file:/Users/Vivie/Documents/SistemaBibliotecarioUV/SistemaBibliotecario-2-1/src/sistemabibliotecario/menuLogin.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/ModificarUsuario.java</file>
-            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.java</file>
-            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuUsuario.java</file>
-            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/Usuario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/comportamiento/Material.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/RegistrarPrestamo2.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/test/conection/SQLMethodsTest.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/comportamiento/JTextFieldLimit.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/comportamiento/PaneB.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/conection/SQLMethods.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/comportamiento/RandomString.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/test/sistemabibliotecario/MenuLoginTest.java</file>
             <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuLogin.java</file>
             <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/AltaUsuario.java</file>
-            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/PaneB.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/conection/Conexion.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/ModificarUsuario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/RegistrarRenovacion.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/ModificarMaterial.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/AgregarMaterial.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/test/conection/ConexionTest.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/test/sistemabibliotecario/ConsultarCatalogoTest.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/test/sistemabibliotecario/MenuBibliotecarioTest.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuBibliotecario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/test/sistemabibliotecario/MenuUsuarioTest.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/MenuUsuario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/comportamiento/JTextIntLimit.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/RegistrarPrestamo.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/comportamiento/Usuario.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/ConsultarCatalogo.java</file>
+            <file>file:/C:/Users/mauri/OneDrive/Documentos/GitHub/SistemaBibliotecario/SistemaBibliotecario-2-1/src/sistemabibliotecario/RegistrarRenovacion2.java</file>
         </group>
     </open-files>
 </project-private>

@@ -365,7 +365,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
       java.awt.EventQueue.invokeLater(() -> {
-        new MenuLogin().setVisible(true);
+        MenuLogin.getInstance().setVisible(true);
       });
       SwingUtilities.getWindowAncestor(this).dispose();
     }

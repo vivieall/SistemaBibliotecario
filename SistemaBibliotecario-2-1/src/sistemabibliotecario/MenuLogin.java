@@ -12,20 +12,42 @@ import javax.swing.JOptionPane;
 import conection.SQLMethods;
 import java.awt.Color;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  *
  * @author mauricio, Vivie
  */
 public class MenuLogin extends javax.swing.JFrame {
+  private static MenuLogin instance = new MenuLogin();
+
 
   /**
    * Crea un nuevo panel para inicio de sesión
    */
-  public MenuLogin() {
+  private MenuLogin() {
+    try {
+      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+          javax.swing.UIManager.setLookAndFeel(info.getClassName());
+          break;
+        }
+      }
+    } catch (ClassNotFoundException ex) {
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
     initComponents();
     txtUsuario.requestFocus();
+  }
+  
+  public static MenuLogin getInstance(){
+    return instance;
   }
 
   /**
@@ -325,33 +347,7 @@ public class MenuLogin extends javax.swing.JFrame {
   }//GEN-LAST:event_btnIngresarKeyReleased
 
   private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-    char pass[] = txtPass.getPassword();
-    String password = new String(pass);
-    System.out.println(
-        SQLMethods.validarIngreso(txtUsuario.getText(), password));
-    switch (SQLMethods.validarIngreso(txtUsuario.getText(), password)) {
-    case 1:
-      MenuBibliotecario mc = new MenuBibliotecario(SQLMethods
-          .consultarUsuario(txtUsuario.getText()));
-      PaneB.callNxtPane(this, mc);
-      break;
-    case 0:
-      JOptionPane.showMessageDialog(null,
-          "Verifique que sus datos sean correctos",
-          "Acceso denegado.",
-          JOptionPane.ERROR_MESSAGE);
-      lblError.setVisible(true);
-      break;
-    case 2:
-      JOptionPane.showMessageDialog(null,
-          "Usuario no autorizado",
-          "Acceso denegado.",
-          JOptionPane.ERROR_MESSAGE);
-      lblError.setVisible(true);
-      break;
-    default:
-      break;
-    }
+    Ingresar(txtPass.getPassword());
   }//GEN-LAST:event_btnIngresarActionPerformed
 
   private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
@@ -373,8 +369,7 @@ public class MenuLogin extends javax.swing.JFrame {
   }//GEN-LAST:event_txtUsuarioFocusGained
 
   private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-    ConsultarCatalogo cc = new ConsultarCatalogo(txtSearchbar.getText());
-    PaneB.callNxtPane(this, cc);
+    PaneB.callNxtPane(this, new ConsultarCatalogo(txtSearchbar.getText()));
   }//GEN-LAST:event_btnSearchActionPerformed
 
   private void txtSearchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbarActionPerformed
@@ -469,11 +464,37 @@ public class MenuLogin extends javax.swing.JFrame {
     //</editor-fold>
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(() -> {
-      new MenuLogin().setVisible(true);
+     MenuLogin.getInstance().setVisible(true);
     });
 
   }
-
+private void Ingresar(char pass[]){  
+    String password = new String(pass);
+   
+    switch (SQLMethods.validarIngreso(txtUsuario.getText(), password)) {
+    case 1:
+      MenuBibliotecario mc = new MenuBibliotecario(SQLMethods
+          .consultarUsuario(txtUsuario.getText()));
+      PaneB.callNxtPane(this, mc);
+      break;
+    case 0:
+      JOptionPane.showMessageDialog(null,
+          "Verifique que sus datos sean correctos",
+          "Acceso denegado.",
+          JOptionPane.ERROR_MESSAGE);
+      lblError.setVisible(true);
+      break;
+    case 2:
+      JOptionPane.showMessageDialog(null,
+          "Usuario no autorizado",
+          "Acceso denegado.",
+          JOptionPane.ERROR_MESSAGE);
+      lblError.setVisible(true);
+      break;
+    default:
+      break;
+    }
+}
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnIngresar;
   private javax.swing.JButton btnSearch;
