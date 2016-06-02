@@ -528,6 +528,7 @@ public class AltaUsuario extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
+      MenuLogin.resetInstance();
       java.awt.EventQueue.invokeLater(() -> {
         MenuLogin.getInstance().setVisible(true);
       });

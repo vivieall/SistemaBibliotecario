@@ -372,6 +372,7 @@ public class MenuUsuario extends javax.swing.JPanel {
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
       java.awt.EventQueue.invokeLater(() -> {
+        MenuLogin.resetInstance();
        MenuLogin.getInstance().setVisible(true);
       });
       SwingUtilities.getWindowAncestor(this).dispose();

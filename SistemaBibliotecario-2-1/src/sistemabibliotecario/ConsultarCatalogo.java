@@ -5,12 +5,12 @@
  */
 package sistemabibliotecario;
 
+import com.sun.glass.events.KeyEvent;
 import comportamiento.Usuario;
 import conection.SQLMethods;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import comportamiento.Material;
@@ -140,6 +140,11 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
         btnSearchActionPerformed(evt);
       }
     });
+    btnSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnSearchKeyPressed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
@@ -241,12 +246,19 @@ public class ConsultarCatalogo extends javax.swing.JPanel {
       MenuBibliotecario menuB = new MenuBibliotecario(usuario);
       PaneB.callNxtPane((JFrame) SwingUtilities.getWindowAncestor(this), menuB);
     } else {
+      MenuLogin.resetInstance();
       java.awt.EventQueue.invokeLater(() -> {
        MenuLogin.getInstance().setVisible(true);
       });
       SwingUtilities.getWindowAncestor(this).dispose();
     }
   }//GEN-LAST:event_btnCerrarSesion1ActionPerformed
+
+  private void btnSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSearchKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+      btnSearch.doClick();
+    }
+  }//GEN-LAST:event_btnSearchKeyPressed
 
 
   private void convertirArreglo(String busqueda) {

@@ -9,7 +9,6 @@ import com.sun.glass.events.KeyEvent;
 import comportamiento.PaneB;
 import comportamiento.Usuario;
 import comportamiento.JTextFieldLimit;
-import comportamiento.JTextIntLimit;
 import conection.SQLMethods;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -169,7 +168,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
     lblSubTitle.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
     lblSubTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-    txtTel.setDocument(new JTextIntLimit(20));
     txtTel.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         txtTelActionPerformed(evt);
@@ -442,6 +440,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     int dResult = JOptionPane.showConfirmDialog(this,
         "¿Cerrar Sesión?", " ", btnOpt);
     if (dResult == JOptionPane.YES_OPTION) {
+      MenuLogin.resetInstance();
       java.awt.EventQueue.invokeLater(() -> {
        MenuLogin.getInstance().setVisible(true);
       });
